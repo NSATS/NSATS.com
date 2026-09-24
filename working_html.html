@@ -1,0 +1,187 @@
+<script src="site-config.js"></script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const form = document.getElementById("contactForm");
+  const errBox = document.getElementById("formError");
+  const errText = document.getElementById("formErrorText");
+
+  const ccYes = document.getElementById("ccYes");
+  const ccNo  = document.getElementById("ccNo");
+  const corporateCode = document.getElementById("corporateCode");
+
+  function showError(msg) {
+    errText.textContent = msg;
+    errBox.style.display = "block";
+  }
+
+  function clearError() {
+    errText.textContent = "";
+    errBox.style.display = "none";
+  }
+
+  function setCorporateEnabled() {
+    const enabled = ccYes.checked;
+    corporateCode.disabled = !enabled;
+    if (!enabled) corporateCode.value = "";
+  }
+
+  ccYes.addEventListener("change", setCorporateEnabled);
+  ccNo.addEventListener("change", setCorporateEnabled);
+  setCorporateEnabled();
+
+  // ===== CAPTCHA MODAL LOGIC =====
+  const captchaBackdrop = document.getElementById("captchaBackdrop");
+  const captchaGrid = document.getElementById("captchaGrid");
+  const captchaMsg = document.getElementById("captchaMsg");
+  const captchaClose = document.getElementById("captchaClose");
+  const captchaCancel = document.getElementById("captchaCancel");
+  const captchaRefresh = document.getElementById("captchaRefresh");
+
+  let captchaTarget = null;
+
+  function randInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function uniqueNumbers(count, min, max){
+    const set = new Set();
+    while(set.size < count) set.add(randInt(min, max));
+    return Array.from(set);
+  }
+  function shuffle(arr){
+    for(let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function openCaptcha(){
+    captchaMsg.textContent = "";
+    buildCaptcha();
+    captchaBackdrop.classList.add("is-open");
+    captchaBackdrop.setAttribute("aria-hidden", "false");
+    captchaClose.focus();
+  }
+
+  function closeCaptcha(){
+    captchaBackdrop.classList.remove("is-open");
+    captchaBackdrop.setAttribute("aria-hidden", "true");
+    captchaGrid.innerHTML = "";
+    captchaMsg.textContent = "";
+  }
+
+  function buildCaptcha(){
+    captchaMsg.textContent = "";
+    captchaGrid.innerHTML = "";
+
+    // 6 options between 10 and 99
+    const nums = shuffle(uniqueNumbers(6, 10, 99));
+    captchaTarget = Math.max(...nums);
+
+    nums.forEach((n) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn secondary captcha-choice";
+      btn.textContent = String(n);
+
+      btn.addEventListener("click", () => {
+        if(n === captchaTarget){
+          captchaMsg.textContent = "Verified. Submitting…";
+          closeCaptcha();
+
+          // Demo behavior only (remove once backend is wired)
+          alert("Support request submitted (demo). Connect this form to your backend / ticketing system.");
+        } else {
+          captchaMsg.textContent = "Not quite — try again.";
+          buildCaptcha();
+        }
+      });
+
+      captchaGrid.appendChild(btn);
+    });
+  }
+
+  captchaClose.addEventListener("click", closeCaptcha);
+  captchaCancel.addEventListener("click", closeCaptcha);
+  captchaRefresh.addEventListener("click", buildCaptcha);
+
+  // Click outside modal to close
+  captchaBackdrop.addEventListener("click", (e) => {
+    if(e.target === captchaBackdrop) closeCaptcha();
+  });
+
+  // Escape to close
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && captchaBackdrop.classList.contains("is-open")){
+      closeCaptcha();
+    }
+  });
+
+  // ✅ FORM SUBMIT
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const first = document.getElementById("firstName").value.trim();
+    const last  = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const type  = document.getElementById("supportType").value;
+    const prio  = document.getElementById("priority").value;
+    const details = document.getElementById("details").value.trim();
+    const consent = document.getElementById("consent").checked;
+
+    if (!first) return showError("Please enter your first name.");
+    if (!last)  return showError("Please enter your last name.");
+
+    if (!email) return showError("Please enter your email address.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      return showError("Email format is invalid.");
+
+    if (!type) return showError("Please select a type of support.");
+    if (!prio) return showError("Please select a priority.");
+
+    if (
+      ccYes.checked &&
+      corporateCode.value.trim() &&
+      !/^[a-zA-Z0-9-_]+$/.test(corporateCode.value.trim())
+    ) {
+      return showError(
+        "Corporate code format looks invalid. Use letters, numbers, hyphens, and underscores only."
+      );
+    }
+
+    if (!details || details.length < 20)
+      return showError(
+        "Please provide details (at least 20 characters) so support can help effectively."
+      );
+
+    if (!consent)
+      return showError("Please confirm consent to contact.");
+
+    // Send request
+    try {
+      const response = await fetch(NSATS.url("contact") || "about:blank", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first,
+          last,
+          email,
+          type,
+          prio,
+          details,
+          corporateCode: corporateCode.value || null
+        })
+      });
+
+      if (!response.ok) throw new Error();
+
+      alert("Support request sent successfully!");
+      form.reset();
+      setCorporateEnabled();
+    } catch (err) {
+      showError("Unable to send your request right now. Please try again later.");
+    }
+  });
+</script>

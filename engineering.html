@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NSATS | Engineering &amp; System Design</title>
+  <meta name="description" content="NSATS provides professional engineering and system design services under Class 42 for third parties, including computer systems design, network architecture, telecommunications design studies, hardware advisory, technical analysis, and engineering consultancy." />
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#2a2a2a;
+      --muted:#5a5a5a;
+      --muted2:#6b7280;
+      --line:#e7e7e7;
+      --panel:#f6f7f9;
+
+      --accent:#00539A;
+
+      --nav:#111214;
+      --nav2:#1a1b1e;
+      --navText:#e8eaed;
+      --navMuted:#c9cdd4;
+      --navHover:#2a2c31;
+
+      --btnBorder: rgba(17,24,39,.18);
+      --btnHoverBg: rgba(17,24,39,.04);
+
+      --radius:14px;
+      --max: 1040px;
+      --pad: 22px;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus-visible, button:focus-visible, summary:focus-visible{
+      outline:2px solid rgba(17,24,39,.35);
+      outline-offset:3px;
+      border-radius:10px
+    }
+
+    ::selection{background:rgba(0,83,154,.14);}
+
+    /* =========================
+       HEADER (from PAGE1)
+       ========================= */
+    .wrap{max-width:1120px; margin:0 auto; padding:0 18px; width:100%}
+
+    .nav{
+      position:sticky; top:0;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(150%) blur(8px);
+      z-index:50;
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:850; letter-spacing:.2px}
+    .brand-logo{height:40px; width:auto; display:block;}
+
+    .menu{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .menu a{padding:8px 10px; border-radius:10px; color:var(--muted)}
+    .menu a:hover{background:#fafafa; color:var(--fg)}
+    .menu a[aria-current="page"]{
+      color:var(--fg);
+      font-weight:800;
+      text-decoration:underline;
+      text-underline-offset:6px;
+      text-decoration-color:rgba(0,83,154,.55);
+    }
+
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--btnBorder);
+      background:#fff;
+      color:#111827;
+      font-weight:800;
+      min-height:40px;
+      transition: background .18s ease, border-color .18s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{background:var(--btnHoverBg);}
+    .btn.primary{
+      background:#111214;
+      color:#fff;
+      border-color:#111214;
+    }
+    .btn.primary:hover{background:#1f2937; border-color:#1f2937;}
+
+    .menu-desktop{display:flex}
+    .cta-desktop{display:flex}
+    .menu-mobile{display:none; position:relative}
+
+    .mobile-toggle{
+      list-style:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--bg);
+      cursor:pointer;
+      user-select:none;
+    }
+    .mobile-toggle::-webkit-details-marker{display:none}
+    .burger{width:18px; height:2px; background:var(--fg); position:relative; display:inline-block;}
+    .burger:before,.burger:after{content:""; position:absolute; left:0; width:18px; height:2px; background:var(--fg);}
+    .burger:before{top:-6px}
+    .burger:after{top:6px}
+
+    .mobile-panel{
+      position:absolute;
+      right:0;
+      top:calc(100% + 10px);
+      width:min(340px, calc(100vw - 36px));
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      padding:12px;
+      z-index:100;
+    }
+    .mobile-links{display:flex; flex-direction:column; gap:6px}
+    .mobile-links a{padding:10px 10px; border-radius:10px; color:var(--muted)}
+    .mobile-links a:hover{background:#fafafa; color:var(--fg)}
+    .mobile-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    @media (max-width: 900px){
+      .menu-desktop{display:none}
+      .cta-desktop{display:none}
+      .menu-mobile{display:block}
+      .nav-inner{flex-wrap:nowrap}
+    }
+
+    /* =========================
+       PAGE LAYOUT
+       ========================= */
+    .layout{
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* Floating sidebar (shorter, not end-to-end) */
+    .sidebar{
+      position:fixed;
+      left:18px;
+      top:92px; /* below sticky header */
+      width:290px;
+
+      background: linear-gradient(180deg, var(--nav) 0%, var(--nav2) 100%);
+      color: var(--navText);
+      padding:14px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+
+      max-height: calc(100vh - 140px);
+      overflow:auto;
+    }
+    .sidebar::-webkit-scrollbar{width:10px}
+    .sidebar::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.12);
+      border-radius: 10px;
+      border: 2px solid rgba(0,0,0,0);
+      background-clip: padding-box;
+    }
+
+    /* Removed left-nav brand/logo block (per request) */
+    .navgroup{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--navMuted);
+      margin:12px 10px 8px;
+    }
+    .navlink{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      margin:4px 0;
+      border-radius:12px;
+      color:var(--navMuted);
+      font-size:14px;
+      border:1px solid transparent;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .navlink:hover{background:var(--navHover);color:var(--navText);}
+    .navlink.active{
+      background:rgba(255,255,255,.10);
+      color:var(--navText);
+      font-weight:800;
+      border-color:rgba(255,255,255,.16);
+    }
+    .nav-ico{
+      width:18px; height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      opacity:.95;
+    }
+    .nav-ico svg{display:block}
+
+    .navcta{
+      margin:14px 6px 0;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+    .navcta p{margin:0 0 10px;font-size:12px;color:var(--navMuted);line-height:1.45;}
+    /* Hover to light grey (requested) */
+    .navcta a{
+      display:block;
+      text-align:center;
+      background:#fff;
+      color:#111214;
+      font-weight:900;
+      padding:10px;
+      border-radius:12px;
+      font-size:13px;
+      transition: background .18s ease;
+    }
+    .navcta a:hover{background:#e5e7eb;}
+
+    /* Content */
+    .content{
+      flex:1;
+      margin-left: 340px; /* room for floating sidebar */
+      padding:0 18px 44px;
+    }
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 0 var(--pad);
+    }
+
+    .crumbs{
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .crumbs .row{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px var(--pad);
+      font-size:13px;
+      color:var(--muted2);
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .crumbs a{
+      font-weight:900;
+      color:#111827;
+      padding:6px 8px;
+      border-radius:10px;
+      transition: background .15s ease;
+    }
+    .crumbs a:hover{background:rgba(0,0,0,.06);}
+
+    header.pagehead{
+      padding-top:24px;
+      border-bottom:2px solid #ddd;
+      padding-bottom:16px;
+      margin-bottom:18px;
+    }
+    header.pagehead h1{
+      margin:0;
+      font-size:26px;
+      color:#111827;
+      letter-spacing:-.01em;
+      line-height:1.15;
+    }
+    .lead{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:15px;
+      max-width:95ch;
+    }
+    .lead strong{color:#111827}
+
+    h2{margin:18px 0 10px;font-size:20px;color:#111827;}
+
+    /* Requested: icons + accent color on h3/h4 */
+    h3, h4{color:var(--accent);}
+    h3{
+      margin:18px 0 8px;
+      font-size:16px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:6px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    h4{
+      margin:16px 0 8px;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .hicon{
+      width:18px; height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color: var(--accent);
+    }
+    .hicon svg{display:block}
+
+    p{margin:8px 0 12px;color:var(--muted);font-size:15px;max-width:95ch;}
+
+    ul{
+      padding-left:22px;
+      margin:8px 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+      max-width:95ch;
+    }
+    li{margin:8px 0;}
+
+    .panel{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      margin:12px 0 16px;
+    }
+
+    .catalog{display:grid;gap:10px;}
+    .item{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:12px 14px;
+      background:#fff;
+    }
+    .item .t{font-weight:900;color:#111827;margin-bottom:4px;}
+    .item .d{margin:0;font-size:14px;color:var(--muted);}
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:14px 14px 12px;
+    }
+    .card strong{color:#111827}
+    .card p{margin:6px 0 0; font-size:14px; max-width:none;}
+
+    .pager{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pager a{
+      font-size:14px;
+      font-weight:900;
+      color:#111827;
+      border:1px solid var(--btnBorder);
+      padding:10px 12px;
+      border-radius:12px;
+      transition: background .18s ease;
+      white-space:nowrap;
+      background:#fff;
+    }
+    .pager a:hover{background: var(--btnHoverBg);}
+
+    /* Ensure ALL buttons share same hover behaviour */
+    .btn.secondary{
+      background: transparent;
+      color:#111827;
+      border:1px solid var(--btnBorder);
+    }
+    .btn.secondary:hover{background: var(--btnHoverBg);}
+
+    /* Section header with left/right navigation buttons */
+    .section-head{
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items:center;
+      gap:10px;
+      margin: 18px 0 10px;
+    }
+    .section-head h2{
+      margin:0;
+      text-align:center;
+    }
+    .section-head .left{justify-self:start;}
+    .section-head .right{justify-self:end;}
+    .section-head a{
+      font-size:13px;
+      font-weight:900;
+      color:#111827;
+      border:1px solid var(--btnBorder);
+      padding:9px 10px;
+      border-radius:12px;
+      background:#fff;
+      white-space:nowrap;
+      transition: background .18s ease;
+    }
+    .section-head a:hover{background: var(--btnHoverBg);}
+
+    @media(max-width:980px){
+      .two{grid-template-columns:1fr;}
+    }
+
+    @media(max-width:900px){
+      .sidebar{
+        position:static;
+        width:auto;
+        max-height:none;
+        margin: 14px 18px 0;
+      }
+      .content{margin-left:0; padding:0 0 44px;}
+      .container{padding:0 16px;}
+      .crumbs .row{padding:10px 16px;}
+      header.pagehead{padding-top:18px;}
+      header.pagehead h1{font-size:24px;}
+    }
+
+    @media (max-width:520px){
+      .section-head{grid-template-columns: 1fr;}
+      .section-head .left, .section-head .right{justify-self:stretch;}
+      .section-head a{width:100%; text-align:center;}
+      .section-head h2{text-align:left;}
+    }
+
+    /* =========================
+       FOOTER (from PAGE1)
+       ========================= */
+    .footer-site{
+      background:#0b0b0b;
+      color:rgba(255,255,255,.75);
+      padding:18px 0;
+      border-top:none;
+      font-size:13px;
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:16px;
+    }
+    .footer-logo{
+      height:32px;
+      width:auto;
+      display:block;
+    }
+    .footer-links{
+      justify-self:center;
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .footer-links a{
+      color:rgba(255,255,255,.85);
+      text-decoration:none;
+      font-size:13px;
+      padding:6px 8px;
+      border-radius:10px;
+      transition: background .18s ease, color .18s ease;
+    }
+    .footer-links a:hover{
+      background: rgba(255,255,255,.06);
+      color:#ffffff;
+    }
+    .footer-copy{
+      justify-self:end;
+      color:rgba(255,255,255,.6);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    @media (max-width: 720px){
+      .footer-inner{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .footer-links{justify-self:center}
+      .footer-copy{justify-self:center}
+      .footer-logo{margin:0 auto}
+    }
+
+    .ico{width:16px; height:16px}
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER (from PAGE1) -->
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="brand" href="index-mail-vleg1.html" aria-label="NSATS home">
+        <img class="brand-logo" src="NSATS_Logo_QL.png" alt="NSATS" />
+      </a>
+
+      <nav class="menu menu-desktop" aria-label="Primary">
+        <a href="index-mail-vleg1.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="security.html">Security</a>
+        <a href="how.html">How it works</a>
+            <a href="about-services-leg.html" aria-current="page">About</a>
+        <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer"> Demo</a>
+      </nav>
+
+      <div class="cta cta-desktop">
+        <a class="btn" href="login.html">Sign in</a>
+        <a class="btn primary" href="signup.html">Signup</a>
+		
+      </div>
+
+      <details class="menu-mobile" role="navigation" aria-label="Primary mobile">
+        <summary class="mobile-toggle" aria-label="Open menu">
+          <span class="burger" aria-hidden="true"></span>
+          <span class="mobile-toggle-text">Menu</span>
+        </summary>
+
+        <div class="mobile-panel">
+          <nav class="mobile-links" aria-label="Mobile links">
+            <a href="index-mail-vleg1.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="security.html">Security</a>
+            <a href="how.html">How it works</a>
+            <a href="about-services-leg.html" aria-current="page">About</a>
+            <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer">Demo </a>
+          </nav>
+
+          <div class="mobile-cta">
+            <a class="btn" href="login.html">Sign in</a>
+            <a class="btn primary" href="signup.html">Signup</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- Sidebar (logo removed; content preserved) -->
+  <aside class="sidebar" aria-label="Site navigation">
+
+    <div class="navgroup">Browse</div>
+    <a class="navlink" href="about-services-leg.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: home -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Tech, Engineering, and Design Services Overview
+    </a>
+
+    <div class="navgroup">Service Pages</div>
+    <a class="navlink active" href="engineering.html" aria-current="page">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: cpu -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      Engineering &amp; System Design
+    </a>
+
+    <a class="navlink" href="web-platform.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: layout -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Web &amp; Platform Design/Development
+    </a>
+
+    <a class="navlink" href="software.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: code -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Software Development &amp; Consulting
+    </a>
+
+    <a class="navlink" href="cloud-security.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: shield -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Hosting / Cloud / Security / SaaS / IaaS
+    </a>
+
+    <a class="navlink" href="research.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: flask -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M10 2v6l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 17l-5-9V2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Research &amp; Innovation
+    </a>
+
+    <a class="navlink" href="it-managed.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: settings -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 15a8 8 0 0 0 .1-2l2-1.2-2-3.4-2.3.7a8 8 0 0 0-1.7-1l-.3-2.4H9l-.3 2.4a8 8 0 0 0-1.7 1l-2.3-.7-2 3.4 2 1.2a8 8 0 0 0 .1 2l-2 1.2 2 3.4 2.3-.7a8 8 0 0 0 1.7 1l.3 2.4h6l.3-2.4a8 8 0 0 0 1.7-1l2.3.7 2-3.4-2-1.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      IT Support &amp; Managed Services
+    </a>
+
+    <a class="navlink" href="data-services.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: database -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <ellipse cx="12" cy="5" rx="7" ry="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Data Processing / Storage / Conversion
+    </a>
+
+    <div class="navcta" aria-label="Consultation call to action">
+      <p>Discuss an engineering, systems design, or infrastructure planning engagement.</p>
+      <a href="onboarding.html">Request Consultation</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="content">
+
+    <div class="crumbs" aria-label="Breadcrumbs">
+      <div class="row">
+        <a href="index-mail-vleg1.html">Overview</a>
+        <span aria-hidden="true">→</span>
+        <span>Engineering &amp; System Design</span>
+      </div>
+    </div>
+
+    <div class="container" id="top">
+
+      <header class="pagehead">
+        <h1>Engineering &amp; System Design</h1>
+
+        <p class="lead">
+          <strong>NSATS provides professional engineering and system design services</strong> under Class 42 for third parties,
+          including advice and consultancy relating to the design of computer hardware, advisory services relating to computer systems design,
+          computer system analysis, computer network design for others, and design and development of telecommunications networks and communications systems.
+        </p>
+      </header>
+
+      <section id="representative" aria-label="Representative Services Provided">
+        <div class="section-head" aria-label="Representative Services navigation">
+          <div class="left">
+            <a href="index-mail-vleg1.html" aria-label="Previous page: Overview">← Previous: Overview</a>
+          </div>
+
+          <h2>Representative Services Provided</h2>
+
+          <div class="right">
+            <a href="web-platform.html" aria-label="Next page: Web & Platform Design/Development">Next: Web &amp; Platform →</a>
+          </div>
+        </div>
+
+        <p>
+          The items below are representative of engineering and system design services offered by NSATS to enterprise and organizational clients.
+          Services are provided as professional design, consultancy, and technical analysis engagements for third parties.
+        </p>
+
+        <ul>
+          <li><strong>Advice relating to the design of computer hardware</strong> and <strong>advisory services relating to computer hardware design</strong>.</li>
+          <li><strong>Advisory services relating to computer systems design</strong> and <strong>consultancy in the field of technological design</strong>.</li>
+          <li><strong>Computer system analysis</strong>, <strong>computer analysis</strong>, and comparative studies of efficiency or performance of computer systems.</li>
+          <li><strong>Computer network design for others</strong>, including network architecture planning for enterprise environments.</li>
+          <li><strong>Design and development of telecommunications networks</strong> and <strong>design of communication systems</strong> for organizational infrastructures.</li>
+          <li><strong>Design of information technology infrastructure for others</strong>, including integration of computer systems and networks.</li>
+          <li><strong>Computer specification design</strong> and technical planning for systems for data input, output, processing, display, and storage.</li>
+          <li><strong>Engineering services relating to computers</strong>, including feasibility study services relating to computers and technology environments.</li>
+          <li><strong>Computer performance testing</strong> and design and development of testing and analysis methods for computing systems.</li>
+          <li><strong>IT consultancy, advisory and information services</strong> relating to system integration and infrastructure planning.</li>
+        </ul>
+
+        <div class="panel">
+          <strong>Commercial delivery:</strong>
+          Engineering and system design services are delivered through commissioned consulting engagements, architecture documentation,
+          engineering specifications, design studies, feasibility reports, and implementation planning for third-party organizations.
+        </div>
+      </section>
+
+      <section id="catalog" aria-label="Engineering & System Design Service Catalog">
+        <h2 style="text-align:left;">Engineering &amp; System Design Service Catalog</h2>
+
+        <p>
+          This catalog summarizes common engineering and system design activities performed by NSATS.
+          Items may be combined into a single engagement and tailored to third-party environments, constraints, and technical objectives.
+        </p>
+
+        <div class="catalog" role="list">
+          <div class="item" role="listitem">
+            <div class="t">Computer systems architecture and specification design</div>
+            <p class="d">System architecture planning, requirements definition support, and computer specification design for input, output, processing, storage, and display needs.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Computer system analysis and performance assessment</div>
+            <p class="d">Computer system analysis, comparative efficiency studies, bottleneck identification, and performance recommendations aligned to operational requirements.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Computer network design for others</div>
+            <p class="d">Network topology design, segmentation planning, routing and connectivity architecture, and integration planning for enterprise networks.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Telecommunications and communications system design studies</div>
+            <p class="d">Design studies and technical planning for telecommunications networks and communication systems, including constraint-driven deployment planning.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Hardware advisory and infrastructure planning</div>
+            <p class="d">Advisory services relating to computer hardware design, component selection support, and infrastructure planning for reliability and performance.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Test planning and analysis method design</div>
+            <p class="d">Design and development of testing and analysis methods, including performance test plans and validation approaches for computing environments.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">Feasibility studies and engineering assessments</div>
+            <p class="d">Feasibility study services relating to computers and networks, including trade-off analyses and implementation planning recommendations.</p>
+          </div>
+
+          <div class="item" role="listitem">
+            <div class="t">System integration planning</div>
+            <p class="d">Integration of computer systems and networks through documented architecture options, dependency mapping, and integration sequencing plans.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="deliverables" aria-label="Typical Deliverables">
+        <h2>Typical Deliverables</h2>
+        <p>
+          Engineering and system design engagements commonly result in professional documentation and specifications
+          that support implementation by the client or a third-party implementer. Deliverables vary by scope.
+        </p>
+
+        <div class="two" role="list">
+          <div class="card" role="listitem">
+            <strong>Architecture &amp; design specifications</strong>
+            <p>System diagrams, component specifications, integration plans, and design documentation for enterprise computing environments.</p>
+          </div>
+          <div class="card" role="listitem">
+            <strong>Network &amp; communications designs</strong>
+            <p>Network topology plans, segmentation models, routing approaches, and communications system design documentation.</p>
+          </div>
+          <div class="card" role="listitem">
+            <strong>Hardware advisory outputs</strong>
+            <p>Hardware specification notes, infrastructure planning recommendations, and evaluation guidance for equipment selection.</p>
+          </div>
+          <div class="card" role="listitem">
+            <strong>Technical reports &amp; feasibility findings</strong>
+            <p>Feasibility reports, performance analysis summaries, risk considerations, and implementation planning recommendations.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <strong>Note:</strong>
+          Where appropriate, deliverables may include test plans, acceptance criteria, integration checklists,
+          and documentation intended to support maintainable operation and change management.
+        </div>
+      </section>
+
+      <section id="engagements" aria-label="Engagement Models">
+        <h2>Engagement Models</h2>
+        <p>
+          NSATS provides engineering and system design services through engagement formats aligned to organizational needs, timelines, and delivery constraints.
+        </p>
+
+        <h3>
+          <span class="hicon" aria-hidden="true">
+            <!-- icon: clipboard -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 4h6l1 2h3v16H5V6h3l1-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </span>
+          Common engagement types
+        </h3>
+
+        <ul>
+          <li><strong>Architecture assessment and system analysis</strong> — review of the current state, technical findings, and design recommendations.</li>
+          <li><strong>Greenfield systems and network design</strong> — end-to-end design from requirements through specifications and implementation planning.</li>
+          <li><strong>Telecommunications design study</strong> — communications system design planning and documentation aligned to deployment constraints.</li>
+          <li><strong>Hardware advisory engagement</strong> — specification design support and planning services for compute, storage, and network equipment.</li>
+          <li><strong>Testing and analysis method design</strong> — design of evaluation methods and performance test plans for computing systems.</li>
+        </ul>
+
+        <div class="panel" aria-label="Consultation Call to Action">
+          <strong style="color:#111827;">Initiate an engagement:</strong>
+          <span style="color:var(--muted);">
+            Submit a consultation request and include a short description of your environment, objectives, timelines, and constraints.
+          </span>
+          <div style="margin-top:10px;">
+            <a class="btn primary" href="onboarding.html">Request Consultation</a>
+            <a class="btn secondary" href="index-mail-vleg1.html" style="margin-left:8px;">Return to Overview</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="pager" aria-label="Page Navigation">
+        <a href="index-mail-vleg1.html" aria-label="Previous page: Overview">← Previous: Overview</a>
+	<span class="center">Engineering & System Design</span>
+        <a href="web-platform.html" aria-label="Next page: Web & Platform Design/Development">Next: Web &amp; Platform →</a>
+      </div>
+
+      <!-- Removed: the old "Page Information" block (per your prior rule) -->
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER (from PAGE1) -->
+<footer class="footer-site">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="NSATS_Logo.png" alt="NSATS" />
+      </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="legal.html">Legal</a>
+        <a href="faq.html">FAQ</a>
+        <a href="manual.html">Manual</a>
+        <!--<a href="terms.html">Terms</a>-->
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-copy">© <span id="y"></span> NSATS. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
