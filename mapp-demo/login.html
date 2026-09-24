@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NSATS Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="NSATS_Logo.png" alt="NSATS Logo" />
+    </div>
+
+    <div class="topbar-actions">
+      <button id="toggleTheme" class="btn" title="Toggle theme">Theme</button>
+    </div>
+  </div>
+
+<div class="login-wrap">
+
+  <!-- Center icon above login card -->
+  <div class="login-icon">
+    <img src="NSATS_QL_White.png" alt="NSATS Quantum Layer Icon" />
+  </div>
+
+  <div class="login-card" role="dialog" aria-label="NSATS Login">
+    <div class="login-head">
+      <div class="login-title">Sign in</div>
+      <div class="login-sub">
+        Access Mail, Drive, Contacts, and Shared Files.
+      </div>
+    </div>
+
+    <div class="login-body">
+      <label class="field">
+        <span>Username</span>
+        <input id="loginUser" type="text" autocomplete="username" />
+      </label>
+
+      <label class="field">
+        <span>Password</span>
+
+        <!-- Visible pre-filled password for demo -->
+        <input id="loginPass" type="text" autocomplete="current-password" />
+      </label>
+
+      <div class="login-hint">
+        Demo credentials are pre-filled. Just click <b>Sign in</b>.
+      </div>
+
+      <div id="loginError" class="login-error hidden" aria-live="polite"></div>
+    </div>
+
+    <div class="login-footer">
+      <button id="signInBtn" class="btn primary">Sign in</button>
+    </div>
+
+    <div class="login-footnote">
+      © NSATS Demo Environment · No live services connected
+    </div>
+  </div>
+
+</div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">
+    <div class="toast-card">Decompressing in progress..</div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>

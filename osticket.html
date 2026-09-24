@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSATS | Support Center</title>
+<script src="site-config.js"></script>
+<style>
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+  #unavailable { display: none; max-width: 640px; margin: 80px auto; padding: 0 16px; text-align: center; color: #333; }
+  #centre { display: none; width: 100%; height: 100vh; border: 0; }
+</style>
+</head>
+<body>
+<p id="unavailable">The support centre is temporarily unavailable. Please try again later.</p>
+<iframe id="centre" title="NSATS Support Center" referrerpolicy="no-referrer"></iframe>
+<script>
+  (function () {
+    var src = NSATS.url("supportCentre");
+    if (src) {
+      var f = document.getElementById("centre");
+      f.src = src;
+      f.style.display = "block";
+    } else {
+      document.getElementById("unavailable").style.display = "block";
+    }
+  })();
+</script>
+</body>
+</html>

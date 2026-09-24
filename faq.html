@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NSATS Mail — FAQ</title>
+
+  <meta name="description" content="Frequently asked questions about NSATS Mail. Subscription pricing, unlimited mailbox storage, security architecture, SSL/TLS encryption, post-quantum design, IMAP access, spam filtering, and acceptable-use policies." />
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  
+
+  <!-- Invisible SEO / Sharing tags -->
+  <meta name="keywords" content="NSATS Mail FAQ, secure email questions, unlimited email storage FAQ, post-quantum email FAQ, SSL TLS email, IMAP email FAQ" />
+
+  <meta property="og:title" content="NSATS Mail — FAQ" />
+  <meta property="og:description" content="Answers to common questions about NSATS Mail, including pricing, security, storage, and usage." />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NSATS Mail — FAQ" />
+  <meta name="twitter:description" content="Answers to common questions about NSATS Mail, including pricing, security, storage, and usage." />
+
+  <style>
+    :root{
+      --bg:#ffffff; --fg:#0b0b0b; --muted:#5a5a5a; --line:#e7e7e7;
+      --card:#fafafa; --focus:#000000; --radius:14px; --max:1120px;
+      --accent:#00539A;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:var(--font); background:var(--bg); color:var(--fg); line-height:1.55;}
+    a{color:inherit; text-decoration:none} /* links NOT underlined */
+    a:focus, button:focus, input:focus, summary:focus{outline:2px solid var(--focus); outline-offset:2px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; width:100%}
+
+    h1{font-size:clamp(28px,4.0vw,42px); margin:0 0 10px; letter-spacing:-.8px}
+    h2{font-size:clamp(20px,2.6vw,22px); margin:0; letter-spacing:-.2px}
+    .lead{max-width:92ch; color:var(--muted); margin:0}
+
+    /* CLASS42RULES: h3/h4 blue */
+    h3, h4{color:var(--accent);}
+
+    /* Generic heading icon (no star/decorative) */
+    .hline{display:flex; align-items:center; gap:10px}
+    .ico{
+      width:18px; height:18px; flex:0 0 auto; color:var(--accent);
+      display:inline-block;
+    }
+    .ico svg{width:18px; height:18px; display:block}
+
+    /* Small inline SVG baseline (match login.html) */
+.ico{width:16px; height:16px; display:inline-block; flex:0 0 auto;}
+.ico18{width:18px; height:18px; display:inline-block; flex:0 0 auto;}
+.ico20{width:20px; height:20px; display:inline-block; flex:0 0 auto;}
+
+/* Header (standardized) */
+    .nav{
+      position:sticky; top:0;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(150%) blur(8px);
+      z-index:50;
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px}
+
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand-logo{height:40px; width:auto; display:block;}
+
+    .menu{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .menu a{padding:8px 10px; border-radius:10px; color:var(--muted)}
+    .menu a:hover{background:var(--card); color:var(--fg)}
+    .menu a[aria-current="page"]{
+      color:var(--fg);
+      font-weight:800;
+      text-decoration:underline;
+      text-underline-offset:6px;
+      text-decoration-color:rgba(0,83,154,.55);
+    }
+
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px; border:1px solid var(--fg);
+      background:var(--fg); color:var(--bg); font-weight:750; min-height:40px;
+      cursor:pointer;
+      position:relative; overflow:hidden; /* hover/overlay effect */
+    }
+    .btn:after{
+      content:""; position:absolute; inset:0;
+      background:rgba(255,255,255,.12);
+      opacity:0; transition:opacity .18s ease;
+      pointer-events:none;
+    }
+    .btn:hover:after{opacity:1}
+    .btn.secondary{background:var(--bg); color:var(--fg); border-color:var(--line)}
+    .btn.secondary:hover{border-color:var(--fg)}
+    .btn.secondary:after{background:rgba(0,0,0,.06)}
+
+    /* Responsive header (desktop + mobile) */
+    .menu-desktop{display:flex}
+    .cta-desktop{display:flex}
+    .menu-mobile{display:none; position:relative}
+
+    .mobile-toggle{
+      list-style:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--bg);
+      cursor:pointer;
+      user-select:none;
+    }
+    .mobile-toggle::-webkit-details-marker{display:none}
+    .burger{
+      width:18px; height:2px; background:var(--fg);
+      position:relative; display:inline-block;
+    }
+    .burger:before,.burger:after{
+      content:""; position:absolute; left:0;
+      width:18px; height:2px; background:var(--fg);
+    }
+    .burger:before{top:-6px}
+    .burger:after{top:6px}
+
+    .mobile-panel{
+      position:absolute;
+      right:0;
+      top:calc(100% + 10px);
+      width:min(340px, calc(100vw - 36px));
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--bg);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      padding:12px;
+      z-index:100;
+    }
+    .mobile-links{display:flex; flex-direction:column; gap:6px}
+    .mobile-links a{padding:10px 10px; border-radius:10px; color:var(--muted)}
+    .mobile-links a:hover{background:var(--card); color:var(--fg)}
+    .mobile-links a[aria-current="page"]{
+      color:var(--fg);
+      font-weight:800;
+      text-decoration:underline;
+      text-underline-offset:6px;
+      text-decoration-color:rgba(0,83,154,.55);
+    }
+    .mobile-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    @media (max-width: 900px){
+      .menu-desktop{display:none}
+      .cta-desktop{display:none}
+      .menu-mobile{display:block}
+    }
+
+    /* Page */
+    .hero{padding:54px 0 18px}
+
+    .section{padding:24px 0 34px}
+    .section-title{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:16px; margin-bottom:14px; flex-wrap:wrap;
+    }
+    .section-title p{margin:0; color:var(--muted); max-width:96ch}
+
+    .faq{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--bg);
+    }
+    .faq-item{
+      padding:18px;
+      border-bottom:1px solid var(--line);
+    }
+    .faq-item:last-child{border-bottom:none}
+    .faq-item h3{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .faq-item p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:95ch;
+    }
+
+    /* Footer (standardized to index baseline) */
+    .footer{
+      background:#0b0b0b;
+      color:rgba(255,255,255,.75);
+      padding:18px 0;
+      border-top:none;
+      font-size:13px;
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:16px;
+    }
+    .footer-logo{height:32px; width:auto; display:block;}
+    .footer-links{
+      justify-self:center;
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .footer-links a{color:rgba(255,255,255,.85); text-decoration:none; font-size:13px}
+    .footer-links a:hover{color:#ffffff}
+    .footer-copy{
+      justify-self:end;
+      color:rgba(255,255,255,.6);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    @media (max-width: 720px){
+      .footer-inner{grid-template-columns:1fr; text-align:center}
+      .footer-links{justify-self:center}
+      .footer-copy{justify-self:center}
+      .footer-logo{margin:0 auto}
+    }
+  </style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="brand" href="index-mail-vleg1.html" aria-label="NSATS home">
+        <img class="brand-logo" src="NSATS_Logo_QL.png" alt="NSATS" />
+      </a>
+
+      <!-- Desktop navigation (match index-mail-vleg1.html) -->
+      <nav class="menu menu-desktop" aria-label="Primary">
+        <a href="index-mail-vleg1.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="security.html">Security</a>
+        <a href="how.html">How it works</a>
+        <a href="about-services-leg.html">About</a>
+        <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer">
+  Demo
+</a>
+      </nav>
+
+      <div class="cta cta-desktop">
+        <a class="btn secondary" href="login.html" aria-current="page">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 8a5 5 0 1 0-1.2 3.2L22 19.4V22h-3v-2h-2v-2h-2.6l-2.2-2.2A5 5 0 0 0 15 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Sign in
+        </a>
+        <a class="btn" href="signup.html">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 11h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Signup
+        </a>
+      </div>
+
+      <!-- Mobile navigation (no JS, match index-mail-vleg1.html) -->
+      <details class="menu-mobile" role="navigation" aria-label="Primary mobile">
+        <summary class="mobile-toggle" aria-label="Open menu">
+          <span class="burger" aria-hidden="true"></span>
+          <span class="mobile-toggle-text">Menu</span>
+        </summary>
+
+        <div class="mobile-panel">
+          <nav class="mobile-links" aria-label="Mobile links">
+            <a href="index-mail-vleg1.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="security.html">Security</a>
+            <a href="how.html">How it works</a>
+            <a href="about-services-leg.html">About</a>
+            <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer">
+  Demo
+</a>
+          </nav>
+
+          <div class="mobile-cta">
+            <a class="btn secondary" href="login.html" aria-current="page">
+              <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 8a5 5 0 1 0-1.2 3.2L22 19.4V22h-3v-2h-2v-2h-2.6l-2.2-2.2A5 5 0 0 0 15 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Sign in
+            </a>
+            <a class="btn" href="signup.html">
+              <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M22 11h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Signup
+            </a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Frequently asked questions</h1>
+      <p class="lead">
+        This page addresses common questions about NSATS Mail, including subscription terms,
+        storage policy, security architecture, and service usage.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn secondary" href="pricing.html">View pricing</a>
+        <a class="btn secondary" href="security.html">Security</a>
+        <a class="btn secondary" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ: SERVICE AND PRICING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Service and pricing</h2>
+          <p>Questions related to subscriptions, billing, and account scope.</p>
+        </div>
+      </div>
+
+      <div class="faq" role="list" aria-label="Service and pricing FAQ">
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 1v22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17 5.5c0-2-2.2-3.5-5-3.5S7 3.5 7 5.5 9 9 12 9s5 1.5 5 3.5S14.8 16 12 16s-5-1.5-5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Is NSATS Mail a free service?
+          </h3>
+          <p>No. NSATS Mail is offered as a paid subscription service.</p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M20 7l-8-4-8 4v10l8 4 8-4V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Do all plans include the same features?
+          </h3>
+          <p>Yes. All subscription plans provide identical service functionality. Plan length affects billing cadence only.</p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Is pricing per account?
+          </h3>
+          <p>Yes. Pricing is per mailbox account unless otherwise agreed under enterprise arrangements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ: STORAGE AND USAGE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Storage and usage</h2>
+          <p>Clarifications related to mailbox capacity and acceptable use.</p>
+        </div>
+      </div>
+
+      <div class="faq" role="list" aria-label="Storage and usage FAQ">
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16v10H4V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M7 10h10M7 13h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            What does “unlimited storage” mean?
+          </h3>
+          <p>
+            Unlimited storage applies to retained email and attachments.
+            No fair-use limitation is applied to mailbox capacity or retention.
+          </p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Does unlimited storage allow unrestricted sending?
+          </h3>
+          <p>
+            No. Unlimited storage applies only to retained mail.
+            Acceptable-use, spam prevention, and anti-abuse policies remain in force for sending behavior.
+          </p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 8h12M6 12h12M6 16h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 6h16v14H4V6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Do I need to manage quotas?
+          </h3>
+          <p>No. Mailbox capacity is not constrained by quotas or storage thresholds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ: SECURITY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Security</h2>
+          <p>Questions related to encryption, authentication, and protection scope.</p>
+        </div>
+      </div>
+
+      <div class="faq" role="list" aria-label="Security FAQ">
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            How is mailbox access protected?
+          </h3>
+          <p>
+            Access to NSATS Mail is protected using SSL/TLS encrypted connections,
+            securing credentials and mailbox traffic in transit.
+          </p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18.4 5.6 16.3 7.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M21 12h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18.4 18.4 16.3 16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 21v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5.6 18.4 7.7 16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M3 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5.6 5.6 7.7 7.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+            What does post-quantum security mean?
+          </h3>
+          <p>
+            Post-quantum refers to a security architecture designed to adopt cryptographic methods
+            intended to remain robust as future computing capabilities evolve.
+          </p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="m4 6 8 7 8-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            How is sender authenticity handled?
+          </h3>
+          <p>
+            DKIM and DMARC are used to support domain-based sender verification and reduce spoofing and impersonation risks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ: ACCESS AND COMPATIBILITY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Access and compatibility</h2>
+          <p>Client access, integration, and platform usage.</p>
+        </div>
+      </div>
+
+      <div class="faq" role="list" aria-label="Access and compatibility FAQ">
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 4h14v16H5V4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Can I use my own email client?
+          </h3>
+          <p>Yes. IMAP is supported for compatible third-party email clients.</p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M8 20h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Is a web mailbox available?
+          </h3>
+          <p>Yes. NSATS Mail includes a browser-based mailbox for everyday access.</p>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <h3 class="hline">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 4h10v16H7V4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M10 7h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Are mobile devices supported?
+          </h3>
+          <p>Mobile access is supported through compatible IMAP-capable email applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Next steps</h2>
+          <p>Proceed based on your intended use.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="pricing.html">View pricing</a>
+        <a class="btn secondary" href="signup.html">Signup</a>
+        <a class="btn secondary" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="NSATS_Logo.png" alt="NSATS" />
+      </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="legal.html">Legal</a>
+        <a href="faq.html">FAQ</a>
+        <a href="manual.html">Manual</a>
+        <!--<a href="terms.html">Terms</a>-->
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-copy">© <span id="y"></span> NSATS. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function reloadIFrame() {
+            // console.log('reloading..');
+            document.getElementById('iframe').contentWindow.location.reload();
+        }
+        
+        window.setInterval(function() {
+            reloadIFrame()
+        }, 1000000);
+
+        
+    </script>
+</head>
+<body style="margin:0px;padding:0px;overflow:hidden">
+    
+    <h2 align="center">QUANTUM COMPRESSION RESULTS</h2>
+    
+    <!-- <script>
+        function refreshIFrame() {
+            var x = document.getElementById("iframe");
+            x.contentWindow.location.reload();
+            var t = setTimeout(refreshIFrame, 100);
+        }
+    </script> -->
+   
+
+
+    <iframe id="iframe" src="page.html" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:80px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+    
+   
+
+<!-- <iframe src="page.html"  width="90%"  style="border:none;"> -->
+</iframe>
+
+</body>
+</html>

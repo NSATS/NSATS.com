@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NSATS -- Technology & Design Services</title>
+  <meta name="description" content="NSATS provides technology, engineering, and design services including engineering and system design, web and platform development for others, software development and consulting, cloud and security services, research and innovation, IT support and managed services, and data services." />
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#2a2a2a;
+      --muted:#5a5a5a;
+      --line:#e7e7e7;
+      --card:#fafafa;
+      --focus:#000000;
+      --radius:14px;
+      --max:1120px;
+
+      --accent:#00539A;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Left-nav (floating) */
+      --nav:#111214;
+      --nav2:#1a1b1e;
+      --navText:#e8eaed;
+      --navMuted:#c9cdd4;
+      --navHover:#2a2c31;
+
+      --btnBorder: rgba(17,24,39,.18);
+      --btnHoverBg: rgba(17,24,39,.04);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus, button:focus, input:focus, summary:focus{outline:2px solid var(--focus); outline-offset:2px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; width:100%}
+
+    /* Micro polish */
+    ::selection{background:rgba(0,83,154,.14);}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    /* =========================
+       HEADER (from PAGE1)
+       ========================= */
+    .nav{
+      position:sticky; top:0;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(150%) blur(8px);
+      z-index:50;
+    }
+    
+
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:850; letter-spacing:.2px}
+    .brand-logo{
+      height:40px;
+      width:auto;
+      display:block;
+    }
+
+    .menu{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .menu a{padding:8px 10px; border-radius:10px; color:var(--muted)}
+    .menu a:hover{background:var(--card); color:var(--fg)}
+    
+/* Active left-nav item */
+.navlink[aria-current="page"]{
+  background: var(--navHover);
+  color: var(--navText);
+  font-weight: 800; /* ✅ makes it bold */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+    .menu a[aria-current="page"]{
+      color:var(--fg);
+      font-weight:800;
+      text-decoration:underline;
+      text-underline-offset:6px;
+      text-decoration-color:rgba(0,83,154,.55);
+    }
+
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--btnBorder);
+      background:#fff;
+      color:#111827;
+      font-weight:800;
+      min-height:40px;
+      transition: background .18s ease, border-color .18s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{background:var(--btnHoverBg);}
+    .btn.primary{
+      background:#111214;
+      color:#fff;
+      border-color:#111214;
+    }
+    .btn.primary:hover{background:#1f2937; border-color:#1f2937;}
+
+    /* Responsive header */
+    .menu-desktop{display:flex}
+    .cta-desktop{display:flex}
+    .menu-mobile{display:none; position:relative}
+
+    .mobile-toggle{
+      list-style:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--bg);
+      cursor:pointer;
+      user-select:none;
+    }
+    .mobile-toggle::-webkit-details-marker{display:none}
+    .burger{width:18px; height:2px; background:var(--fg); position:relative; display:inline-block;}
+    .burger:before,.burger:after{content:""; position:absolute; left:0; width:18px; height:2px; background:var(--fg);}
+    .burger:before{top:-6px}
+    .burger:after{top:6px}
+
+    .mobile-panel{
+      position:absolute;
+      right:0;
+      top:calc(100% + 10px);
+      width:min(340px, calc(100vw - 36px));
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      padding:12px;
+      z-index:100;
+    }
+    .mobile-links{display:flex; flex-direction:column; gap:6px}
+    .mobile-links a{padding:10px 10px; border-radius:10px; color:var(--muted)}
+    .mobile-links a:hover{background:var(--card); color:var(--fg)}
+    .mobile-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    @media (max-width: 900px){
+      .menu-desktop{display:none}
+      .cta-desktop{display:none}
+      .menu-mobile{display:block}
+      .nav-inner{flex-wrap:nowrap}
+    }
+
+    /* =========================
+       LAYOUT: FLOATING LEFT NAV + MAIN CONTENT
+       ========================= */
+    .page{
+      display:block;
+    }
+
+    /* Floating nav: not full height; visually appealing; shorter */
+    .sidebar{
+      position:fixed;
+      left:18px;
+      top:92px; /* below sticky header */
+      width:280px;
+      padding:14px 12px;
+      background: linear-gradient(180deg, var(--nav) 0%, var(--nav2) 100%);
+      border-radius:18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+
+      /* shorter than full height */
+      max-height: calc(100vh - 140px);
+      overflow:auto;
+    }
+
+    /* remove end-to-end feel */
+    .sidebar::-webkit-scrollbar{width:10px}
+    .sidebar::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.12);
+      border-radius: 10px;
+      border: 2px solid rgba(0,0,0,0);
+      background-clip: padding-box;
+    }
+
+    .navlink{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--navMuted);
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:12px;
+      margin: 4px 0;
+      transition: background .18s ease, color .18s ease;
+    }
+    .navlink:hover{
+      background:var(--navHover);
+      color: var(--navText);
+    }
+
+    .nav-ico{
+      width:18px; height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      opacity:.95;
+      flex:0 0 auto;
+    }
+    .nav-ico svg{display:block}
+
+    .navcta{
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .navcta p{
+      margin:0 0 10px;
+      font-size:12px;
+      color: rgba(201,205,212,.92);
+      line-height: 1.45;
+    }
+    /* Requested: hover turns light grey */
+    .navcta a{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #fff;
+      color:#111214;
+      font-weight: 900;
+      font-size: 13px;
+      transition: background .18s ease;
+    }
+    .navcta a:hover{background:#e5e7eb;}
+
+    .main{
+      margin-left: 330px; /* room for floating sidebar */
+      padding: 26px 28px 40px;
+      max-width: 980px;
+    }
+
+    /* PAGE2 header section styling */
+    .page-head{
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+    .headrow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .titleblock h1{
+      margin:0;
+      font-size:30px;
+      letter-spacing:-.01em;
+      line-height:1.15;
+      color:#111827;
+    }
+    .titleblock .subline{
+      margin:6px 0 0;
+      font-size:14px;
+      color:#6b7280;
+      max-width: 80ch;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top: 2px;
+      flex-wrap:wrap;
+    }
+
+    .direct{
+      margin: 12px 0 0;
+      font-size: 15px;
+      color: #333;
+      max-width: 92ch;
+    }
+    .direct strong{color:#111827}
+
+    /* Sections */
+    h2{
+      margin: 18px 0 10px;
+      font-size: 20px;
+      color:#111827;
+    }
+    p{
+      margin: 8px 0 12px;
+      color: #4b5563;
+      font-size: 15px;
+      max-width: 92ch;
+    }
+
+    .panel{
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+      margin: 12px 0 16px;
+    }
+
+    /* Coverage map */
+    .section-head{
+      position: relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 0;
+      margin: 14px 0 8px;
+    }
+    .section-head h2{margin:0; text-align:center;}
+
+    .section-nav-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:13px;
+      font-weight:800;
+      border:1px solid var(--btnBorder);
+      padding:10px 12px;
+      border-radius:12px;
+      background:#fff;
+      white-space:nowrap;
+      transition: background .18s ease;
+      right:0;
+    }
+    .section-nav-btn:hover{background:var(--btnHoverBg);}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card{
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #fff;
+      padding: 14px 14px 12px;
+    }
+
+    /* Requested: add relevant icons before H3 and H4 */
+    .hicon{
+      width:18px; height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      color: var(--accent);
+    }
+    .hicon svg{display:block}
+
+    .card h3{
+      margin:0 0 6px;
+      font-size: 16px;
+      color: var(--accent);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .card p{
+      margin:0 0 10px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    /* Requested: "Open details" hover like top nav (soft background) */
+    .card a{
+      display:inline-block;
+      font-size:14px;
+      font-weight:800;
+      color:#111827;
+      padding:6px 8px;
+      border-radius:10px;
+      transition: background .18s ease, color .18s ease;
+      border-bottom:none;
+    }
+    .card a:hover{
+      background: rgba(0,0,0,.06);
+      color:#111827;
+    }
+
+    /* Representative bullets */
+    ul{
+      padding-left: 22px;
+      margin: 8px 0 0;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 92ch;
+    }
+    li{margin: 8px 0}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .sidebar{
+        position:static;
+        width:auto;
+        max-height:none;
+        margin: 14px 18px 0;
+      }
+      .main{margin-left:0}
+      .grid{grid-template-columns: 1fr}
+      .section-nav-btn{position: static; transform:none; margin-left:auto;}
+      .section-head{justify-content:space-between; gap:10px;}
+      .section-head h2{flex:1; text-align:center;}
+    }
+
+    /* =========================
+       FOOTER (from PAGE1)
+       ========================= */
+    .footer{
+      background:#0b0b0b;
+      color:rgba(255,255,255,.75);
+      padding:18px 0;
+      border-top:none;
+      font-size:13px;
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:16px;
+    }
+    .footer-logo{
+      height:32px;
+      width:auto;
+      display:block;
+    }
+    .footer-links{
+      justify-self:center;
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .footer-links a{
+      color:rgba(255,255,255,.85);
+      text-decoration:none;
+      font-size:13px;
+      padding:6px 8px;
+      border-radius:10px;
+      transition: background .18s ease, color .18s ease;
+    }
+    .footer-links a:hover{
+      background: rgba(255,255,255,.06);
+      color:#ffffff;
+    }
+    .footer-copy{
+      justify-self:end;
+      color:rgba(255,255,255,.6);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    @media (max-width: 720px){
+      .footer-inner{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+      .footer-links{justify-self:center}
+      .footer-copy{justify-self:center}
+      .footer-logo{margin:0 auto}
+    }
+
+    /* small icons baseline */
+    .ico{width:16px; height:16px}
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER (from PAGE1) -->
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="brand" href="index-mail-vleg1.html" aria-label="NSATS home">
+        <img class="brand-logo" src="NSATS_Logo_QL.png" alt="NSATS" />
+      </a>
+
+      <nav class="menu menu-desktop" aria-label="Primary">
+        <a href="index-mail-vleg1.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="security.html">Security</a>
+        <a href="how.html">How it works</a>
+        <a href="about-services-leg.html" aria-current="page">About</a>
+        <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer">
+  Demo
+</a>
+      </nav>
+
+      <div class="cta cta-desktop">
+        <a class="btn" href="login.html">Sign in</a>
+        <a class="btn primary" href="signup.html">Signup</a>
+      </div>
+
+      <details class="menu-mobile" role="navigation" aria-label="Primary mobile">
+        <summary class="mobile-toggle" aria-label="Open menu">
+          <span class="burger" aria-hidden="true"></span>
+          <span class="mobile-toggle-text">Menu</span>
+        </summary>
+
+        <div class="mobile-panel">
+          <nav class="mobile-links" aria-label="Mobile links">
+            <a href="index-mail-vleg1.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="security.html">Security</a>
+            <a href="how.html">How it works</a>
+            <a href="about-services-leg.html" aria-current="page">About</a>
+            <a href="mapp-demo/login.html" target="_blank" rel="noopener noreferrer">Demo</a>
+          </nav>
+
+          <div class="mobile-cta">
+            <a class="btn" href="login.html">Sign in</a>
+            <a class="btn primary" href="signup.html">Signup</a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- LEFT NAV (floating) -->
+  <aside class="sidebar" aria-label="Services Navigation">
+
+    <!-- Requested: remove the logo on the left nav bar (DONE) -->
+    <!-- Requested earlier: remove first line "NSATS" in left nav (DONE by removing brand block entirely) -->
+
+    <!-- Requested: Rename Overview + remove divider after it -->
+    <a class="navlink" href="about-services-leg.html" aria-current="page">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: home -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Tech, Engineering, and Design Services Overview
+    </a>
+
+    <a class="navlink" href="engineering.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: cpu -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      Engineering &amp; System Design
+    </a>
+
+    <a class="navlink" href="web-platform.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: layout -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Web &amp; Platform Design/Development
+    </a>
+
+    <a class="navlink" href="software.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: code -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Software Development &amp; Consulting
+    </a>
+
+    <a class="navlink" href="cloud-security.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: shield -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Hosting / Cloud / Security / SaaS / IaaS
+    </a>
+
+    <a class="navlink" href="research.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: flask -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M10 2v6l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 17l-5-9V2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Research &amp; Innovation
+    </a>
+
+    <a class="navlink" href="it-managed.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: settings -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 15a8 8 0 0 0 .1-2l2-1.2-2-3.4-2.3.7a8 8 0 0 0-1.7-1l-.3-2.4H9l-.3 2.4a8 8 0 0 0-1.7 1l-2.3-.7-2 3.4 2 1.2a8 8 0 0 0 .1 2l-2 1.2 2 3.4 2.3-.7a8 8 0 0 0 1.7 1l.3 2.4h6l.3-2.4a8 8 0 0 0 1.7-1l2.3.7 2-3.4-2-1.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      IT Support &amp; Managed Services
+    </a>
+
+    <a class="navlink" href="data-services.html">
+      <span class="nav-ico" aria-hidden="true">
+        <!-- icon: database -->
+        <svg class="ico" viewBox="0 0 24 24" fill="none">
+          <ellipse cx="12" cy="5" rx="7" ry="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Data Processing / Storage / Conversion
+    </a>
+
+    <div class="navcta" aria-label="Request consultation">
+      <p>Request a consultation or service engagement.</p>
+      <a href="onboarding.html">Request Consultation</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (PAGE2 content preserved) -->
+  <main class="main" id="overview">
+
+    <div class="page-head">
+      <div class="headrow">
+        <div class="titleblock">
+          <!-- Requested earlier: Replace NSATS title here -->
+          <h1>Tech Design and Development Services</h1>
+          <div class="subline">
+            Technology, engineering, and design services for enterprise and organizational clients.
+          </div>
+        </div>
+
+        <div class="ctaRow" role="group" aria-label="Primary actions">
+          <a class="btn primary" href="onboarding.html">Request Consultation</a>
+          <a class="btn" href="#coverage">View Service Coverage</a>
+        </div>
+      </div>
+
+      <p class="direct">
+        <strong>NSATS provides professional technology and design services</strong> including engineering and design of computer systems and networks,
+        website and platform design and development for others, software development and consulting, cloud hosting and security services
+        (including SaaS and IaaS), research and technology innovation, IT support and managed services, and data processing, storage,
+        and conversion services.
+      </p>
+    </div>
+
+    <section id="coverage" aria-label="Coverage Map">
+      <div class="section-head" role="group" aria-label="Coverage Map navigation">
+        <h2>Coverage Map</h2>
+        <a class="section-nav-btn" href="engineering.html" aria-label="Next page: Engineering & Systems Design">
+          Next: Engineering &amp; Systems Design →
+        </a>
+      </div>
+
+      <p>
+        The service categories below are structured to reflect the full scope of NSATS’ offering.
+        Each category links to a dedicated page with additional detail.
+      </p>
+
+      <div class="grid" role="list">
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: cpu -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+            Engineering &amp; System Design
+          </h3>
+          <p>Computer systems and network architecture design, telecommunications design, hardware advisory, and engineering consultancy.</p>
+          <a href="engineering.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: layout -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Web &amp; Platform Design/Development
+          </h3>
+          <p>Website creation and maintenance for others, platform development, e-commerce site construction, and web design consultancy.</p>
+          <a href="web-platform.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: code -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Software Development &amp; Consulting
+          </h3>
+          <p>Custom software design and engineering, programming, integration, testing, maintenance, and technical consulting.</p>
+          <a href="software.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: shield -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Hosting / Cloud / Security / SaaS / IaaS
+          </h3>
+          <p>Cloud hosting, SaaS/IaaS services, cybersecurity and data protection, encryption services, monitoring, and infrastructure services.</p>
+          <a href="cloud-security.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: flask -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M10 2v6l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 17l-5-9V2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M8 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Research &amp; Innovation
+          </h3>
+          <p>Research and development services in advanced computing technologies including AI/ML, telecommunications, and quantum computing.</p>
+          <a href="research.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: settings -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M19.4 15a8 8 0 0 0 .1-2l2-1.2-2-3.4-2.3.7a8 8 0 0 0-1.7-1l-.3-2.4H9l-.3 2.4a8 8 0 0 0-1.7 1l-2.3-.7-2 3.4 2 1.2a8 8 0 0 0 .1 2l-2 1.2 2 3.4 2.3-.7a8 8 0 0 0 1.7 1l.3 2.4h6l.3-2.4a8 8 0 0 0 1.7-1l2.3.7 2-3.4-2-1.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            IT Support &amp; Managed Services
+          </h3>
+          <p>IT support, troubleshooting, server administration, monitoring, IT service management, and managed technical services.</p>
+          <a href="it-managed.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: database -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <ellipse cx="12" cy="5" rx="7" ry="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Data Processing / Storage / Conversion
+          </h3>
+          <p>Data processing and analysis, electronic data storage and archiving, migration, conversion, backup, and database services.</p>
+          <a href="data-services.html">Open details →</a>
+        </div>
+
+        <div class="card" role="listitem">
+          <h3>
+            <span class="hicon" aria-hidden="true">
+              <!-- icon: clipboard -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M9 4h6l1 2h3v16H5V6h3l1-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9 4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+            Engagement &amp; Intake
+          </h3>
+          <p>Consultation request and onboarding intake for organizations seeking NSATS services.</p>
+          <a href="onboarding.html">Open intake →</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <strong style="color:#111827; display:flex; align-items:center; gap:8px;">
+          <span class="hicon" aria-hidden="true">
+            <!-- icon: info -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 10v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 7h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          Note on scope:
+        </strong>
+        <span style="color:#4b5563;">
+          The pages linked above are organized to reflect the scope of services offered commercially by NSATS.
+          The descriptions on this website are representative of services provided to third-party organizations.
+        </span>
+      </div>
+    </section>
+
+    <section id="representative" aria-label="Representative Services Provided">
+      <h2>Representative Services Provided</h2>
+      <p>
+        The following examples illustrate the types of services offered by NSATS. For additional detail, see the
+        linked service pages in the navigation menu.
+      </p>
+
+      <ul>
+        <li><strong>Computer systems and network design services</strong> including architecture planning, system specification design, and integration advisory.</li>
+        <li><strong>Website and online platform design for others</strong> including creation, maintenance, updating, and web design consultancy.</li>
+        <li><strong>Software development and programming services</strong> including custom development, integration, testing, and maintenance.</li>
+        <li><strong>Cloud hosting, SaaS and IaaS services</strong> including secure hosting of websites and applications, cloud storage, and infrastructure services.</li>
+        <li><strong>Cybersecurity and data protection services</strong> including security consultancy, monitoring services, and encryption-related services.</li>
+        <li><strong>Research and development services</strong> relating to computing technologies including AI/ML, telecommunications technology, and quantum computing.</li>
+        <li><strong>IT support and managed services</strong> including troubleshooting, server administration, and IT service management.</li>
+        <li><strong>Data services</strong> including data migration, data conversion, electronic storage and archiving, and database services.</li>
+      </ul>
+
+      <div class="panel" style="margin-top:14px;">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <a class="btn primary" href="onboarding.html">Request Consultation</a>
+            <a class="btn" href="#overview">Back to top</a>
+          </div>
+
+          <a class="section-nav-btn" style="position:static; transform:none;" href="engineering.html">
+            Next: Engineering &amp; Systems Design →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requested: Remove "Page Information" section (DONE by removing the entire block) -->
+
+  </main>
+</div>
+
+<!-- FOOTER (from PAGE1) -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="NSATS_Logo.png" alt="NSATS" />
+      </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="legal.html">Legal</a>
+        <a href="faq.html">FAQ</a>
+        <a href="manual.html">Manual</a>
+        <!--<a href="terms.html">Terms</a>-->
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-copy">© <span id="y"></span> NSATS. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
