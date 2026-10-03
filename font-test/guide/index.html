@@ -1,0 +1,358 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>NSATS Clear Tester Guide</title><meta name="description" content="Tester guide for NSATS Clear release candidate 04."><style>:root{--bg:#f3f5f7;--surface:#fff;--fg:#17212b;--muted:#5a6773;--line:#d5dce3;--accent:#1d5a86;--accent-fg:#fff;--warn-bg:#fbeed6;--warn:#7a4800;
+--ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#12181e;--surface:#1a232b;--fg:#e6ebf0;--muted:#9aa7b3;--line:#2e3a45;--accent:#7fb6e0;--accent-fg:#0d1720;--warn-bg:#3a2c12;--warn:#f0bf6a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12181e;--surface:#1a232b;--fg:#e6ebf0;--muted:#9aa7b3;--line:#2e3a45;--accent:#7fb6e0;--accent-fg:#0d1720;--warn-bg:#3a2c12;--warn:#f0bf6a;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--ui)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+.eyebrow{font:600 12px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 30px/1.15 var(--ui);margin:4px 0 6px;text-wrap:balance}h2{font:700 20px/1.25 var(--ui);margin:0 0 8px}h3{font:700 17px/1.3 var(--ui);margin:20px 0 6px}h4{font:700 15px/1.3 var(--ui);margin:14px 0 6px}
+p{margin:0 0 10px}.lede{color:var(--muted);max-width:68ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0}
+.note{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:14px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;font-weight:600;border-radius:8px;padding:10px 16px;margin:4px 8px 4px 0}
+.btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+a{color:var(--accent)}code{font:13px var(--mono);overflow-wrap:anywhere}
+.tbl{overflow-x:auto}table{border-collapse:collapse;font-size:14px;min-width:560px;width:100%}th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{font:600 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.meta{font:13px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+ol,ul{padding-left:1.3em}li{margin:3px 0}footer{font-size:13px;color:var(--muted)}</style></head><body><div class="wrap"><header><div class="eyebrow"><a href="../">← Test kit</a></div></header><section class="card"><p class="note">In this guide, "this repository" means the test kit download, and "the hosted test page" means the <a href="../web-test/">web test page</a> on this site. <b>On this site, results are not saved or sent anywhere.</b> Where this guide says results "save straight to A" or to press <b>Save results</b>, that applies only to a private claude.ai page shared with you directly. Here, press <b>Copy results</b> and send the copied text, with your screenshots and files, privately to the NSATS contact who gave you this link. If NSATS Clear is already installed from an earlier round, record its provenance before reinstalling (see section 2.3 on <a href="../">the test kit page</a>). For what is still needed after round 1, see <a href="../">the test kit page</a>.</p><h1 id="nsats-clear-tester-guide-release-candidate-04">NSATS Clear: tester guide (release candidate 04)</h1>
+<p>This guide explains how to test NSATS Clear 1.100 (release candidate 04) on your assigned platforms and send back evidence. Your results decide whether the font is ready for NSATS letters, reports and the website. This is a test release, not production approval.</p>
+<ul>
+<li><p><strong>The font:</strong> six styles, Regular, Italic, SemiBold, SemiBold Italic, Bold and Bold Italic, each covering the 234-character Western European set. See the <a href="../">README</a>.</p></li>
+<li><p><strong>One round:</strong> this release adds the Western European characters to everything tested before, so one round of tests covers it all.</p></li>
+<li><p><strong>Already checked:</strong> the font files pass automatic checks on Linux, in LibreOffice and Chrome.</p></li>
+<li><p><strong>Not yet tested:</strong></p>
+<ul>
+<li>Windows, Mac, iPhone and Android</li>
+<li>Microsoft Word and Outlook</li>
+<li>print</li>
+</ul>
+<p>Those are what you are testing.</p></li>
+</ul>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li><strong>Files:</strong> download this repository (the green Code button, then Download ZIP) or clone it. Everything you need is inside.</li>
+<li><strong>Web tests (W1–W7)</strong> need no installation. Use test page version 1.6 (shown in the copied results), which includes all six styles and all 234 characters. Use either:
+<ul>
+<li><strong>the hosted test page</strong>, if A has shared its claude.ai link with you as a Contributor. Your results save straight to A. If its header does not say "1.100 · release candidate 04", it is an older version: use the file below instead, or ask A.</li>
+<li><strong><code>testing/web-test/NSATS Clear font test.html</code></strong> from this repository. Open it in the browser for your row. It carries its own copy of the fonts and works offline. Saving is not available in this copy, so use <strong>Copy results</strong> and email the text.</li>
+</ul></li>
+<li><strong>Document tests (E1, E2, E6) and the hinting test (H1)</strong> need the font files installed. Install only on a test computer, and remove them afterwards.</li>
+<li><strong>Remove earlier versions first.</strong> If you installed NSATS Clear 1.000 for an earlier round, uninstall all its files (and any Hinted Test files) and restart the computer before installing these.</li>
+<li><strong>Check the version after installing:</strong> it must read <strong>Version 1.100</strong>.
+<ul>
+<li>Windows: right-click the .ttf file, then Properties, then Details.</li>
+<li>Mac: Font Book, then Info.</li>
+</ul></li>
+<li><strong>Time:</strong> about 15 minutes per web row, 40 minutes per Word row and 20 minutes for H1.</li>
+<li><strong>Your assignment:</strong> A tells you which rows below are yours. Use one device and one browser or app per row.</li>
+</ul>
+<h2 id="test-matrix">Test matrix</h2>
+<p>Every row needs its own run. A row nobody runs is reported as untested, not as passed.</p>
+<div class="tbl"><table>
+<thead>
+<tr class="header">
+<th>Row</th>
+<th>Device and system</th>
+<th>App</th>
+<th>What you test</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>W1</td>
+<td>Windows 11 PC</td>
+<td>Microsoft Edge</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="even">
+<td>W2</td>
+<td>Windows 11 PC</td>
+<td>Google Chrome</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="odd">
+<td>W3</td>
+<td>Windows 11 or Mac (say which)</td>
+<td>Mozilla Firefox</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="even">
+<td>W4</td>
+<td>Mac</td>
+<td>Safari</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="odd">
+<td>W5</td>
+<td>Mac</td>
+<td>Google Chrome</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="even">
+<td>W6</td>
+<td>iPhone</td>
+<td>Safari</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="odd">
+<td>W7</td>
+<td>Android phone (record the model)</td>
+<td>Google Chrome</td>
+<td>Web test page</td>
+<td>Results + full-page screenshot</td>
+</tr>
+<tr class="even">
+<td>E1</td>
+<td>Windows 11 PC</td>
+<td>Word (Microsoft 365 desktop)</td>
+<td>Word test document</td>
+<td>.docx + PDF + screenshots</td>
+</tr>
+<tr class="odd">
+<td>E2</td>
+<td>Mac</td>
+<td>Word for Mac</td>
+<td>Word test document</td>
+<td>.docx + PDF + screenshots</td>
+</tr>
+<tr class="even">
+<td>E3</td>
+<td>Any</td>
+<td>Adobe Acrobat Reader</td>
+<td>The E1 PDF</td>
+<td>Fonts-tab screenshot + results form</td>
+</tr>
+<tr class="odd">
+<td>E4</td>
+<td>Mac</td>
+<td>Preview</td>
+<td>The E2 PDF</td>
+<td>Screenshots + results form</td>
+</tr>
+<tr class="even">
+<td>E5</td>
+<td>Any printer (record the model)</td>
+<td>Print of the E3 or E4 PDF</td>
+<td>Physical print</td>
+<td>Scan or clear photo + results form</td>
+</tr>
+<tr class="odd">
+<td>E6</td>
+<td>Windows 11 PC</td>
+<td>Outlook (desktop)</td>
+<td>Compose and receive an email</td>
+<td>Screenshots + results form</td>
+</tr>
+<tr class="even">
+<td>H1</td>
+<td>Windows 11 PC</td>
+<td>Word</td>
+<td>Release fonts vs Hinted Test fonts</td>
+<td>Screenshots at 100% and 125% + results form</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="website-tests-w1w7">Website tests (W1–W7)</h2>
+<ol type="1">
+<li><strong>Open the test page in the browser for your row.</strong> Use the hosted link or the HTML file. On a phone, open it in Safari or Chrome itself, not inside another app. Set browser zoom to 100%.</li>
+<li><strong>Fill in Your setup:</strong>
+<ul>
+<li><strong>Device model.</strong> On Android: Settings, then About phone.</li>
+<li><strong>Operating system and build:</strong>
+<ul>
+<li>Windows: Settings, then System, then About.</li>
+<li>Mac: Apple menu, then About This Mac.</li>
+<li>iPhone: Settings, then General, then About.</li>
+</ul></li>
+<li><strong>Browser version, from its About page:</strong>
+<ul>
+<li>Edge: Settings, then About Microsoft Edge.</li>
+<li>Chrome: ⋮, then Help, then About Google Chrome. On Android: Settings, then About Chrome.</li>
+<li>Firefox: ☰, then Help, then About Firefox.</li>
+<li>Safari on Mac: the Safari menu, then About Safari.</li>
+<li>Safari on iPhone: record the iOS version.</li>
+</ul></li>
+<li><strong>Display scaling.</strong></li>
+<li><strong>Where you opened the page.</strong></li>
+</ul></li>
+<li><strong>Wait for Automatic checks.</strong> Thirteen checks run in a few seconds and should all say PASS. A check that says CHECK is a finding: mention it in the matching test sheet's note.</li>
+<li><strong>Judge each test sheet, T2 to T12.</strong> T12 shows Western European text; T8 includes a hidden hyphenation test. Choose Pass, Issue or Not sure. Add a note for anything other than Pass: which line, which style, what you saw.</li>
+<li><strong>Take a full-page screenshot.</strong> If a full-page capture shows only part of the page, take several overlapping screenshots.
+<ul>
+<li>Edge: Ctrl+Shift+S, then Capture full page.</li>
+<li>Firefox: right-click, then Take Screenshot, then Save full page.</li>
+<li>Chrome and Safari on Mac: several screenshots while scrolling, or File, then Export as PDF in Safari.</li>
+<li>iPhone: take a screenshot, tap the preview, then Full Page.</li>
+<li>Android: take a screenshot, then Capture more.</li>
+</ul></li>
+<li><strong>Send your results.</strong> On the hosted page, press <strong>Save results</strong>. Otherwise press <strong>Copy results</strong> and paste the text into your email with the screenshots.</li>
+</ol>
+<h2 id="document-tests-e1e6">Document tests (E1–E6)</h2>
+<h3 id="install-the-fonts-e1-e2-e6">Install the fonts (E1, E2, E6)</h3>
+<ol type="1">
+<li>Install only the six files in <code>fonts/ttf</code>. Install the Hinted Test files only for H1.</li>
+<li><strong>Windows:</strong> select the six files, right-click, then Install.</li>
+<li><strong>Mac:</strong> double-click each file, then Install Font.</li>
+<li>Quit and reopen Word or Outlook.</li>
+</ol>
+<h3 id="e1-word-for-windows-and-e2-word-for-mac">E1 Word for Windows and E2 Word for Mac</h3>
+<p>Open <code>testing/word-test/NSATS Clear Word test (E1-E2).docx</code> and follow it from top to bottom. Its instructions are in Arial and every specimen is in NSATS Clear. It covers:</p>
+<ul>
+<li>your setup, including the Word version and editing language;</li>
+<li>the AutoCorrect test: typing (c), (r), (tm), 1/2, 1/4, 3/4, --&gt; and &lt;--;</li>
+<li>all 229 printable characters in each style;</li>
+<li>the six styles with underline;</li>
+<li>SemiBold in Word: the font list, and what Ctrl+B and Ctrl+I do on SemiBold text (Cmd+B and Cmd+I on Mac);</li>
+<li>sizes and the zero;</li>
+<li>figures in a table;</li>
+<li>line spacing;</li>
+<li>Western European text in several languages;</li>
+<li>a verdict table.</li>
+</ul>
+<p>Record AutoCorrect settings as they are, with a screenshot of the AutoCorrect and AutoFormat As You Type tabs. Do not change them.</p>
+<p><strong>Save and export.</strong> Save the file as <code>NSATS Clear test - E1 - &lt;your name&gt;.docx</code> (E2 on Mac), then export a PDF with the same name:</p>
+<ul>
+<li>Windows: File, then Save As, then PDF.</li>
+<li>Mac: File, then Save As, then PDF, choosing "Best for printing".</li>
+</ul>
+<p>The reference PDF beside the test document shows how it should look. It was rendered by LibreOffice on Linux, not by Word.</p>
+<h3 id="e3-acrobat-reader-the-e1-pdf">E3 Acrobat Reader (the E1 PDF)</h3>
+<ol type="1">
+<li>Go to File, then Properties, then Fonts, and take a screenshot. Body text should use only NSATSClear-Regular, -Italic, -SemiBold, -SemiBoldItalic, -Bold and -BoldItalic, each marked "Embedded Subset". Note any other font and the character it belongs to.</li>
+<li>Select all, copy, and paste into Notepad. Check that the accents (including section 9, such as Größe, Ação, Ærø, Þingvellir), £, €, ½ and the arrows survive.</li>
+<li>Search for "Quarterly", "£" and "Größe".</li>
+</ol>
+<h3 id="e4-preview-on-mac-the-e2-pdf">E4 Preview on Mac (the E2 PDF)</h3>
+<ol type="1">
+<li>View the PDF at 100% and 200%.</li>
+<li>Copy the text into TextEdit and search it.</li>
+<li>If Acrobat Reader is installed, also record its Fonts tab, as in E3.</li>
+</ol>
+<h3 id="e5-physical-print">E5 Physical print</h3>
+<ol type="1">
+<li>Print the E3 or E4 PDF on plain A4 at Actual size (100%).</li>
+<li>Record the printer model and quality setting.</li>
+<li>Check that:
+<ul>
+<li>9–11 pt text is clear;</li>
+<li>0, O and 8 are distinct at 9 pt;</li>
+<li>bold, italic and underlines look right.</li>
+</ul></li>
+<li>Scan the page at 300 dpi, or photograph it flat.</li>
+</ol>
+<h3 id="e6-outlook-for-windows-desktop">E6 Outlook for Windows (desktop)</h3>
+<ol type="1">
+<li>Record whether it is classic or new Outlook, and its version.</li>
+<li>In a new email, choose NSATS Clear in the message's font box. Do not change Outlook's default fonts.</li>
+<li>Type the sample line in Regular, Italic, Bold and Bold Italic, and once more in NSATS Clear SemiBold, plus £ € ½ © and a few accented words such as Größe, Ação, Ærø.</li>
+<li>Send the email to yourself and to a colleague without the font. Take screenshots of the email while composing, as you received it, and as the colleague received it.</li>
+<li>Expect the colleague to see a substitute font, because emails do not carry fonts. Record it, but it is not a failure.</li>
+</ol>
+<h2 id="windows-hinting-comparison-h1">Windows hinting comparison (H1)</h2>
+<ol type="1">
+<li>On one Windows 11 PC, install <code>fonts/ttf</code> and <code>fonts/windows-hinting-comparison-only</code>. The second set appears as "NSATS Clear Hinted Test" and "NSATS Clear Hinted Test SemiBold".</li>
+<li>In Word, make two identical blocks: one in NSATS Clear and one in NSATS Clear Hinted Test. Use the line <code>e é è a s c 0O8D 10080 Quarterly Report 2026 ÅÉÖ àâñ ß</code> at 8, 9, 10, 11 and 12 pt, in Regular, Bold and Italic. Add the same line in NSATS Clear SemiBold and NSATS Clear Hinted Test SemiBold.</li>
+<li>Take screenshots with the Snipping Tool, saved as PNG and not resized:
+<ul>
+<li>with display scale at 100% and Word zoom at 100%;</li>
+<li>again at 125% display scale.</li>
+</ul></li>
+<li>For each size, record which family is clearer. Look especially at whether the holes in Bold and SemiBold e, é and è fill in, and whether 0 and O can be told apart at 10–12 pt.</li>
+<li>Uninstall the Hinted Test fonts afterwards.</li>
+</ol>
+<h2 id="what-counts-as-an-issue">What counts as an issue</h2>
+<div class="tbl"><table>
+<thead>
+<tr class="header">
+<th>Severity</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blocker</td>
+<td>A character from the 234 shows in another font or as an empty box. Bold, SemiBold or italic does not appear in Word or the PDF. The PDF lists another font for body text. Copied text changes characters.</td>
+</tr>
+<tr class="even">
+<td>Major</td>
+<td>Accents or descenders are cut off, or an accent sits clearly off its letter. Figures do not line up. 0 is confusable with O, 8 or D in normal text. Two letters touch or leave an obvious gap (name the pair). An underline is missing or collides with letters.</td>
+</tr>
+<tr class="odd">
+<td>Minor</td>
+<td>Spacing or shape details you would only notice up close.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Known limitations.</strong> Do not report these as new issues; note them only if you see something worse than described.</p>
+<ul>
+<li>Characters outside the 234, such as Central European ł, ő and č, appear in another font.</li>
+<li>The soft hyphen is drawn as a hyphen where a line breaks. If a browser or Word shows it inside a line, or not at a break, that is a finding (T8, T8s): report it.</li>
+<li>æ, œ, ª, º and ¹ ² ³ are new constructions and may draw design comments: note them in T12 or Word section 9.</li>
+<li>The fraction slash ⁄ does not build fractions: in T12, "1⁄8" shows full-size figures. That is expected.</li>
+<li>At 11–16 px on screen the dot in the Bold zero can blur. A recent study kept the current zero.</li>
+<li>Regular and Bold underlines differ slightly by design.</li>
+<li>Line spacing matches IBM Plex Sans.</li>
+<li>The italics are slanted forms of the uprights.</li>
+<li>In Word, SemiBold is listed as its own font, NSATS Clear SemiBold. Ctrl+B on SemiBold text may not switch to NSATS Clear Bold. Record what happens in section 5 of the Word test; it is not a new issue.</li>
+<li>Email recipients without the font see a substitute.</li>
+<li>Word AutoCorrect may insert symbols from another font, or leave triggers unchanged. That is Word's behaviour.</li>
+</ul>
+<h2 id="sending-results">Sending results</h2>
+<p>Email A one message per row, with files named <code>NSATS Clear test - &lt;row&gt; - &lt;your name&gt; - &lt;date&gt;</code>.</p>
+<ul>
+<li><strong>Web rows:</strong> your saved run or your copied results, plus screenshots.</li>
+<li><strong>Document rows and H1:</strong> the .docx, the PDF, screenshots, the print scan as applicable, and the completed <a href="#results-form">results form</a>.</li>
+</ul>
+<h2 id="rules">Rules</h2>
+<ul>
+<li>Use the fonts only for these tests until A confirms release. Do not use them in real letters, reports, templates, letterheads or the live website.</li>
+<li>Do not change Word's AutoCorrect list or Outlook's default fonts.</li>
+<li>Do not edit or rename the font files.</li>
+<li>Uninstall the Hinted Test fonts after H1.</li>
+<li>If you cannot run a row, tell A and say why.</li>
+</ul>
+<hr><h1 id="results-form" id="nsats-clear-results-form-e1e6-h1">NSATS Clear results form (E1–E6, H1)</h1>
+<p>Copy this form into your email to A and fill it in. Web rows (W1–W7) use the test page's own Save results or Copy results instead.</p>
+<pre class="text"><code>Row: (E1 / E2 / E3 / E4 / E5 / E6 / H1)
+Tester and date:
+Device model:
+Operating system and build:
+App and version (Word / Acrobat / Preview / Outlook classic or new):
+Editing language (Word only):
+Printer model and quality setting (E5 only):
+Display scale (H1 only):
+
+AutoCorrect results (E1/E2): trigger -&gt; result -&gt; font shown -&gt; code (Windows, Alt+X)
+(c) -&gt;
+(r) -&gt;
+(tm) -&gt;
+1/2 -&gt;
+1/4 -&gt;
+3/4 -&gt;
+--&gt; -&gt;
+&lt;-- -&gt;
+
+Font version shown after installing (must be 1.100; earlier 1.000 fonts removed first? yes/no):
+Every-character check (229 characters): any character in another font? (yes/no, which)
+Western European text (Word section 9): accents placed and spaced well? narrow space in the French line? (yes/no, notes)
+Six styles: real bold, SemiBold and italic? underlines OK? (yes/no, notes)
+SemiBold in Word (E1/E2): NSATS Clear entries in the font list; what Ctrl+B / Cmd+B and Ctrl+I / Cmd+I did on SemiBold text:
+Sizes and zero: 0 clear from O and 8 at 9 pt? (yes/no, notes)
+Table figures aligned? (yes/no)
+PDF fonts listed (E3/E4):
+Copy/paste and search OK (E3/E4), including accented words such as Größe and Ação? (yes/no, notes)
+Print (E5): small text clear? 0/O/8 distinct at 9 pt? (yes/no, notes)
+Outlook (E6): what you saw / what the colleague saw:
+H1: clearer family per size (8/9/10/11/12 pt), including SemiBold, and anything wrong:
+
+Issues found (one per line): severity - what - where (style, size, characters)</code></pre>
+</section><footer><p>NSATS Clear is a modified version of IBM Plex Sans 3.005, licensed under the SIL Open Font License 1.1, and is not affiliated with or endorsed by IBM. This is a test release, not approval for production use.</p></footer></div></body></html>
