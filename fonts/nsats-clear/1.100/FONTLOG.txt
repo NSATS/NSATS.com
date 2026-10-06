@@ -1,0 +1,66 @@
+FONTLOG for NSATS Clear (Regular, Italic, SemiBold, SemiBold Italic, Bold, Bold Italic), version 1.100
+======================================================================================================
+All six styles: release candidate 04.
+
+This file provides information on the changes made to this font software. It is provenance information; it is not an OFL requirement.
+
+Basic information
+-----------------
+- NSATS Clear is a modified version of IBM Plex Sans 3.005, licensed under the SIL Open Font License 1.1 (see OFL.txt).
+- It is not affiliated with or endorsed by IBM.
+- "Plex" is a Reserved Font Name and is not used in any font name.
+
+Repertoire
+----------
+Version 1.100 covers 234 characters (the Tier A Western European set; source/Repertoire manifest - Tier A.csv):
+Basic Latin, Latin-1, Œ œ Š š Ž ž Ÿ ƒ ˆ ˜, the full Windows-1252 code page, and ‐ ‑ ‚ „ † ‡ ‰ ′ ″ ‹ › ⁄ № ≈ ≠ ≤ ≥ ✓,
+thin space and narrow no-break space. Version 1.000 covered the first 122 of these.
+
+Changes from IBM Plex Sans 3.005 (summary)
+------------------------------------------
+- Redrawn or refined glyphs:
+  - figures 0 1 2 3 5 7
+  - capitals C G K M Q R S
+  - lowercase a c e l r s t
+  - é è ç
+- Lowercase vertical proportions: x-height 538 (inherited lowercase transformed; horizontal metrics unchanged).
+- Spacing: approved changes for K M R a l r 3 (Regular) and K M R S a l r 3 c (Bold); see Phase 1 Build, Milestone 1.
+- New: ½ ¼ ¾, built from NSATS figures, with fraction spacing approved 30 Sep 2026. ® ™ ← → are the Plex outlines.
+- New: proportional figures as an OpenType option (pnum); tabular figures remain the default (tnum returns to them).
+- Italic and Bold Italic: a designed 11-degree slant of the NSATS uprights (IBM Plex Sans Italic's angle), with an optical correction for round letters (O Q o 0 ö). Same advances, kerning and features as the uprights. Not the IBM Plex Sans Italic outlines.
+- SemiBold and SemiBold Italic: weight position 0.704 between Regular and Bold (IBM Plex Sans SemiBold's own position). Glyphs unchanged from Plex use the Plex SemiBold outlines (with the lowercase transform where applicable); NSATS-redrawn glyphs are interpolated between NSATS Regular and Bold. Kerning by the same method from Plex SemiBold; K-V -15, K-Y -11. Names: family "NSATS Clear SemiBold" (style-linked Regular/Italic) within typographic family "NSATS Clear"; weight 600. SemiBold Italic is the same 11-degree slant.
+- Western European characters (version 1.100): IBM Plex outlines for symbols and for letters NSATS did not redraw (lowercase
+  through the x-height transform); accented letters are NSATS base letters with accents centred on the base (on a, over its
+  top half), lowercase accents raised with the x-height; ¹ ² ³ ª º ¢ æ œ built from NSATS parts and spaced by the Phase 1
+  rule (æ shares NSATS a's straight stem with NSATS e, as IBM Plex Sans's own æ does); the dotless i is an unencoded component; the soft hyphen is drawn as the hyphen.
+- Kerning: IBM Plex pairs transferred pair by pair. Inherited pairs keep Plex values; pairs involving redrawn letters are adjusted. Bold K-V and K-Y loosened (-15, -10).
+- Hinting: none. A minimal 'prep' enables smart dropout control. Stray glyph instructions imported from Plex were removed.
+- Metadata: names "NSATS Clear"; version 1.100; Windows-1252 code page declared (complete coverage).
+
+ChangeLog
+---------
+2026-10-01  1.100 RC04 (six styles). RC03 with æ redrawn after the design review; nothing else changed. Phase 3
+            defaults (accent placement, dotless i, soft hyphen, version) confirmed by A.
+2026-10-01  1.100 RC03 (six styles; superseded before release). Phase 3: the 234-character Western European set. Phase 1 glyphs and kerning unchanged.
+2026-10-01  1.000 SemiBold RC01 (SemiBold, SemiBold Italic). Phase 2b; K1-SB and naming approved by A.
+2026-09-30  1.000 RC02 (four styles). Adds Italic and Bold Italic (11 degrees), proportional figures, fraction spacing and Bold K-V/K-Y kerning.
+2026-09-30  1.000 RC01 (uprights). Built from the verified frozen upright baseline (Milestone 1 Correction 1).
+
+Known limitations
+-----------------
+- Bold zero has a recorded small-size limitation at 11–16 px (scope §6). Zero width-mark study 01 (30 Sep 2026) found no condition that passed its agreed gates; the accepted zero is kept.
+- Characters outside the 234 (for example Central European letters such as ł, ő, č) fall back to another font.
+- The soft hyphen maps to the visible hyphen glyph (the manifest rule); its behaviour in apps is under test.
+- The fraction slash (U+2044) does not build fractions: 1⁄8 shows full-size figures. Use ½ ¼ ¾, or 1/8.
+- Untested:
+  - Microsoft Word (Windows/Mac), including AutoCorrect
+  - Windows DirectWrite/GDI
+  - macOS native applications
+  - iOS/Android
+  - website environments W1–W7
+  - physical print
+  - hinted rendering
+  - reader studies
+
+6 October 2026 — Final distribution approval
+The owner approved NSATS Clear 1.100 for final release. The six TTF and six WOFF2 files are byte-identical to RC04. No font binary, outline, metric, feature, naming or embedding flag was changed. Known limitations remain documented in RELEASE-NOTES.txt.
