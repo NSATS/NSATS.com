@@ -1,0 +1,101 @@
+/* NSATS themes and typography showcase. Scoped to .tsx; colour tokens per [data-theme] come from the site/library styles
+   (identical values to the handover's theme-tokens.css). Square components, fine dividers, restrained colour. */
+.tsx{--tsx-gap:24px}
+.tsx h3,.tsx h4{font-weight:var(--display-weight,300)}
+.tsx-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--tsx-gap);margin:24px 0 32px}
+.tsx-card{border:1px solid var(--line);border-top:6px solid var(--action);background:var(--paper,#fff);padding:22px 22px 24px;display:flex;flex-direction:column;min-width:0;color:var(--ink)}
+.tsx-card h3{font-size:24px;margin:4px 0 6px}
+.tsx-num{font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.tsx-sections{font-size:15px;margin:0 0 14px}
+.tsx-swatches{list-style:none;padding:0;margin:0 0 14px}
+.tsx-swatch{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);margin:0;max-width:none}
+.tsx-chip{width:44px;height:44px;border:1px solid #8d8d8d}
+.tsx-swatch-text{display:flex;flex-direction:column;min-width:0;font-size:14px;line-height:1.35}
+.tsx-swatch-text strong{font-size:15px}
+.tsx-use{color:var(--muted)}
+.tsx-hex{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;overflow-wrap:anywhere}
+.tsx-rgb{color:var(--muted);font-size:13px}
+.tsx-copy{font:inherit;font-size:13px;background:#fff;color:var(--ink);border:1px solid var(--muted);padding:6px 10px;cursor:pointer;white-space:nowrap}
+.tsx-copy:hover{background:var(--tint)}
+.tsx-contrast{font-size:13px;color:var(--muted);margin:0 0 16px}
+.tsx-select{margin-top:auto;font:inherit;font-size:15px;background:var(--action);color:#fff;border:2px solid var(--action);padding:12px 16px;text-align:left;cursor:pointer}
+.tsx-select:hover{background:var(--hover);border-color:var(--hover)}
+.tsx-select[aria-pressed=true]{background:#fff;color:var(--ink);border-color:var(--ink)}
+.tsx-selected{display:block;margin-top:8px;font-weight:600;font-size:14px}
+.tsx-selected[hidden]{display:none}
+.tsx :focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--focus,#ffdd00)}
+.tsx-status{min-height:1.5em;font-size:14px;margin:0 0 8px}
+.tsx-preview{border:1px solid var(--line);padding:28px 30px;margin:8px 0 32px;background:#fff;color:var(--ink)}
+.tsx-preview-label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.tsx-preview .tsx-h{font-size:32px;margin:0 0 8px}
+.tsx-preview .tsx-sub{font-size:20px;margin:0 0 16px;max-width:720px}
+.tsx-preview a{color:var(--action)}
+.tsx-preview a:hover{color:var(--hover)}
+.tsx-actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
+.tsx-btn{font:inherit;font-size:16px;padding:12px 18px;cursor:pointer;border:2px solid var(--action)}
+.tsx-btn.primary-action{background:var(--action);color:#fff}
+.tsx-btn.primary-action:hover{background:var(--hover);border-color:var(--hover)}
+.tsx-secondary{background:#fff;color:var(--action)}
+.tsx-secondary:hover{background:var(--tint);color:var(--hover);border-color:var(--hover)}
+.tsx-callout{border-inline-start:4px solid var(--action);background:var(--tint);padding:16px 20px;margin:18px 0}
+.tsx-callout p{margin:6px 0 0}
+.tsx-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin:18px 0}
+.tsx-field{display:flex;flex-direction:column;gap:6px}
+.tsx-field label{font-weight:600}
+.tsx-field input{font:inherit;border:0;border-bottom:2px solid var(--muted);background:#f4f4f4;padding:10px 12px;min-height:44px}
+.tsx-hint{font-size:14px;color:var(--muted)}
+.tsx-error{font-size:14px;color:#a2191f;border-inline-start:3px solid #a2191f;padding-inline-start:8px}
+.tsx-table-wrap{overflow-x:auto;margin:16px 0}
+.tsx table{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
+.tsx caption{text-align:left;font-weight:600;padding:0 0 8px;font-size:15px}
+.tsx th,.tsx td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.tsx thead th{background:#f4f4f4}
+.tsx-band{background:var(--deep);color:#fff;padding:16px 20px;margin-top:18px}
+.tsx-neutrals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px}
+.tsx-notes li{margin-bottom:6px;max-width:820px}
+.tsx-font-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+.tsx-font{font:inherit;font-size:15px;padding:10px 14px;background:#fff;color:var(--ink);border:2px solid var(--muted);cursor:pointer;text-align:left}
+.tsx-font[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 -4px 0 var(--action);font-weight:600}
+.tsx-font[aria-pressed=true]::before{content:"✓ "}
+.tsx-font-status{flex-basis:100%;font-size:14px;margin:0;color:var(--muted)}
+.tsx-warning{border:1px solid #d9b45c;background:#fff6df;padding:12px 16px;font-size:15px;max-width:820px}
+.tsx-specimen{border:1px solid var(--line);padding:24px 26px;margin:12px 0 24px;background:#fff}
+.tsx-display{font-size:56px;line-height:1.1;margin:0 0 22px;font-weight:var(--display-weight,300)}
+.tsx-meta{display:block;font-size:12px;line-height:1.4;letter-spacing:.02em;color:var(--muted);font-weight:400;font-style:normal;margin-bottom:4px}
+.tsx-business .tsx-meta,.tsx-label-h .tsx-meta{display:inline;margin-inline-start:8px}
+.tsx-label-h{font-size:18px;font-weight:600!important;margin:22px 0 8px}
+.tsx-glyphs{font-size:22px;line-height:1.5;overflow-wrap:anywhere;margin:0}
+.tsx-fixed{font-size:20px}
+.tsx-size{margin:0 0 12px;line-height:1.4}
+.tsx-business{font-size:18px;line-height:1.55;max-width:720px}
+.tsx-bold{font-weight:700}
+.tsx-small{font-size:14px;color:var(--muted);max-width:820px}
+.tsx-face{font-size:17px}
+.tsx-specimen,.tsx-specimen *{font-synthesis:none}
+@media(max-width:1000px){.tsx-cards{grid-template-columns:1fr}.tsx-neutrals{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+  .tsx-two{grid-template-columns:1fr}
+  .tsx-neutrals{grid-template-columns:1fr}
+  .tsx-preview{padding:20px 18px}
+  .tsx-display{font-size:40px}
+  .tsx-specimen{padding:18px 16px}
+  .tsx-swatch{grid-template-columns:40px minmax(0,1fr)}
+  .tsx-swatch .tsx-copy{grid-column:2;justify-self:start}
+  .tsx-chip{width:40px;height:40px}
+}
+/* the specimen sets its own font, independent of any site-wide font preference */
+.tsx-specimen{--font-sans:"Plex","Helvetica Neue",Arial,sans-serif;--display-weight:300;font-family:var(--font-sans)}
+.tsx-specimen[data-font=nsats-clear]{--font-sans:"NSATS Clear","Helvetica Neue",Arial,sans-serif;--display-weight:400}
+.tsx-specimen .tsx-display{font-weight:var(--display-weight)}
+/* explicit tokens for every theme (the site stylesheet treats cyan as the default and has no cyan selector) */
+.tsx [data-theme=cyan]{--action:#006B85;--hover:#004E63;--accent:#00CCFF;--tint:#E8F7FB;--deep:#062C38}
+.tsx [data-theme=carbon]{--action:#0F62FE;--hover:#0043CE;--accent:#78A9FF;--tint:#EDF5FF;--deep:#161616}
+.tsx [data-theme=royal]{--action:#264566;--hover:#18334F;--accent:#55B9BC;--tint:#EEF4F7;--deep:#132B42}
+.tsx .tsx-font[aria-pressed=true]:focus-visible{box-shadow:0 0 0 6px var(--focus,#ffdd00),inset 0 -4px 0 var(--action)}
+
+/* corrections 5 Oct (F1–F4) */
+.tsx-size-narrow{display:none}
+@media(max-width:760px){.tsx-size-wide{display:none}.tsx-size-narrow{display:inline}}
+.tsx .tsx-specimen strong.tsx-semibold{font-weight:600}
+.tsx .tsx-specimen strong.tsx-bold{font-weight:700}
+.tsx-face-size{white-space:nowrap}
