@@ -1,0 +1,26 @@
+/* Website font option (owner request, 5 October 2026). IBM Plex Sans stays the default (styles.css).
+   NSATS Clear RC04 (Version 1.100) is a test release, not production approved; files copied unchanged from the theme handover. */
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-Italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-SemiBoldItalic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:swap}
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Clear";src:url("fonts/nsats-clear/NSATSClear-BoldItalic.woff2") format("woff2");font-weight:700;font-style:italic;font-display:swap}
+html[data-font=nsats-clear]{--font-sans:"NSATS Clear","Helvetica Neue",Arial,sans-serif;--display-weight:400}
+/* NSATS Clear has no Light face: the template's Light 300 headings use Regular 400 (proposed adaptation) */
+html[data-font=nsats-clear] :is(h1,h2,h3,.number,.form-panel legend,.stat strong,.history-date,.module-n,.milestones .history-date){font-weight:400}
+html[data-font=nsats-clear] body{font-synthesis:none}
+html[data-font=nsats-clear] :is(button,input,select,textarea){font-family:inherit}
+.font-link{white-space:nowrap}
+.font-options{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.font-option{font:inherit;text-align:left;background:#fff;border:2px solid var(--muted);padding:12px 16px;cursor:pointer;color:var(--ink)}
+.font-option[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 4px 0 0 var(--action);font-weight:600}
+.font-option[aria-pressed=true]::before{content:"✓ "}
+.font-option .font-option-sample{display:block;font-weight:400;font-size:15px;color:var(--muted);margin-top:4px}
+.font-option[data-font-set=plex] .font-option-sample{font-family:"Plex",Arial,sans-serif}
+.font-option[data-font-set=nsats-clear] .font-option-sample{font-family:"NSATS Clear",Arial,sans-serif}
+#font-dialog .small{font-size:14px;color:var(--muted)}
+/* keep the yellow focus ring on the selected option (keyboard-focus check, 5 Oct second pass) */
+.font-option[aria-pressed=true]:focus-visible{box-shadow:0 0 0 5px var(--focus),inset 4px 0 0 var(--action)}
+/* NSATS Clear mode: only Light 300 headings move to Regular 400; SemiBold 600 headings keep 600 (heading-weight check, 5 Oct second pass) */
+html[data-font=nsats-clear] :is(.side-nav h2,.footer h3,.mega-panel h3,.glance h2,.page-contents .contents-title){font-weight:600}
