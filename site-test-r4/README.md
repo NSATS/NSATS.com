@@ -36,7 +36,7 @@ The text now comes from final-8, which the owner approved as text on 6 October 2
 
 ## Forms
 
-Every form is an inactive preview. None has an action address, and none sends anything or stores what is typed. The sign-in preview shows only the page's own messages. The site search filters a local index in the browser.
+Every enquiry, application, account and subscription form is an inactive preview: it does not submit or store what is typed. The sign-in preview shows only the page's own messages. Like any website, the site makes ordinary requests to its own host; for example, the search box opens the site's search page with the search term in the address, and that page filters a local index in the browser.
 
 ## Fonts, cookies and outside services
 
