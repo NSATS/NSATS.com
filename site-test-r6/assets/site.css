@@ -1,0 +1,92 @@
+/* NSATS Phase 1 page layer — additions to the Review 04 styles.css (unchanged). */
+.draft-bar{background:#fff6df;border-bottom:1px solid #e8d49b;font-size:13px}
+.draft-bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.draft-bar .draft-id{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.draft-links{display:flex;gap:18px;align-items:center}
+.draft-links a{color:var(--ink)}
+.text-button{background:none;border:0;padding:0;color:var(--action);text-decoration:underline;text-underline-offset:4px}
+.portfolio a[aria-current]{box-shadow:inset 0 -3px 0 var(--action);color:var(--action)}
+
+.hero.no-image{grid-template-columns:1fr}
+.hero.no-image .hero-copy{max-width:1100px}
+.hero.no-image .lead{max-width:760px}
+.hero-copy .lead{font-size:20px}
+
+.section-intro{font-size:20px;color:var(--ink)}
+.section-tight{padding:0 0 24px}
+.section .grid,.article .grid{margin:28px 0}
+.section .measure p{font-size:18px}
+.section h2+ .grid{margin-top:8px}
+.card h3{font-size:22px}
+.card>a:last-child{font-size:15px}
+.link-row{display:flex;flex-wrap:wrap;gap:10px 28px;margin:6px 0 22px}
+.arrow-link{text-decoration:none;font-size:16px;border-bottom:1px solid currentColor;padding-bottom:2px}
+.arrow-link:hover{border-bottom-width:2px}
+
+.content-placeholder{border:1px dashed #8a5700;background:#fffbf0;padding:16px 20px;margin:20px 0;max-width:740px}
+.content-placeholder .eyebrow{color:#8a5700;margin-bottom:6px;font-size:11px}
+.content-placeholder p{margin:0;font-size:15px!important;color:#3d3d3d}
+
+.history-line{margin:10px 0 40px}
+.history-line li{max-width:none}
+.history-line h3{font-size:24px}
+
+.placement-middle .placement-art{min-height:240px}
+.placement-middle .placement-art>span{font-size:14px;max-width:560px}
+.placement-middle .placement-art strong{font-size:22px}
+.section .placement-middle{max-width:980px}
+
+.form-preview{margin:12px 0 48px}
+.form-note{font-size:14px!important;color:var(--muted);border-inline-start:4px solid var(--line);padding-inline-start:12px}
+.form-panel .field{margin-bottom:22px}
+.form-panel .field.check{flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:10px}
+.form-panel .field.check input{width:20px;min-height:20px;margin-top:4px}
+.form-panel .field.check label{flex:1;font-weight:400}
+.form-panel .field.check .hint{flex-basis:100%;margin-inline-start:30px}
+.form-panel fieldset[disabled] input,.form-panel fieldset[disabled] select,.form-panel fieldset[disabled] textarea{background:#fafafa}
+
+.related{border-top:1px solid var(--line);padding-top:36px}
+
+/* Review layer: hidden unless "Show review notes" is on */
+.review-only{display:none}
+html.show-review .review-only{display:block}
+.review-box{border:2px solid #8a5700;background:#fffdf6;padding:22px 26px;margin:36px 0;font-size:14px}
+.review-box .eyebrow{color:#8a5700}
+.review-box h3{font-size:16px;font-weight:600;margin:20px 0 8px}
+.review-box li,.review-box p,.review-box dd{font-size:14px!important;max-width:none!important}
+.meta-list,.states{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;margin:0}
+.meta-list dt,.states dt{font-weight:600}
+.meta-list dd,.states dd{margin:0;overflow-wrap:anywhere}
+.image-brief{border-top:1px dashed #8a5700;padding:12px 16px;background:#fffdf6;font-size:13px}
+.image-brief pre{white-space:pre-wrap;font-family:inherit;font-size:13px;margin:6px 0 0}
+html.show-review .content-placeholder{outline:2px solid #8a5700}
+
+.result-list{list-style:none;padding:0}
+.result-list li{border-top:1px solid var(--line);padding:22px 0;max-width:860px}
+.result-list h2{font-size:24px;margin-bottom:8px}
+
+@media(max-width:760px){
+  .meta-list,.states{grid-template-columns:1fr}
+  .draft-bar .wrap{padding-left:16px;padding-right:16px}
+  .hero.no-image .hero-copy{padding:40px 16px}
+}
+@media print{.draft-bar,.review-only{display:none!important}}
+.related-list{list-style:none;padding:0;columns:3 260px;column-gap:40px;margin:8px 0 0}
+.related-list li{break-inside:avoid;border-top:1px solid var(--line);margin:0;padding:12px 0;font-size:16px!important}
+.related-list a{text-decoration:none}
+.related-list a:hover{text-decoration:underline}
+/* Image briefs ask for hero images after the text on mobile */
+@media(max-width:760px){.hero{display:flex;flex-direction:column}.hero .hero-copy{order:1}.hero .editorial-photo{order:2}.hero .image-placeholder{min-height:260px}}
+/* Links inside the dark licensing band; lone last card in a 3-column grid spans the row */
+.dark-band .arrow-link{color:#fff}
+.dark-band .link-row{margin:18px 0 0}
+.grid:not(.two)>.card:last-child:nth-child(3n+1){grid-column:1/-1}
+
+.grid.one{grid-template-columns:1fr}
+.grid.one>.card{max-width:none}
+.grid.two>.card:last-child:nth-child(odd){grid-column:1/-1}   /* odd count in two columns: last card spans, no empty cell */
+/* three-column card grids with 3n+2 cards: the last two share the row, so no empty cell (desktop only; one column below 761px) */
+@media(min-width:761px){.grid:not(.one):not(.two):not(.four){grid-template-columns:repeat(6,minmax(0,1fr))}.grid:not(.one):not(.two):not(.four)>*{grid-column:span 2}.grid:not(.one):not(.two):not(.four)>:last-child:nth-child(3n+2),.grid:not(.one):not(.two):not(.four)>:nth-last-child(2):nth-child(3n+1){grid-column:span 3}.grid:not(.one):not(.two):not(.four)>.card:last-child:nth-child(3n+1){grid-column:1/-1}}
+
+/* 7 October 2026: level-4 subheadings in long page text (NC-LICENSING privacy notice) */
+main h4{font-size:20px;line-height:1.3;font-weight:600;margin:28px 0 8px}
