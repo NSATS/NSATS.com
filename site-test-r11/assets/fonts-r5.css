@@ -1,0 +1,27 @@
+/* Website font (NSATS Sans build, 7 October 2026; owner decision): NSATS Sans 1.203, the owner-approved NSATS typeface, is the
+   default; IBM Plex Sans (the template font, styles.css) is the alternative in "Aa Font". Font files: NSATS Sans 1.203
+   public release, unchanged (assets/fonts/nsats-sans/, SIL OFL 1.1). */
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-Italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-SemiBoldItalic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:swap}
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-BoldItalic.woff2") format("woff2");font-weight:700;font-style:italic;font-display:swap}
+html:not([data-font=plex]){--font-sans:"NSATS Sans","Helvetica Neue",Arial,sans-serif;--display-weight:400}
+/* NSATS Sans has no Light face: the template's Light 300 headings use Regular 400 (the adaptation used for NSATS Clear since 5 October) */
+html:not([data-font=plex]) :is(h1,h2,h3,.number,.form-panel legend,.stat strong,.history-date,.module-n,.milestones .history-date){font-weight:400}
+html:not([data-font=plex]) body{font-synthesis:none}
+html:not([data-font=plex]) :is(button,input,select,textarea){font-family:inherit}
+/* SemiBold 600 headings keep 600 (heading-weight rule of 5 October) */
+html:not([data-font=plex]) :is(.side-nav h2,.footer h3,.mega-panel h3,.glance h2,.page-contents .contents-title){font-weight:600}
+.font-link{white-space:nowrap}
+.font-options{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.font-option{font:inherit;text-align:left;background:#fff;border:2px solid var(--muted);padding:12px 16px;cursor:pointer;color:var(--ink)}
+.font-option[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 4px 0 0 var(--action);font-weight:600}
+.font-option[aria-pressed=true]::before{content:"✓ "}
+.font-option .font-option-sample{display:block;font-weight:400;font-size:15px;color:var(--muted);margin-top:4px}
+.font-option[data-font-set=plex] .font-option-sample{font-family:"Plex",Arial,sans-serif}
+.font-option[data-font-set=nsats-sans] .font-option-sample{font-family:"NSATS Sans",Arial,sans-serif}
+#font-dialog .small{font-size:14px;color:var(--muted)}
+/* keep the yellow focus ring on the selected option */
+.font-option[aria-pressed=true]:focus-visible{box-shadow:0 0 0 5px var(--focus),inset 4px 0 0 var(--action)}
