@@ -1,0 +1,4 @@
+# Synthetic example file for the NSATS Temporal Compression interactive illustration. Not measured data.
+Example design file: bracket, revision C
+Example change: later edit after the review; not the approved revision.
+Example dimensions are illustrative and are not an engineering specification.
