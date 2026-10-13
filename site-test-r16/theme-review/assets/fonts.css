@@ -1,0 +1,16 @@
+/* Theme pages (NSATS Sans build, 7 October 2026): NSATS Sans 1.203 is the default; IBM Plex Sans (the template font) is the alternative. */
+@font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("fonts/nsats-sans/NSATSSans-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+:root { --font-sans: "NSATS Sans", "Helvetica Neue", Arial, sans-serif; --display-weight: 400; --strong-weight: 700; }
+[data-font="plex"] { --font-sans: "Plex", "Helvetica Neue", Arial, sans-serif; --display-weight: 300; --strong-weight: 600; }
+/* NSATS Sans has no Light: weight 300 is not requested in that mode. */
+.font-specimen { font-family: var(--font-sans); font-synthesis: none; font-kerning: normal; }
+.font-specimen h1, .font-specimen h2 { font-weight: var(--display-weight); }
+.font-specimen strong { font-weight: var(--strong-weight); }
