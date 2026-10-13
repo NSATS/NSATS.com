@@ -1,0 +1,47 @@
+# Synthetic example file for the NSATS Temporal Compression interactive illustration. Not measured data.
+Example maintenance record — pump P-104 — March
+Event: Seal replaced
+Example technician note: shaft seal replaced; pump returned to service after an example leak check.
+
+Example sensor export (illustrative index values):
+sample,example_index
+1,49
+2,62
+3,75
+4,88
+5,4
+6,17
+7,30
+8,43
+9,56
+10,69
+11,82
+12,95
+13,11
+14,24
+15,37
+16,50
+17,63
+18,76
+19,89
+20,5
+21,18
+22,31
+23,44
+24,57
+25,70
+26,83
+27,96
+28,12
+29,25
+30,38
+31,51
+32,64
+33,77
+34,90
+35,6
+36,19
+37,32
+38,45
+39,58
+40,71
