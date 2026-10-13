@@ -1,0 +1,3 @@
+# Synthetic example file for the NSATS Temporal Compression interactive illustration. Not measured data.
+Example communications brief — edited copy.
+This copy has been edited after the original was recorded by the example document library.
