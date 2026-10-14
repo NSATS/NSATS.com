@@ -1,0 +1,12 @@
+/* Extracted palette values; explicit cyan selector avoids stale values after switching. */
+:root { --ink: #161616; --muted: #525252; --paper: #FFFFFF; --layer: #F4F4F4; --line: #D8D8D8; --focus: #FFDD00; --max: 1440px; }
+[data-theme="cyan"] { --action: #006B85; --hover: #004E63; --accent: #00CCFF; --tint: #E8F7FB; --deep: #062C38; }
+[data-theme="carbon"] { --action: #0F62FE; --hover: #0043CE; --accent: #78A9FF; --tint: #EDF5FF; --deep: #161616; }
+[data-theme="royal"] { --action: #264566; --hover: #18334F; --accent: #55B9BC; --tint: #EEF4F7; --deep: #132B42; }
+/* Implementation suggestion: colour alone must not identify selection. */
+.theme-preview { color: var(--ink); background: var(--paper); }
+.theme-preview a { color: var(--action); text-decoration: underline; }
+.theme-preview .primary-action { color: #FFFFFF; background: var(--action); border: 2px solid var(--action); }
+.theme-preview .primary-action:hover { background: var(--hover); border-color: var(--hover); }
+.theme-preview :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 3px var(--focus); }
+/* Pale --line is for decoration; use --muted for essential input boundaries. */
