@@ -1,0 +1,23 @@
+NSATS CLEAR 1.100 — FINAL RELEASE NOTES
+Owner approval: 6 October 2026.
+Status: approved final distribution. This supersedes the earlier release-candidate status for these exact font files. Historical RC04/test records remain unchanged.
+
+Contents: Regular, Italic, SemiBold, SemiBold Italic, Bold and Bold Italic; six TTF files for desktop/documents/print, six WOFF2 files for websites. 234 encoded characters. No Light or variable font is supplied. Version 1.100, byte-identical to the reviewed RC04 files. No font rebuilding occurred.
+
+Known compatibility finding (retained after approval)
+In a custom AppKit/CoreText application on macOS 26.6.2 build 25G83, all 234 encoded characters used the intended NSATS face. Canonically decomposed input for 58 accented letters plus ≠ fell back to Helvetica-family fonts in all six styles at 11/12/14/16/24 native points. Precomposed forms used NSATS Clear. This is a specific native Mac result, not a diagnosis of the reported iPhone NFC/NFD mismatch. The latter remains unresolved. Approval does not make these results disappear.
+
+For controlled authored copy, NFC normalization may avoid the demonstrated decomposed-input path; it is not a complete compatibility guarantee. Do not indiscriminately transform identifiers or user-supplied data. Record affected content and application before any later repair.
+
+Other boundaries
+- No hinting in the final fonts. Hinted comparison fonts are excluded.
+- Bold zero's mark may appear faint at small sizes.
+- Characters outside the 234-character repertoire may use fallback; this is not a full-Unicode font.
+- SemiBold appears as a separate family, NSATS Clear SemiBold, in applications using four-style family grouping. Web CSS maps it to weight 600 of NSATS Clear.
+- Italic outlines are the approved 11-degree designed slants, supplied as actual font files.
+- Tabular figures are default; pnum selects proportional figures.
+
+Evidence and remaining verification
+The custom AppKit/CoreText application is a limited native Mac test, not coverage of all macOS apps. Word Windows/Mac including AutoCorrect/AutoFormat, Windows DirectWrite/GDI, other macOS native applications, iOS/Android, W1-W7, physical print, hinted rendering and reader studies remain untested/unverified or incomplete. Partial self-reported results do not complete them. Other existing evidence is self-reported or Linux-only. Approval is the owner's release decision, not a claim that those tests passed.
+
+Licence: SIL Open Font License 1.1; retain OFL.txt and its copyright/modification notices. Modified from IBM Plex Sans 3.005; no IBM affiliation or endorsement. See FONTLOG.txt for history.

@@ -1,0 +1,11 @@
+/* NSATS Sans 1.203 — owner-approved release, 7 October 2026. SIL OFL 1.1; see OFL.txt. */
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Sans"; src: url("../fonts/woff2/NSATSSans-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+:root { --font-nsats: "NSATS Sans", "Helvetica Neue", Arial, sans-serif; }
+.nsats-text { font-family: var(--font-nsats); font-kerning: normal; font-synthesis: none; }
+.nsats-tabular { font-variant-numeric: tabular-nums; }
+.nsats-proportional { font-variant-numeric: proportional-nums; }

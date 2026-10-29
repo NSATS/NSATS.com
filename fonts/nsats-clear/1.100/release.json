@@ -1,0 +1,130 @@
+{
+  "family": "NSATS Clear",
+  "version": "1.100",
+  "status": "owner-approved final distribution",
+  "approval_date": "2026-10-06",
+  "origin": "RC04; unchanged binaries",
+  "fonts": [
+    {
+      "path": "fonts/ttf/NSATSClear-Regular.ttf",
+      "sha256": "7e589e3f6158c6a799b7bd003dc62349a0c0c507fe0a901e20762e0705fb2600",
+      "style": "Regular",
+      "weight": 400,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-Regular.woff2",
+      "sha256": "0ec8441a6f9b571711d38c752ee1b49cefeecc4ffa30d488d56bc8b54c7ae187",
+      "style": "Regular",
+      "weight": 400,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSClear-Italic.ttf",
+      "sha256": "432cce85c15048c0c286530cd30b5e01498d2acb4fd656cc69aec34716db0e84",
+      "style": "Italic",
+      "weight": 400,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-Italic.woff2",
+      "sha256": "9d7647990ce98907b1028c2f124b1821eae9757d2f5dc3a188a2332fca9277ad",
+      "style": "Italic",
+      "weight": 400,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSClear-SemiBold.ttf",
+      "sha256": "53b25c2f52a276bf4fa7b618723dd989c2c9c846b599523268a6f69aeb3da5d0",
+      "style": "SemiBold",
+      "weight": 600,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-SemiBold.woff2",
+      "sha256": "0d312372b26ca88717f97bbb3f268965b05e875152896193bfb038eac897587c",
+      "style": "SemiBold",
+      "weight": 600,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSClear-SemiBoldItalic.ttf",
+      "sha256": "110861d1a5a33af9bcf315c3ebbc5d90f1d3fb88ef93e8368934445cc37fbbad",
+      "style": "SemiBoldItalic",
+      "weight": 600,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-SemiBoldItalic.woff2",
+      "sha256": "f09e619f48b1319f322284679f7445da2d80b64c9f515cbd7c9090068924572f",
+      "style": "SemiBoldItalic",
+      "weight": 600,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSClear-Bold.ttf",
+      "sha256": "cf301f29a6b044b9b6f7c7899994f344139ed6af81f5cc0ce20732f886ba60dc",
+      "style": "Bold",
+      "weight": 700,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-Bold.woff2",
+      "sha256": "d83d2f21436b17ac0abfa1d91ae5d0bcd235eaeb9898fed6fea7a7352f775ef9",
+      "style": "Bold",
+      "weight": 700,
+      "css_style": "normal",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSClear-BoldItalic.ttf",
+      "sha256": "b9ef8f1dd4ae9a8199d4783ec7a4de9e8af396aeb90733875e89f7ac6c0907f0",
+      "style": "BoldItalic",
+      "weight": 700,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSClear-BoldItalic.woff2",
+      "sha256": "a6f537126531725da366d7404e4e4a46bac1ccbe42a2ea807fd7506772f75372",
+      "style": "BoldItalic",
+      "weight": 700,
+      "css_style": "italic",
+      "version": "1.100",
+      "encoded_characters": 234,
+      "embedding_fsType": 0
+    }
+  ],
+  "known_limitations": "RELEASE-NOTES.txt"
+}

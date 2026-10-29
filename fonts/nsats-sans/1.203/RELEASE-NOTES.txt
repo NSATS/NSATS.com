@@ -1,0 +1,34 @@
+NSATS SANS 1.203 — RELEASE NOTES
+Owner approval: 7 October 2026, for the NSATS website and NSATS documents.
+
+What it is
+NSATS Sans is the new name of the NSATS typeface previously released as NSATS Clear. Version 1.203 is the reviewed NSATS Clear 1.202 design under the new name: the letter shapes, spacing, kerning and metrics are identical to 1.202; only the names, version and date differ. NSATS Clear 1.100 remains available unchanged.
+
+Contents
+Regular, Italic, SemiBold, SemiBold Italic, Bold and Bold Italic: six TTF files (fonts/ttf) for desktop, documents and print, and six WOFF2 files (fonts/woff2) for websites. 388 encoded characters: ASCII, Latin-1, Windows-1252, Latin Extended-A and Mac Roman (excluding the Apple logo), with 15 combining accents positioned by the font's mark features. This is not a full-Unicode font; other characters fall back to another font. Tabular figures are the default; the pnum feature selects proportional figures. The italics are designed 11-degree slants supplied as real fonts. The fonts are unhinted. Windows-hinted versions exist but are not published because hinted rendering is untested.
+
+Changes since NSATS Clear 1.100 (carried in 1.200–1.202)
+- 154 more characters (Latin Extended-A and remaining Mac Roman), combining accents and automatic accent stacking.
+- Stronger zero marks in SemiBold and Bold; corrected accent stacking on capitals.
+- Windows code-page declaration for Western, Central European, Turkish and Baltic text.
+- Kerning for the new accented letters, and more space between K and ï in the heavier weights.
+- New family name and version: NSATS Sans 1.203.
+
+Known limitations
+- Word applies the kerning only when "Kerning for fonts" is on.
+- SemiBold appears as a separate family, "NSATS Sans SemiBold", in applications that group four styles (observed in Word for Mac with the 1.202 fonts). In CSS it is weight 600 of "NSATS Sans".
+Stacked accents outside the character set:
+- Scope. These limitations were measured on a Mac with the NSATS Clear 1.202 fonts (macOS 26.6.2, recorded application versions). NSATS Sans 1.203 has identical glyphs, spacing, kerning and line metrics, so they apply unchanged; 1.203 itself was not re-measured in these applications.
+- Which text. Stacked accents outside the 388-character set: a capital letter that already carries an accent followed by an extra combining accent (for example Ê followed by U+0301), and Å or Ů followed by an extra combining ring.
+- Clipping in TextEdit (visual). At its default line height, TextEdit cut off the extra marks on these capitals in all six styles, and the extra ring on Bold Å and Ů. Pages and Word enlarged the line and showed every mark.
+- Overlap in Keynote (visual). With 11 pt text on 14 pt lines, the extra marks on these capitals overlapped the ogoneks (ą, ę) on the line above, in all six styles. Whether more line spacing avoids this was not tested.
+- Two encoded letters (visual exception). On the first line of a TextEdit page the clipping boundary is lower: in the measured TextEdit PDF it cut 0.06 pt or less from Bold Italic Å and SemiBold Italic ĥ, which was not visible at the sizes tested.
+- Coverage. Clipping of ordinary (encoded) text in other applications, line spacings and layouts has not been verified.
+- Copying text from PDFs (a separate problem). The extra marks use glyphs that have no character code of their own. In the tested PDFs exported from Pages, Keynote, TextEdit and Word, these glyphs had no ToUnicode entries, and in copies of those PDFs saved from Preview the five tested stacks became unrelated ASCII characters. PDFium recovered the five tested stacks from the Pages, Keynote and TextEdit PDFs, which carry ActualText, but not from the Word PDF, which does not. These results apply to the tested files and text only; other PDF readers and producers were not tested.
+- Ordinary accented text. The tested ordinary accented words showed no comparable visual problem and copied correctly from the tested PDFs (allowing for composed and decomposed forms); exact code-point preservation and search in every application are not claimed.
+
+Testing
+Native Mac testing was done with the NSATS Clear 1.202 fonts, whose glyphs, spacing, kerning and metrics are identical to 1.203: Word, Pages, Keynote, TextEdit, Preview, Safari, Chrome and Firefox (macOS 26.6.2, the recorded application versions). 1.203 itself was checked by comparing its font tables with 1.202 (only the names, version and date differ) and by loading its six web fonts in a browser. The developer kits were tested on Linux only. Not yet verified: Windows browsers, iPhone and Android, the live website (including cross-origin loading), Word for Windows, Windows rendering (DirectWrite/GDI) and the effect of the code-page settings, hinted rendering, physical print, reader studies, native-language review and complete clipping coverage. Approval is the owner's release decision, not a claim that these have passed.
+
+Licence
+SIL Open Font License 1.1; keep OFL.txt with the fonts. Modified from IBM Plex Sans 3.005 (Reserved Font Name "Plex" not used). Copyright IBM Corp.; modifications © 2026 National Scientific, AI & Technical Systems Limited. Not affiliated with or endorsed by IBM. See FONTLOG.txt for the history.

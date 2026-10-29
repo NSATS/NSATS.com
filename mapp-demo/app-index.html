@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NSATS Mail</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="NSATS_Logo.png" alt="NSATS Logo" />
+    </div>
+
+    <div class="topbar-actions">
+      <!-- Compose first -->
+      <button id="composeBtn" class="btn primary">Compose</button>
+
+      
+
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search mail" autocomplete="off" />
+        <button id="clearSearch" class="icon-btn" title="Clear">✕</button>
+      </div>
+
+      <select id="sortSelect" class="select" title="Sort">
+        <option value="date_desc">Newest</option>
+        <option value="date_asc">Oldest</option>
+        <option value="from_asc">From A→Z</option>
+        <option value="subject_asc">Subject A→Z</option>
+      </select>
+
+      <button id="toggleTheme" class="btn" title="Toggle theme">Theme</button>
+      
+      <!-- Menu last -->
+     <!-- 
+ <button id="megaMenuBtn" class="btn" aria-haspopup="true" aria-expanded="false">
+        Menu
+      </button>
+ -->
+ 	<button id="megaMenuBtn" class="btn menu-btn" aria-haspopup="true" aria-expanded="false">
+  <span class="menu-icon">☰</span>
+  Menu
+  <span class="menu-caret">▾</span>
+</button>
+      
+      <button id="logoutBtn" class="btn danger small">
+  Logout
+</button>
+
+    </div>
+  </div>
+
+  <!-- Mega menu -->
+  <div id="megaMenu" class="mega-menu hidden" role="menu" aria-label="NSATS Services">
+    <div class="mega-menu-grid">
+      <div class="mega-item" role="menuitem" data-mega="drive">
+        <span class="mega-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 3h8l5 9-5 9H8L3 12 8 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 8h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="mega-text">
+          <span class="mega-title">Drive</span>
+          <span class="mega-sub">Cloud storage workspace</span>
+        </span>
+      </div>
+
+      <div class="mega-item" role="menuitem" data-mega="contacts">
+        <span class="mega-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M20 8v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M17 11h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="mega-text">
+          <span class="mega-title">Contacts</span>
+          <span class="mega-sub">People and address book</span>
+        </span>
+      </div>
+
+      <!-- 
+<div class="mega-item" role="menuitem" data-mega="documents">
+        <span class="mega-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M14 2v5h5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8 13h8M8 17h8M8 9h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="mega-text">
+          <span class="mega-title">Documents</span>
+          <span class="mega-sub">Docs, PDFs, and drafts</span>
+        </span>
+      </div>
+ -->
+
+	<div class="mega-item" role="menuitem" data-mega="mail">
+  <span class="mega-ico" aria-hidden="true">
+    <!-- Mail -->
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="m4 8 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <span class="mega-text">
+    <span class="mega-title">Mail</span>
+    <span class="mega-sub">Inbox, folders, messages</span>
+  </span>
+</div>
+
+      <div class="mega-item" role="menuitem" data-mega="sharing">
+        <span class="mega-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M8 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M13.5 10.5l-3-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M13.5 13.5l-3 1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="mega-text">
+          <!-- <span class="mega-title">File sharing</span> -->
+          <span class="mega-title">Shared Files</span>
+          <span class="mega-sub">Links, permissions, access</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main layout -->
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Folders">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Folders</div>
+        <div class="sidebar-mailbox">demo_user@nsats.com</div>
+      </div>
+
+      <nav id="folderList" class="folder-list"></nav>
+
+      <!-- Storage -->
+      <div class="storage">
+        <div class="storage-top">
+          <div class="storage-label">Storage</div>
+          <div class="storage-text">1MB / Unlimited space</div>
+        </div>
+        <div class="storage-bar" aria-label="Storage usage">
+          <div class="storage-fill" style="width: 10%;"></div>
+        </div>
+
+        <!-- Storage icon placeholder -->
+        <div class="storage-icon">
+          <img src="NSATS_QL_White.png" alt="NSATS Quick Link" />
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="hint">
+          Shortcuts: <b>j</b>/<b>k</b> navigate · <b>Enter</b> open · <b>u</b> unread · <b>Del</b> delete · <b>/</b> search
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar resizer -->
+    <div class="resizer resizer-vertical" id="resizerSidebar" role="separator" aria-label="Resize sidebar" tabindex="0"></div>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- =========================
+           VIEW: MAIL (default)
+           ========================= -->
+      <div id="viewMail" class="app-view">
+        <section class="list-pane" aria-label="Message list">
+          <div class="pane-header">
+            <div class="pane-title" id="listTitle">Inbox</div>
+
+            <div class="pane-actions">
+              <label class="select-all" title="Select all on this page">
+                <input id="selectAll" type="checkbox" />
+                <span>Select</span>
+              </label>
+
+              <button id="markUnreadBtn" class="btn small">Toggle unread</button>
+              <button id="deleteBtn" class="btn small danger">Delete</button>
+            </div>
+          </div>
+
+          <div id="messageList" class="message-list" role="listbox" aria-label="Messages"></div>
+
+          <div class="pagination">
+            <button id="prevPage" class="btn small">Prev</button>
+            <div class="page-info" id="pageInfo">Page 1 / 1</div>
+            <button id="nextPage" class="btn small">Next</button>
+          </div>
+        </section>
+
+        <!-- List/preview resizer -->
+        <div class="resizer resizer-vertical" id="resizerContent" role="separator" aria-label="Resize message list" tabindex="0"></div>
+
+        <section class="preview-pane" aria-label="Message preview">
+          <div class="pane-header">
+            <div class="pane-title">Preview</div>
+            <div class="pane-actions">
+              <button id="replyBtn" class="btn small" disabled>Reply</button>
+              <button id="forwardBtn" class="btn small" disabled>Forward</button>
+            </div>
+          </div>
+
+          <article id="preview" class="preview empty">
+            <div class="empty-state">
+              <div class="empty-icon">📨</div>
+              <div class="empty-title">Select a message</div>
+              <div class="empty-subtitle">This is a static demo with mock data.</div>
+            </div>
+
+            <div class="preview-more hidden">
+              <button id="showMoreThread" class="btn small">Show more messages</button>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <!-- =========================
+           VIEW: DRIVE
+           ========================= -->
+      <div id="viewDrive" class="app-view hidden" aria-label="Drive">
+        <section class="list-pane" aria-label="Drive list">
+          <div class="pane-header">
+            <div class="pane-title">Drive</div>
+            <div class="pane-actions">
+              <button id="driveNewFolder" class="btn small">New folder</button>
+              <button id="driveUpload" class="btn small primary">Upload</button>
+            </div>
+          </div>
+
+          <div id="driveList" class="message-list" aria-label="Drive items">
+            <div class="msg" style="opacity:.8;">
+              <div class="subject">Drive is a static demo section</div>
+              <div class="snippet">We will populate this with mock folders and files in Step C.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer resizer-vertical" aria-hidden="true"></div>
+
+        <section class="preview-pane" aria-label="Drive preview">
+          <div class="pane-header">
+            <div class="pane-title">Details</div>
+            <div class="pane-actions">
+              <button id="driveShare" class="btn small" disabled>Share</button>
+              <button id="driveDownload" class="btn small" disabled>Download</button>
+            </div>
+          </div>
+
+          <article id="drivePreview" class="preview empty">
+            <div class="empty-state">
+              <div class="empty-icon">🗂️</div>
+              <div class="empty-title">Select a file or folder</div>
+              <div class="empty-subtitle">This section will mirror the Mail UI layout.</div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <!-- =========================
+           VIEW: CONTACTS
+           ========================= -->
+      <div id="viewContacts" class="app-view hidden" aria-label="Contacts">
+        <section class="list-pane" aria-label="Contacts list">
+          <div class="pane-header">
+            <div class="pane-title">Contacts</div>
+            <div class="pane-actions">
+              <button id="contactsNew" class="btn small primary">New contact</button>
+            </div>
+          </div>
+
+          <div id="contactsList" class="message-list" aria-label="Contacts">
+            <div class="msg" style="opacity:.8;">
+              <div class="subject">Contacts is a static demo section</div>
+              <div class="snippet">We will populate this with mock people and groups in Step C.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer resizer-vertical" aria-hidden="true"></div>
+
+        <section class="preview-pane" aria-label="Contact details">
+          <div class="pane-header">
+            <div class="pane-title">Details</div>
+            <div class="pane-actions">
+              <button id="contactsEmail" class="btn small" disabled>Email</button>
+              <button id="contactsCall" class="btn small" disabled>Call</button>
+            </div>
+          </div>
+
+          <article id="contactsPreview" class="preview empty">
+            <div class="empty-state">
+              <div class="empty-icon">👤</div>
+              <div class="empty-title">Select a contact</div>
+              <div class="empty-subtitle">We will show a profile card and metadata here.</div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <!-- =========================
+           VIEW: DOCUMENTS
+           ========================= -->
+      <div id="viewDocuments" class="app-view hidden" aria-label="Documents">
+        <section class="list-pane" aria-label="Documents list">
+          <div class="pane-header">
+            <div class="pane-title">Documents</div>
+            <div class="pane-actions">
+              <button id="docsNew" class="btn small">New</button>
+              <button id="docsImport" class="btn small primary">Import</button>
+            </div>
+          </div>
+
+          <div id="docsList" class="message-list" aria-label="Documents">
+            <div class="msg" style="opacity:.8;">
+              <div class="subject">Documents is a static demo section</div>
+              <div class="snippet">We will populate this with mock docs, PDFs, and drafts in Step C.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer resizer-vertical" aria-hidden="true"></div>
+
+        <section class="preview-pane" aria-label="Document preview">
+          <div class="pane-header">
+            <div class="pane-title">Preview</div>
+            <div class="pane-actions">
+              <button id="docsExport" class="btn small" disabled>Export</button>
+              <button id="docsShare" class="btn small" disabled>Share</button>
+            </div>
+          </div>
+
+          <article id="docsPreview" class="preview empty">
+            <div class="empty-state">
+              <div class="empty-icon">📄</div>
+              <div class="empty-title">Select a document</div>
+              <div class="empty-subtitle">We will render a clean preview here.</div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <!-- =========================
+           VIEW: FILE SHARING
+           ========================= -->
+      <div id="viewSharing" class="app-view hidden" aria-label="File sharing">
+        <section class="list-pane" aria-label="Sharing list">
+          <div class="pane-header">
+            <div class="pane-title">File sharing</div>
+            <div class="pane-actions">
+              <button id="shareNewLink" class="btn small primary">New link</button>
+            </div>
+          </div>
+
+          <div id="sharingList" class="message-list" aria-label="Sharing links">
+            <div class="msg" style="opacity:.8;">
+              <div class="subject">File sharing is a static demo section</div>
+              <div class="snippet">We will populate this with mock links and permissions in Step C.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer resizer-vertical" aria-hidden="true"></div>
+
+        <section class="preview-pane" aria-label="Sharing details">
+          <div class="pane-header">
+            <div class="pane-title">Details</div>
+            <div class="pane-actions">
+              <button id="shareCopy" class="btn small" disabled>Copy link</button>
+              <button id="shareRevoke" class="btn small danger" disabled>Revoke</button>
+            </div>
+          </div>
+
+          <article id="sharingPreview" class="preview empty">
+            <div class="empty-state">
+              <div class="empty-icon">🔗</div>
+              <div class="empty-title">Select a share link</div>
+              <div class="empty-subtitle">We will show permissions, expiry, and access here.</div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Compose modal -->
+  <div id="modalBackdrop" class="backdrop hidden"></div>
+  <div id="composeModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title">New message</div>
+      <button id="closeCompose" class="icon-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <label class="field">
+        <span>To</span>
+        <input id="composeTo" type="text" />
+      </label>
+      <label class="field">
+        <span>Subject</span>
+        <input id="composeSubject" type="text" />
+      </label>
+      <label class="field">
+        <span>Message</span>
+        <textarea id="composeBody" rows="10"></textarea>
+      </label>
+    </div>
+    <div class="modal-footer">
+      <button id="saveDraft" class="btn">Save draft</button>
+      <button id="sendFake" class="btn primary">Send</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden">
+    <div class="toast-card">Decompressing in progress..</div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
