@@ -1,0 +1,6 @@
+/* NSATS Design — optional larger specimen labels (owner option, 5 October 2026).
+   Load after design.css (build_site.py --design-labels large) to enlarge the small specimen labels.
+   The default build keeps the original sizes. */
+.cell-space{font-size:12px;padding:2px 4px}
+.use-ref{font-size:13px}
+.use-eyebrow{font-size:13px}

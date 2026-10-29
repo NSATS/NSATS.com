@@ -1,0 +1,6 @@
+# Server-side code is hosted separately and never published here
+*.php
+
+# macOS / archives
+.DS_Store
+*.zip

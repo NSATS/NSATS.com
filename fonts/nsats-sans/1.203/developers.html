@@ -1,0 +1,289 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NSATS Sans 1.203 — developer kits</title><link rel="stylesheet" href="css/nsats-sans.css"><style>body{font-family:var(--font-nsats);font-kerning:normal;font-synthesis:none;font-size:17px;line-height:1.6;color:#161616;background:#fff;margin:0}main{max-width:1040px;margin:auto;padding:32px 24px}h1{font-weight:600;font-size:38px;line-height:1.2}h2{font-weight:600;font-size:22px;margin-top:28px}h3{font-weight:600;font-size:18px}section{border-top:1px solid #d8d8d8;padding:20px 0}a{color:#006b85}.download{display:inline-block;margin:8px 8px 4px 0;padding:10px 18px;background:#006b85;color:#fff;text-decoration:none;font-weight:600}table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px solid #e0e0e0;padding:6px 8px;text-align:left;vertical-align:top}th{font-weight:600}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:#f4f4f4;padding:1px 4px}pre{background:#f4f4f4;padding:12px;overflow-x:auto}pre code{background:none;padding:0}</style></head><body><main>
+<p><a href="index.html">← NSATS Sans 1.203</a></p><h1>Developer kits</h1><p>Two kits for developers and designers. Both contain the NSATS Sans 1.203 fonts, the SIL Open Font License and the font log. Download, install and redistribute them under the licence.</p>
+<section><p><a class="download" href="NSATS-Sans-1.203-Web-Kit.zip">Download NSATS-Sans-1.203-Web-Kit.zip</a></p><h1>NSATS Sans 1.203 — Web Kit</h1>
+<p>Everything a web developer needs to use NSATS Sans on a website: the six WOFF2 fonts, ready-made CSS, an optional metric-adjusted fallback, a Sass partial, design tokens, Tailwind and Next.js snippets, examples and a loading check.</p>
+<p>NSATS Sans is the NSATS typeface (formerly NSATS Clear), a modified version of IBM Plex Sans 3.005. Licence: SIL Open Font License 1.1 (<code>OFL.txt</code>).</p>
+<h2>Contents</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fonts/woff2/</code></td>
+<td>NSATSSans-Regular, -Italic, -SemiBold, -SemiBoldItalic, -Bold, -BoldItalic (<code>.woff2</code>)</td>
+</tr>
+<tr>
+<td><code>css/nsats-sans.css</code></td>
+<td><code>@font-face</code> rules for the six faces, the <code>--font-nsats</code> variable and helper classes</td>
+</tr>
+<tr>
+<td><code>css/nsats-sans-fallback.css</code></td>
+<td>optional "NSATS Sans Fallback" (local Arial or Liberation Sans, adjusted towards NSATS Sans's average width and line metrics)</td>
+</tr>
+<tr>
+<td><code>css/fallback-metrics.json</code></td>
+<td>the computed fallback values</td>
+</tr>
+<tr>
+<td><code>scss/_nsats-sans.scss</code></td>
+<td>Sass partial: font faces, <code>$nsats-font-stack</code>, <code>@mixin nsats-text</code></td>
+</tr>
+<tr>
+<td><code>tokens/nsats-sans.tokens.json</code></td>
+<td>design tokens in the Design Tokens Format Module 2025.10 (font family and the three weights; the format defines no font-style type, so italic is not a token)</td>
+</tr>
+<tr>
+<td><code>frameworks/tailwind/</code></td>
+<td>Tailwind CSS v3 config snippet and v4 <code>@theme</code> snippet</td>
+</tr>
+<tr>
+<td><code>frameworks/nextjs/</code></td>
+<td>Next.js <code>next/font/local</code> setup (<code>nsats-sans.ts</code>) with a complete example (<code>layout.example.tsx</code>, <code>globals.example.css</code>)</td>
+</tr>
+<tr>
+<td><code>examples/</code></td>
+<td><code>self-hosted.html</code> and <code>hosted.html</code></td>
+</tr>
+<tr>
+<td><code>test/check.html</code></td>
+<td>loads all six faces and reports PASS/FAIL</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>package description (marked private so it cannot be published to npm by accident)</td>
+</tr>
+<tr>
+<td><code>OFL.txt</code>, <code>FONTLOG.txt</code></td>
+<td>licence and history</td>
+</tr>
+</tbody>
+</table>
+<h2>Quick start</h2>
+<h3>Option A — self-host (recommended for production)</h3>
+<ol>
+<li>Copy <code>css/</code> and <code>fonts/</code> to your site, keeping them side by side.</li>
+<li>In every page's <code>&lt;head&gt;</code>:</li>
+</ol>
+<pre><code class="language-html">&lt;link rel=&quot;preload&quot; href=&quot;/assets/nsats-sans/fonts/woff2/NSATSSans-Regular.woff2&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/nsats-sans/css/nsats-sans.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/nsats-sans/css/nsats-sans-fallback.css&quot;&gt;  &lt;!-- optional --&gt;
+</code></pre>
+<ol>
+<li>Use the font:</li>
+</ol>
+<pre><code class="language-css">body { font-family: var(--font-nsats); font-kerning: normal; font-synthesis: none; }
+h1, h2 { font-weight: 600; }
+strong { font-weight: 700; }
+</code></pre>
+<h3>Option B — load from the NSATS site</h3>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://nsats.github.io/NSATS.com/fonts/nsats-sans/1.203/css/nsats-sans.css&quot;&gt;
+</code></pre>
+<p>This serves the fonts from GitHub Pages and works only once version 1.203 is published there. Loading fonts from another site depends on that site's cross-origin (CORS) headers and caching, which have not yet been tested for this address; check it in your browser before relying on it. It is convenient for prototypes and internal pages; for production, self-host so that availability, caching and privacy are under your control.</p>
+<h2>Styles and weights</h2>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>CSS</th>
+<th>Menu name in Microsoft Office and other four-style menus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regular</td>
+<td><code>font-weight: 400; font-style: normal</code></td>
+<td>NSATS Sans</td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><code>400 italic</code></td>
+<td>NSATS Sans</td>
+</tr>
+<tr>
+<td>SemiBold</td>
+<td><code>600 normal</code></td>
+<td>NSATS Sans SemiBold</td>
+</tr>
+<tr>
+<td>SemiBold Italic</td>
+<td><code>600 italic</code></td>
+<td>NSATS Sans SemiBold</td>
+</tr>
+<tr>
+<td>Bold</td>
+<td><code>700 normal</code></td>
+<td>NSATS Sans</td>
+</tr>
+<tr>
+<td>Bold Italic</td>
+<td><code>700 italic</code></td>
+<td>NSATS Sans</td>
+</tr>
+</tbody>
+</table>
+<p>There is no Light (300), Medium (500) or variable font. Ask for 400/600/700 only; with <code>font-synthesis: none</code> the browser will not fake bold or italic.</p>
+<h2>Typography features</h2>
+<ul>
+<li><strong>Kerning</strong> is in the font; keep <code>font-kerning: normal</code> (the default in most browsers).</li>
+<li><strong>Figures</strong> are tabular (equal width) by default. Use <code>font-variant-numeric: proportional-nums</code> (class <code>.nsats-proportional</code>) for running text if you prefer.</li>
+<li><strong>Accents</strong>: 388 characters, including Latin Extended-A, and 15 combining accents that the font positions with its <code>mark</code> and <code>mkmk</code> features. In browsers that apply these features, decomposed (NFD) sequences for the supported letters are designed to display like the composed (NFC) letters; this has been checked for test strings, not for every combination. Stacked accents outside the character set have known limitations (see the distribution's <code>RELEASE-NOTES.txt</code>).</li>
+<li><strong>Languages</strong>: English and Western European languages, plus Central European, Baltic, Turkish, Maltese, Esperanto and Welsh. Not included: Romanian comma-below letters (Ș ș Ț ț, U+0218–U+021B), Vietnamese, Greek and Cyrillic; the browser uses the next font in the stack for those.</li>
+</ul>
+<h2>Fallback and layout shift</h2>
+<p><code>nsats-sans-fallback.css</code> defines "NSATS Sans Fallback" from the visitor's own Arial (or Liberation Sans), adjusted with <code>size-adjust</code> and line-metric overrides (values in <code>css/fallback-metrics.json</code>).</p>
+<p>How the values were calculated: for each face, the average advance width of one English prose calibration sample (below) in NSATS Sans was divided by the same average in Liberation Sans, whose advance widths match Arial's. This uses the fonts' unshaped advance widths — no kerning, shaping or browser rounding. Ascent and descent overrides reproduce NSATS Sans's line metrics (hhea 1025 / 275, line gap 0) at the adjusted size.</p>
+<p>What this means:
+- For text similar to the sample, the fallback's average width and line height approximate NSATS Sans, which can reduce layout shift when the web font arrives. On the sample itself the calculated width difference falls from 1.1–2.2 % (unadjusted Arial widths) to below 0.01 %.
+- It is not a guarantee for other text. Example: for the digits 0123456789, Arial's advance widths are 7.31 % narrower than NSATS Sans's; with the adjustment they are 5.70 % narrower in Regular and Italic, but 9.31 % narrower in SemiBold and SemiBold Italic and 8.30 % narrower in Bold and Bold Italic.
+- Browsers round line metrics to whole pixels, so the fallback's line height can differ from NSATS Sans's by a pixel or two at some font sizes.
+- Layout shift (CLS) has not been measured with this file. Check your own pages, for example with your browser's performance tools.</p>
+<p>Calibration sample: "NSATS licenses quantum computing software and technology to partners worldwide. Clear communication helps people compare options and make informed decisions. The quick brown fox jumps over the lazy dog. Please review reference NSATS/2026/037 and confirm AED 12,450.00 before the meeting on Monday. Our research, engineering and compliance teams work together across Geneva and Dubai."</p>
+<h2>Frameworks</h2>
+<ul>
+<li><strong>Sass</strong>: <code>@use "nsats-sans" with ($nsats-font-path: "/assets/nsats-sans/fonts/woff2");</code> then <code>@include nsats-sans.nsats-text(600);</code>. Uses the Sass module system (<code>@use</code>), so it needs Dart Sass; LibSass and node-sass are not supported.</li>
+<li><strong>Tailwind v3</strong>: merge <code>frameworks/tailwind/tailwind.config.js</code>, load the CSS, then use <code>class="font-nsats"</code>.</li>
+<li><strong>Tailwind v4</strong>: see <code>frameworks/tailwind/tailwind-v4.css</code>.</li>
+<li>
+<p><strong>Next.js</strong> (App Router): copy <code>frameworks/nextjs/nsats-sans.ts</code> into <code>app/</code> and <code>fonts/woff2/*.woff2</code> into <code>app/fonts/</code>. Then apply the font in one of two ways:</p>
+<ul>
+<li><strong>A — CSS variable:</strong> <code>&lt;html lang="en" className={nsatsSans.variable}&gt;</code> and, in <code>app/globals.css</code>, <code>body { font-family: var(--font-nsats); }</code>. The <code>.variable</code> class only defines <code>--font-nsats</code>; the <code>font-family</code> rule is what applies it. Complete example: <code>layout.example.tsx</code> and <code>globals.example.css</code>.</li>
+<li><strong>B — class name:</strong> <code>&lt;html lang="en" className={nsatsSans.className}&gt;</code>, which sets <code>font-family</code> directly.</li>
+</ul>
+<p>Do not also load <code>css/nsats-sans.css</code>; <code>next/font</code> generates its own <code>@font-face</code> rules and, with <code>adjustFontFallback: 'Arial'</code>, its own adjusted Arial fallback.
+- <strong>React / Vue / plain HTML</strong>: import <code>css/nsats-sans.css</code> once (for example in your root layout) and use <code>var(--font-nsats)</code>.
+- <strong>E-mail</strong>: most e-mail clients do not load web fonts. Use the stack <code>"NSATS Sans", Arial, sans-serif</code> so recipients without the font see Arial.</p>
+</li>
+</ul>
+<h2>Serving</h2>
+<ul>
+<li>MIME type <code>font/woff2</code>; long cache lifetimes are safe because each version has its own file names and path.</li>
+<li>Fonts loaded from another origin need CORS (<code>Access-Control-Allow-Origin</code>). Cross-origin loading from the NSATS GitHub Pages address has not yet been tested.</li>
+<li>Keep each version under its own path (for example <code>/assets/nsats-sans/1.203/</code>) and never overwrite older files.</li>
+</ul>
+<h2>Testing</h2>
+<p>Serve the kit folder (for example <code>python3 -m http.server</code>) and open <code>test/check.html</code>; it should report "6 of 6 faces loaded".</p>
+<p>Tested for this kit on Linux only (7 October 2026): in headless Chromium 141 the check page loaded 6 of 6 faces; the Sass partial compiled with Dart Sass 1.105.1; the Tailwind snippets built with Tailwind CSS 3.4.19 and 4.3.3 (class <code>font-nsats</code> generated); the Next.js example built with Next.js 16.4.0 using each of the two methods, and the served page loaded all six faces. Not tested: browsers on Windows, macOS, iPhone and Android with this kit, cross-origin loading from the NSATS site, and layout shift.</p>
+<h2>Licence</h2>
+<p>SIL Open Font License 1.1. You may use, copy, modify and redistribute the fonts; keep <code>OFL.txt</code> with them; do not sell the fonts by themselves; do not name modified versions "Plex" or use IBM's name to promote them. The licence's conditions apply to the fonts themselves; they do not extend to websites or documents that use the fonts.</p>
+<h2>Integrity</h2>
+<p><code>SHA256SUMS.txt</code> lists every file in the kit except itself. Check with <code>shasum -a 256 -c SHA256SUMS.txt</code>.</p></section>
+<section><p><a class="download" href="NSATS-Sans-1.203-Documents-Kit.zip">Download NSATS-Sans-1.203-Documents-Kit.zip</a></p><h1>NSATS Sans 1.203 — Documents, Print and Design Kit</h1>
+<p>Everything needed to use NSATS Sans in documents, presentations, PDFs, print and design applications: the six desktop fonts, install guides and scripts, Word and PowerPoint templates, Office theme fonts, PDF and print examples for four toolchains, design-application guidance, a specimen and reference sheets.</p>
+<p>NSATS Sans is the NSATS typeface (formerly NSATS Clear), a modified version of IBM Plex Sans 3.005. Licence: SIL Open Font License 1.1 (<code>OFL.txt</code>). For websites use the separate <strong>Web Kit</strong>.</p>
+<h2>Contents</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fonts/ttf/</code></td>
+<td>NSATSSans-Regular, -Italic, -SemiBold, -SemiBoldItalic, -Bold, -BoldItalic (<code>.ttf</code>, unhinted)</td>
+</tr>
+<tr>
+<td><code>install/</code></td>
+<td><code>INSTALL.md</code> (macOS, Windows, Linux, mobile notes) and per-user install scripts for macOS, Windows and Linux</td>
+</tr>
+<tr>
+<td><code>office/</code></td>
+<td>Word template (<code>.dotx</code>) and sample (<code>.docx</code>), PowerPoint template (<code>.potx</code>), Office theme-fonts file, <code>OFFICE.md</code> (Word, PowerPoint, Excel, Pages/Keynote/Numbers, Google Docs)</td>
+</tr>
+<tr>
+<td><code>print-and-pdf/</code></td>
+<td><code>PRINT-AND-PDF.md</code>; examples for HTML-to-PDF (Chrome/Playwright/WeasyPrint), LaTeX (XeLaTeX/LuaLaTeX), Node.js (PDFKit) and Python (ReportLab)</td>
+</tr>
+<tr>
+<td><code>design-apps/DESIGN-APPS.md</code></td>
+<td>Figma, Adobe InDesign/Illustrator/Photoshop, Affinity, Sketch, Canva, Apple and Google apps</td>
+</tr>
+<tr>
+<td><code>reference/</code></td>
+<td><code>NSATS-Sans-1.203-Specimen.pdf</code> (and its <code>specimen.html</code>), <code>FONT-FACTS.md</code>, <code>CHARACTER-SET.txt</code></td>
+</tr>
+<tr>
+<td><code>web-fonts.css</code></td>
+<td><code>@font-face</code> rules for the TTFs, used by the HTML print example and the specimen</td>
+</tr>
+<tr>
+<td><code>OFL.txt</code>, <code>FONTLOG.txt</code></td>
+<td>licence and history</td>
+</tr>
+</tbody>
+</table>
+<h2>Quick start</h2>
+<ol>
+<li>Install the fonts (<code>install/INSTALL.md</code>).</li>
+<li>Word: open <code>office/NSATS-Sans-Word-Template.dotx</code> — headings in NSATS Sans SemiBold, text in NSATS Sans, kerning on.</li>
+<li>PowerPoint: open <code>office/NSATS-Sans-PowerPoint-Template.potx</code>.</li>
+<li>PDF from code: see <code>print-and-pdf/PRINT-AND-PDF.md</code>.</li>
+</ol>
+<h2>Names in menus</h2>
+<table>
+<thead>
+<tr>
+<th>Face</th>
+<th>Microsoft Office (four-style menus)</th>
+<th>Applications that group by typographic family (varies by app)</th>
+<th>CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regular</td>
+<td>NSATS Sans</td>
+<td>NSATS Sans – Regular</td>
+<td>400 normal</td>
+</tr>
+<tr>
+<td>Italic</td>
+<td>NSATS Sans (italic)</td>
+<td>NSATS Sans – Italic</td>
+<td>400 italic</td>
+</tr>
+<tr>
+<td>SemiBold</td>
+<td><strong>NSATS Sans SemiBold</strong></td>
+<td>NSATS Sans – SemiBold</td>
+<td>600 normal</td>
+</tr>
+<tr>
+<td>SemiBold Italic</td>
+<td><strong>NSATS Sans SemiBold</strong> (italic)</td>
+<td>NSATS Sans – SemiBold Italic</td>
+<td>600 italic</td>
+</tr>
+<tr>
+<td>Bold</td>
+<td>NSATS Sans (bold)</td>
+<td>NSATS Sans – Bold</td>
+<td>700 normal</td>
+</tr>
+<tr>
+<td>Bold Italic</td>
+<td>NSATS Sans (bold italic)</td>
+<td>NSATS Sans – Bold Italic</td>
+<td>700 italic</td>
+</tr>
+</tbody>
+</table>
+<h2>Important notes</h2>
+<ul>
+<li><strong>Word kerning:</strong> turn on "Kerning for fonts" (1 pt and above) — the templates already do. Without it the spacing pairs are not applied.</li>
+<li><strong>Converting older documents:</strong> documents set in NSATS Clear keep using NSATS Clear. Re-select NSATS Sans, or in Pages/Keynote use Format &gt; Font &gt; Replace Fonts.</li>
+<li><strong>Coverage:</strong> 388 characters (Western, Central European, Baltic, Turkish, Maltese, Esperanto, Welsh). Not included: Romanian comma-below letters, Vietnamese, Greek, Cyrillic.</li>
+<li><strong>Known limitations</strong> (stacked accents outside the character set: clipping in TextEdit, overlap in Keynote, and a separate PDF-copying problem; measured with the 1.202 fonts) and untested platforms are listed in <code>print-and-pdf/PRINT-AND-PDF.md</code> and the release notes.</li>
+</ul>
+<h2>What was tested for this kit</h2>
+<p>On Linux only: the Word and PowerPoint files pass an Office schema validator and render in NSATS Sans in LibreOffice (structural checks, not Microsoft Office); the ReportLab, PDFKit, XeLaTeX, LuaLaTeX and Chromium HTML examples produce PDFs with NSATS Sans embedded; the Linux install script installs all six fonts. Separately, the fonts' design (as NSATS Clear 1.202, identical glyphs and spacing) was tested natively on a Mac in Word, Pages, Keynote, TextEdit and Preview. Not tested with this kit: Microsoft Office itself, Windows (including the PowerShell script), iPhone/iPad, Android, Adobe and other design applications, physical print.</p>
+<h2>Licence</h2>
+<p>SIL Open Font License 1.1: you may use, copy, embed, modify and redistribute the fonts; keep <code>OFL.txt</code> with them; do not sell the fonts by themselves; do not use "Plex" in the name of a modified version or IBM's name to promote it. The licence's conditions apply to the fonts; they do not extend to documents, presentations or PDFs made with them.</p>
+<h2>Integrity</h2>
+<p><code>SHA256SUMS.txt</code> lists every file in the kit except itself. Check with <code>shasum -a 256 -c SHA256SUMS.txt</code>.</p></section>
+<footer><p>Modified from IBM Plex Sans 3.005. SIL OFL 1.1. Not affiliated with or endorsed by IBM.</p></footer></main></body></html>

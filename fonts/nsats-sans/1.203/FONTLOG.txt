@@ -1,0 +1,126 @@
+NSATS Sans (formerly NSATS Clear) — FONTLOG, current version 1.203 (7 October 2026)
+The entries below are chronological and unchanged from the NSATS Clear 1.202 package; entries before 1.203 use the former name. The newest entry is at the end.
+
+FONTLOG for NSATS Clear (Regular, Italic, SemiBold, SemiBold Italic, Bold, Bold Italic), version 1.100
+======================================================================================================
+All six styles: release candidate 04.
+
+This file provides information on the changes made to this font software. It is provenance information; it is not an OFL requirement.
+
+Basic information
+-----------------
+- NSATS Clear is a modified version of IBM Plex Sans 3.005, licensed under the SIL Open Font License 1.1 (see OFL.txt).
+- It is not affiliated with or endorsed by IBM.
+- "Plex" is a Reserved Font Name and is not used in any font name.
+
+Repertoire
+----------
+Version 1.100 covers 234 characters (the Tier A Western European set; source/Repertoire manifest - Tier A.csv):
+Basic Latin, Latin-1, Œ œ Š š Ž ž Ÿ ƒ ˆ ˜, the full Windows-1252 code page, and ‐ ‑ ‚ „ † ‡ ‰ ′ ″ ‹ › ⁄ № ≈ ≠ ≤ ≥ ✓,
+thin space and narrow no-break space. Version 1.000 covered the first 122 of these.
+
+Changes from IBM Plex Sans 3.005 (summary)
+------------------------------------------
+- Redrawn or refined glyphs:
+  - figures 0 1 2 3 5 7
+  - capitals C G K M Q R S
+  - lowercase a c e l r s t
+  - é è ç
+- Lowercase vertical proportions: x-height 538 (inherited lowercase transformed; horizontal metrics unchanged).
+- Spacing: approved changes for K M R a l r 3 (Regular) and K M R S a l r 3 c (Bold); see Phase 1 Build, Milestone 1.
+- New: ½ ¼ ¾, built from NSATS figures, with fraction spacing approved 30 Sep 2026. ® ™ ← → are the Plex outlines.
+- New: proportional figures as an OpenType option (pnum); tabular figures remain the default (tnum returns to them).
+- Italic and Bold Italic: a designed 11-degree slant of the NSATS uprights (IBM Plex Sans Italic's angle), with an optical correction for round letters (O Q o 0 ö). Same advances, kerning and features as the uprights. Not the IBM Plex Sans Italic outlines.
+- SemiBold and SemiBold Italic: weight position 0.704 between Regular and Bold (IBM Plex Sans SemiBold's own position). Glyphs unchanged from Plex use the Plex SemiBold outlines (with the lowercase transform where applicable); NSATS-redrawn glyphs are interpolated between NSATS Regular and Bold. Kerning by the same method from Plex SemiBold; K-V -15, K-Y -11. Names: family "NSATS Clear SemiBold" (style-linked Regular/Italic) within typographic family "NSATS Clear"; weight 600. SemiBold Italic is the same 11-degree slant.
+- Western European characters (version 1.100): IBM Plex outlines for symbols and for letters NSATS did not redraw (lowercase
+  through the x-height transform); accented letters are NSATS base letters with accents centred on the base (on a, over its
+  top half), lowercase accents raised with the x-height; ¹ ² ³ ª º ¢ æ œ built from NSATS parts and spaced by the Phase 1
+  rule (æ shares NSATS a's straight stem with NSATS e, as IBM Plex Sans's own æ does); the dotless i is an unencoded component; the soft hyphen is drawn as the hyphen.
+- Kerning: IBM Plex pairs transferred pair by pair. Inherited pairs keep Plex values; pairs involving redrawn letters are adjusted. Bold K-V and K-Y loosened (-15, -10).
+- Hinting: none. A minimal 'prep' enables smart dropout control. Stray glyph instructions imported from Plex were removed.
+- Metadata: names "NSATS Clear"; version 1.100; Windows-1252 code page declared (complete coverage).
+
+ChangeLog
+---------
+2026-10-01  1.100 RC04 (six styles). RC03 with æ redrawn after the design review; nothing else changed. Phase 3
+            defaults (accent placement, dotless i, soft hyphen, version) confirmed by A.
+2026-10-01  1.100 RC03 (six styles; superseded before release). Phase 3: the 234-character Western European set. Phase 1 glyphs and kerning unchanged.
+2026-10-01  1.000 SemiBold RC01 (SemiBold, SemiBold Italic). Phase 2b; K1-SB and naming approved by A.
+2026-09-30  1.000 RC02 (four styles). Adds Italic and Bold Italic (11 degrees), proportional figures, fraction spacing and Bold K-V/K-Y kerning.
+2026-09-30  1.000 RC01 (uprights). Built from the verified frozen upright baseline (Milestone 1 Correction 1).
+
+Known limitations
+-----------------
+- Bold zero has a recorded small-size limitation at 11–16 px (scope §6). Zero width-mark study 01 (30 Sep 2026) found no condition that passed its agreed gates; the accepted zero is kept.
+- Characters outside the 234 (for example Central European letters such as ł, ő, č) fall back to another font.
+- The soft hyphen maps to the visible hyphen glyph (the manifest rule); its behaviour in apps is under test.
+- The fraction slash (U+2044) does not build fractions: 1⁄8 shows full-size figures. Use ½ ¼ ¾, or 1/8.
+- Untested:
+  - Microsoft Word (Windows/Mac), including AutoCorrect
+  - Windows DirectWrite/GDI
+  - macOS native applications
+  - iOS/Android
+  - website environments W1–W7
+  - physical print
+  - hinted rendering
+  - reader studies
+
+
+6 October 2026 — NSATS Clear 1.200 CANDIDATE, not owner-approved.
+Built in an isolated folder from the approved 1.100 sources; no 1.100 file changed.
+Added full Latin Extended-A and the 19 missing non-PUA Mac Roman characters; 388 encoded characters total. Added 15 zero-width combining marks and contextual cap variants, dotless alternates, ccmp, mark and mkmk. Retained existing pnum/tnum and kern lookups. New letters are derived from IBM Plex Sans 3.005 with the documented NSATS lowercase transform and 11-degree italic slant; barred forms use NSATS bases, and new accents use NSATS bases. Corrected candidate-only barred-letter fragments and detached ogonek joins during development.
+Strengthened only the inner zero marks (tabular and proportional) in Bold, Bold Italic, SemiBold and SemiBold Italic; no existing advances or kerning changed. Added typographic family names to R/I/B/BI, and STAT to all six. Retained SemiBold legacy family grouping. Added separate ttfautohint Windows TTFs with identical geometric outlines, metrics and names; primary TTF and web WOFF2 stay unhinted.
+CoreText and HarfBuzz NFC/NFD checks pass for this candidate, within the documented test boundaries. Windows, mobile, Word, physical print and reader acceptance remain open. See REPORT.md; this entry is not production approval.
+
+
+6 October 2026 — NSATS Clear 1.201 CANDIDATE, not production-approved.
+Owner-approved N1 repair of the 1.200 candidate (Claude verification Addendum 01/02; Option B approved the same day), built in a new folder. No 1.200 or 1.100 file changed.
+Only change: the top (class 0) mark-to-base anchors of the 68 precomposed capitals that carry a top accent (all except Ľ) now sit above the existing accent: y = max(698, yMax − 12 + Δ), Δ = 18 (Regular, Italic), 20 (SemiBold, SemiBold Italic), 21 (Bold, Bold Italic); x follows the 1.200 build's centre function, including the 11-degree italic offset. A second combining mark after an accented capital (e.g. Ê + U+0301) no longer collides, with clearance at least that of the matching lowercase stack.
+No outline, advance, metric, kerning, GSUB, GDEF, cmap, mkmk or lowercase anchor changed. Name IDs 3/5 and head.fontRevision read 1.201. Hinted fonts regenerated with the recorded ttfautohint 1.8.4.16-eb64 parameters; their hinting is identical to 1.200's.
+Disclosed: such out-of-repertoire capital stacks reach 1,260 / 1,302 / 1,321 units (Regular-Italic / SemiBold / Bold pairs) against the unchanged usWinAscent 1,025; application clipping is untested. Native CoreText, Windows, mobile, Word, physical print and reader acceptance remain open. See REPORT.md; this entry is not production approval.
+
+
+6 October 2026 — NSATS Clear 1.202 CANDIDATE, not production-approved.
+Built in a new folder from the 1.201 candidate under the owner-approved revised scope (original recommendation, Revision 01 and Revision 02; S0-B with τ basis (i); Kï values approved the same day). No 1.201, 1.200 or 1.100 file changed.
+Changes:
+- N3: OS/2 code-page bits now declare Windows Central European (1250), Turkish (1254), Baltic (1257) and Mac Roman alongside Western (1252); ulCodePageRange1 = 0x20000093. Coverage of every declared page is complete.
+- N2: a supplementary kerning lookup gives the Latin Extended-A letters added in 1.200 the kerning of their base letters (Revision 02 proxy rules). Each new pair was tested for collision and against a frozen per-face minimum spacing (τ) taken from the shipped Latin-1 accented pairs. Pairs that would collide or crowd were reduced; pairs that collide even unkerned were held (no kerning added) for later owner decisions. No opening (positive) kerning was added. Existing kerning is unchanged except Kï.
+- Kï: SemiBold and SemiBold Italic +12 → +27, Bold and Bold Italic +16 → +37 (removes an existing overlap of K's arm and ï's dots; owner-approved values). Regular and Italic unchanged.
+- Name IDs 3/5 and head.fontRevision read 1.202.
+No outline, advance, metric, mark positioning, GSUB, GDEF, cmap or hinting instruction changed; the hinted fonts keep 1.201's hinting tables byte-for-byte.
+Open: native CoreText for 1.202, Windows (including the effect of the new code-page bits), mobile, Word, physical print, reader acceptance, native-language review, and owner decisions on HOLD and positive-source pairs. See REPORT.md; this entry is not production approval.
+
+
+7 October 2026 — 1.202 Errata 01 (records only, owner-approved; no font file changed).
+- Corrected the six font checksums written into testing/Web test.html. They still listed the 1.201 WOFF2 files, although the page embeds the 1.202 fonts.
+- Word note: the 1.202 kerning, including the Kï correction, applies in Word only when "Kerning for fonts" is enabled at that size.
+- Disclosed limitation: TextEdit can clip out-of-repertoire tall accent stacks at its default line height.
+See records/ERRATA-01.md.
+
+
+7 October 2026 — 1.202 Errata 01 Addendum 02 (records only, owner-approved; no font file changed).
+- Corrected the README's TextEdit limitation: in the same Mac test PDFs, TextEdit also clipped the extra mark on out-of-repertoire capital stacks (for example Ê + U+0301), not only the extra-ring stacks.
+- Disclosed: in Keynote (14 pt lines, 11 pt text) these capital stacks overlapped the ogoneks on the line above, in all six styles.
+- Disclosed: text copied in Preview from the exported PDFs turns the extra marks on these capitals into ASCII characters. The rendering is unaffected.
+See records/ERRATA-01-ADDENDUM-02.md.
+
+7 October 2026 — 1.202 Errata 01 Addendum 03 (records only; owner authorized correction of the ranked findings).
+- Corrected the review, Addendum 02 and README: N1 rows at 23.5309536 pt clip about 1,041.7 units above the baseline; the separate tall-ring row at 11.7654768 pt clips about 1,083.3 units. All five tested N1 stacks exceed their own boundary in all six primary faces, including Regular/Italic Ü + macron.
+- Corrected the copy mechanism: the tested cap-mark subset codes lack ToUnicode entries; they are not explicitly mapped to ASCII. Their glyphs are unencoded in cmap; post format 3 omits glyph names, a separate property. The exact internal reader fallback is unestablished.
+- ActualText counts: Pages 1,940; Keynote additions 1,668; TextEdit direct 1,940; TextEdit imported 1,942. PDFium recovers 5/5 tested first-page N1 stacks in each; Word additions and the recorded Preview copies recover 0/5.
+- Supersedes Addendum 02's unqualified sentence "The rendering is unaffected": this text-mapping problem is separate from the disclosed TextEdit clipping and Keynote overlap.
+- Prior text is preserved byte-for-byte. The complete historical README prefix before Addendum 02 remains only partly verifiable because the earlier plaintext is unavailable; Addendum 03 preserves its own before-state and verifies this revision's prefix exactly.
+- No font binary, line metric or test fixture changed. Accepted limitations and completed recorded-version Mac testing remain settled. 1.100 remains approved; 1.202 is not production-approved.
+See records/ERRATA-01-ADDENDUM-03.md.
+
+
+7 October 2026 — 1.202 Errata 01 Addendum 04 (records only, owner-approved; no font file changed).
+- Added one qualifier to the README TextEdit limitation: on the first line of a page TextEdit clipped lower (about 1,000–1,017 units at 11.77 pt), which in the imported TextEdit PDF cut 0.06 pt or less from two encoded glyphs (Bold Italic Å, SemiBold Italic ĥ), not visible at these sizes.
+- Closed the historical README verification limit noted by Addenda 02 and 03: every earlier README version reconstructs byte-exactly to its recorded SHA-256, so each README change is proven confined to what its errata record states. Those "only partially verifiable" statements are superseded; their text is left unchanged as history.
+See records/ERRATA-01-ADDENDUM-04.md.
+
+
+7 October 2026 — NSATS SANS 1.203, owner-approved release.
+The owner renamed the family "NSATS Sans" and approved 1.203 for the NSATS website and NSATS documents. Built in a new folder from the NSATS Clear 1.202 candidate (with Errata 01 and Addenda 01-04 records); no earlier file changed.
+Only change: the name table (family NSATS Clear -> NSATS Sans, PostScript NSATSClear-* -> NSATSSans-*, name IDs 1, 3, 4, 5, 6, 10, 16), head.fontRevision 1.203 and head.modified 2026-10-07. File names follow the PostScript names. All other tables are byte-identical to 1.202 in all 12 TTFs; WOFF2 recompiled from the 1.203 unhinted TTFs with identical outlines. See records/rename-acceptance-1.203.json.
+Every 1.202 test result and disclosed limitation carries over unchanged. Windows, mobile, staging-website, Word for Windows, hinted rendering, print, reader and native-language checks remain unverified. NSATS Clear 1.100 stays published and unchanged.

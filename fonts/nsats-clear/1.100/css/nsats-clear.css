@@ -1,0 +1,11 @@
+/* NSATS Clear 1.100 — final distribution, owner approved 6 October 2026. */
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "NSATS Clear"; src: url("../fonts/woff2/NSATSClear-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+:root { --font-nsats: "NSATS Clear", "Helvetica Neue", Arial, sans-serif; }
+.nsats-text { font-family: var(--font-nsats); font-kerning: normal; font-synthesis: none; }
+.nsats-tabular { font-variant-numeric: tabular-nums; }
+.nsats-proportional { font-variant-numeric: proportional-nums; }
