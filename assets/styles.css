@@ -37,3 +37,5 @@
 @media(max-width:760px){.placement-intro{display:flex;flex-direction:column;gap:0;margin:18px 0 35px}.placement-intro .placement-image{order:-1}.placement-intro .page-head{padding:30px 0 0}.placement-intro h1{font-size:38px}.placement-art,.placement-panorama .placement-art,.placement-editorial .placement-art,.placement-middle .placement-art{min-height:220px}.placement-band .placement-art{min-height:180px}.placement-art strong{font-size:25px}.placement-art>span{padding:16px;font-size:14px}.placement-editorial,.placement-top{margin-top:18px}.placement-image figcaption{font-size:11px}.placement-band{margin-bottom:32px}}
 @media print{.placement-image{display:none}.placement-intro{display:block}.placement-intro .page-head{padding:0}.placement-intro h1{font-size:30pt}}
 
+
+.diagram-record{margin:0 0 1.5rem;max-width:520px} .diagram-record svg{display:block;width:100%;height:auto}
