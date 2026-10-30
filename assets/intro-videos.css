@@ -1,0 +1,61 @@
+/* NSATS introduction films. Uses the site's active palette and font. */
+[data-open-films][hidden]{display:none!important}
+.hero.nsats-video-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px;max-width:1440px;margin:auto;padding:48px 48px 40px;min-height:0}
+.hero.nsats-video-hero .hero-copy{padding:0;max-width:none;order:0}
+.hero.nsats-video-hero h1{font-size:clamp(34px,3.3vw,52px)}
+.hero.nsats-video-hero .lead{max-width:none}
+.nsats-intro-media{min-width:0;margin:0;align-self:center}
+.nsats-intro-media video,.nsats-modal-player video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#06121a}
+.nsats-intro-media figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:14px;color:var(--muted)}
+.nsats-film-description{margin-top:16px;font-size:14px;line-height:1.5;color:var(--muted)}
+.nsats-film-description summary{color:var(--action);cursor:pointer;padding:8px 0}
+.nsats-film-description p{font-size:14px;margin:8px 0}
+.nsats-pending-film{position:relative;min-height:310px;aspect-ratio:16/9;background:var(--tint);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px;overflow:hidden;color:var(--ink)}
+.nsats-pending-film h2{font-size:28px;margin:20px 0 8px}
+.nsats-pending-film p{font-size:16px;margin:0;color:var(--muted)}
+.nsats-globe{width:106px;height:106px;border-radius:50%;border:1px solid var(--action);position:relative;flex-shrink:0;background:radial-gradient(ellipse at 30% 30%,var(--paper),var(--tint) 60%,var(--accent))}
+.nsats-globe:before,.nsats-globe:after{content:'';position:absolute;inset:12px -14px;border:1px solid var(--action);opacity:.5;border-radius:50%;transform:rotate(-35deg)}
+.nsats-globe:after{inset:-12px 16px;transform:rotate(35deg)}
+.nsats-film-actions{margin-top:20px;display:flex;gap:16px;flex-wrap:wrap}
+.nsats-film-dialog{background:var(--paper);color:var(--ink);font-family:var(--font-sans);padding:0;border:0;max-width:1100px;width:calc(100% - 48px);max-height:calc(100dvh - 48px);overflow:auto;box-shadow:0 20px 60px #0004}
+.nsats-film-dialog::backdrop{background:rgb(22 22 22 / .65)}
+.nsats-film-dialog[open]{display:block}
+html.nsats-film-open{overflow:hidden}
+.nsats-film-dialog [hidden]{display:none!important}
+.nsats-dialog-inner{padding:28px 32px 24px}
+.nsats-dialog-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
+.nsats-dialog-top .eyebrow{margin:0}
+.nsats-dialog-close{background:transparent;border:0;color:var(--ink);width:44px;height:44px;font:inherit;font-size:28px;line-height:1;cursor:pointer}
+.nsats-dialog-close:hover{background:var(--layer)}
+.nsats-film-dialog h2{font-size:36px;margin:0 0 12px;font-weight:400}
+.nsats-dialog-intro{margin:0 0 26px;color:var(--muted);font-size:18px}
+.nsats-film-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--line);background:var(--line)}
+.nsats-film-card{display:flex;flex-direction:column;min-width:0;background:var(--paper)}
+.nsats-film-thumb{display:flex;position:relative;align-items:center;justify-content:center;width:100%;aspect-ratio:16/10;background:var(--deep);overflow:hidden}
+.nsats-film-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.nsats-film-thumb.nsats-geo-thumb{background:var(--tint)}
+.nsats-film-badge{position:absolute;bottom:10px;right:10px;background:#161616;color:#fff;padding:5px 8px;font-size:12px}
+.nsats-film-copy{padding:22px 20px 16px;display:flex;flex-direction:column;flex:1}
+.nsats-film-copy .eyebrow{font-size:11px;margin:0 0 12px;color:var(--muted)}
+.nsats-film-copy h3{font-size:24px;font-weight:400;line-height:1.2;margin:0 0 14px}
+.nsats-film-copy p{font-size:15px;line-height:1.5;color:var(--muted);margin:0 0 18px}
+.nsats-film-watch,.nsats-film-back{background:transparent;border:0;color:var(--action);text-align:left;font:inherit;cursor:pointer;min-height:44px;padding:10px 0;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.nsats-film-watch{margin-top:auto;width:100%}
+.nsats-film-watch:disabled{color:var(--muted);cursor:default;opacity:1}
+.nsats-film-watch:not(:disabled):hover,.nsats-film-back:hover{text-decoration:underline}
+.nsats-film-footer{border-top:1px solid var(--line);margin-top:26px;padding-top:20px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.nsats-film-footer fieldset{border:0;padding:0;margin:0;min-width:0}
+.nsats-film-footer legend{font-size:14px;line-height:1.4;margin:0 0 5px;padding:0}
+.nsats-film-footer label{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-right:22px;cursor:pointer;font-size:16px}
+.nsats-film-footer input{width:18px;height:18px;accent-color:var(--action);margin:0}
+.nsats-film-note,.nsats-film-status{font-size:13px;color:var(--muted);line-height:1.5;margin:14px 0 0}
+.nsats-film-status:empty{display:none}
+.nsats-film-status a{color:var(--action)}
+.nsats-modal-player h3{font-size:28px;font-weight:400;margin:8px 0 18px}
+.nsats-modal-player video{max-height:60dvh}
+.nsats-film-ended{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap}
+.nsats-video-fallback{font-size:14px;margin-top:10px}
+@media(max-width:1000px){.hero.nsats-video-hero{gap:28px;padding:40px 28px}.hero.nsats-video-hero .lead{font-size:18px}.nsats-dialog-inner{padding:24px}.nsats-film-copy{padding:18px 16px}.nsats-film-copy h3{font-size:22px}}
+@media(max-width:760px){.hero.nsats-video-hero{grid-template-columns:1fr;padding:32px 20px;gap:24px}.hero.nsats-video-hero .hero-copy{padding:0}.nsats-intro-media{width:100%}.nsats-intro-media video{aspect-ratio:4/5;max-height:none}.nsats-pending-film{min-height:260px;aspect-ratio:auto}.nsats-film-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.nsats-dialog-inner{padding:20px}.nsats-film-dialog h2{font-size:29px}.nsats-dialog-intro{font-size:16px}.nsats-film-grid{grid-template-columns:1fr}.nsats-film-card{display:grid;grid-template-columns:112px minmax(0,1fr)}.nsats-film-thumb{aspect-ratio:auto;height:100%;min-height:180px}.nsats-film-copy{padding:16px}.nsats-film-copy h3{font-size:21px}.nsats-film-copy p{font-size:14px;margin-bottom:6px}.nsats-film-copy .eyebrow{margin-bottom:8px}.nsats-film-badge{font-size:11px;right:5px;bottom:8px}.nsats-film-footer{align-items:stretch;gap:12px}.nsats-film-footer>.button{width:100%}.nsats-modal-player video{aspect-ratio:4/5}.nsats-globe{width:80px;height:80px}}
+@media(max-width:380px){.nsats-dialog-inner{padding:16px}.nsats-film-card{grid-template-columns:86px minmax(0,1fr)}.nsats-film-copy{padding:12px}.nsats-film-copy h3{font-size:19px}.nsats-film-badge{font-size:10px;padding:4px}.nsats-globe{width:62px;height:62px}}
+@media print{.nsats-film-dialog,.nsats-film-actions{display:none!important}.hero.nsats-video-hero{display:block}.nsats-intro-media video{display:none}}
