@@ -59,3 +59,11 @@ html.nsats-film-open{overflow:hidden}
 @media(max-width:760px){.hero.nsats-video-hero{grid-template-columns:1fr;padding:32px 20px;gap:24px}.hero.nsats-video-hero .hero-copy{padding:0}.nsats-intro-media{width:100%}.nsats-intro-media video{aspect-ratio:4/5;max-height:none}.nsats-pending-film{min-height:260px;aspect-ratio:auto}.nsats-film-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.nsats-dialog-inner{padding:20px}.nsats-film-dialog h2{font-size:29px}.nsats-dialog-intro{font-size:16px}.nsats-film-grid{grid-template-columns:1fr}.nsats-film-card{display:grid;grid-template-columns:112px minmax(0,1fr)}.nsats-film-thumb{aspect-ratio:auto;height:100%;min-height:180px}.nsats-film-copy{padding:16px}.nsats-film-copy h3{font-size:21px}.nsats-film-copy p{font-size:14px;margin-bottom:6px}.nsats-film-copy .eyebrow{margin-bottom:8px}.nsats-film-badge{font-size:11px;right:5px;bottom:8px}.nsats-film-footer{align-items:stretch;gap:12px}.nsats-film-footer>.button{width:100%}.nsats-modal-player video{aspect-ratio:4/5}.nsats-globe{width:80px;height:80px}}
 @media(max-width:380px){.nsats-dialog-inner{padding:16px}.nsats-film-card{grid-template-columns:86px minmax(0,1fr)}.nsats-film-copy{padding:12px}.nsats-film-copy h3{font-size:19px}.nsats-film-badge{font-size:10px;padding:4px}.nsats-globe{width:62px;height:62px}}
 @media print{.nsats-film-dialog,.nsats-film-actions{display:none!important}.hero.nsats-video-hero{display:block}.nsats-intro-media video{display:none}}
+
+/* Final networking film: full uncropped landscape frame at every viewport. */
+.nsats-applications-video{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px}
+.nsats-applications-video .page-head-copy{max-width:none;min-width:0}
+.nsats-applications-video .lead{max-width:none}
+video[data-film-kind="network"]{aspect-ratio:16/9!important;object-fit:contain}
+@media(max-width:1000px){.nsats-applications-video{gap:28px}}
+@media(max-width:760px){.nsats-applications-video{grid-template-columns:1fr;gap:24px}.nsats-network-media{width:100%}}

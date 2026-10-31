@@ -27,6 +27,7 @@
   const yes = dialog.querySelector('input[value="yes"]');
   const no = dialog.querySelector('input[value="no"]');
   let trigger = null;
+  let selectedFilm = 'quantum';
   const savePreference = () => {
     try {
       localStorage.setItem(KEY, no.checked ? 'true' : 'false');
@@ -36,7 +37,7 @@
   const showChoices = () => {
     video.pause();
     player.hidden = true; chooser.hidden = false; ended.hidden = true;
-    dialog.querySelector('[data-watch-quantum]').focus();
+    dialog.querySelector('[data-watch-' + selectedFilm + ']').focus();
   };
   const open = source => {
     if (dialog.open) return;
@@ -44,6 +45,7 @@
     no.checked = read('localStorage', KEY) === 'true' || read('localStorage', KEY) === null;
     yes.checked = !no.checked;
     chooser.hidden = false; player.hidden = true; ended.hidden = true; status.textContent = '';
+    document.querySelectorAll('video[data-inline-film]').forEach(film => film.pause());
     dialog.showModal(); document.documentElement.classList.add('nsats-film-open');
     try { sessionStorage.setItem(VISIT_KEY, 'true'); } catch (_) {}
     dialog.querySelector('[data-close-films]').focus();
@@ -54,10 +56,32 @@
   dialog.querySelectorAll('[data-close-films]').forEach(button => button.addEventListener('click', () => { saveAll(); dialog.close(); }));
   dialog.addEventListener('cancel', saveAll);
   dialog.addEventListener('close', () => { video.pause(); document.documentElement.classList.remove('nsats-film-open'); trigger?.focus(); });
-  dialog.querySelector('[data-watch-quantum]').addEventListener('click', () => {
-    saveAll(); responsiveSource(video); chooser.hidden = true; player.hidden = false; ended.hidden = true;
-    dialog.querySelector('[data-back-films]').focus();
-    video.play().catch(() => { status.textContent = 'Press Play in the video controls to start the film.'; });
+  const base = document.body.dataset.base || '../';
+  const films = {
+    quantum: {title:'Quantum-inspired computing', duration:46, desktop:'nsats-quantum-16x9.mp4', mobile:'nsats-quantum-4x5.mp4', poster:'quantum-poster-16x9.jpg', mobilePoster:'quantum-poster-4x5.jpg', route:'nsats/quantum/index.html'},
+    network: {title:'Quantum-classical networking', duration:36, desktop:'nsats-network-card-final.mp4', mobile:'nsats-network-card-final.mp4', poster:'network-card-poster.jpg', mobilePoster:'network-card-poster.jpg', route:'nsats/industries/index.html'}
+  };
+  Object.entries(films).forEach(([key, film]) => {
+    dialog.querySelector('[data-watch-' + key + ']').addEventListener('click', () => {
+      saveAll(); video.pause(); selectedFilm = key; status.textContent = '';
+      const assets = base + 'assets/videos/';
+      video.dataset.desktopSrc = assets + film.desktop;
+      video.dataset.mobileSrc = assets + film.mobile;
+      video.dataset.desktopPoster = assets + film.poster;
+      video.dataset.mobilePoster = assets + film.mobilePoster;
+      video.dataset.filmKind = key;
+      video.setAttribute('aria-label', 'NSATS ' + film.title + ', silent, ' + film.duration + ' seconds');
+      dialog.querySelector('#nsats-player-heading').textContent = film.title;
+      const fallback = video.querySelector('a'); fallback.href = assets + film.desktop; fallback.textContent = 'Open the film directly';
+      const note = dialog.querySelector('[data-player-note]');
+      const link = document.createElement('a'); link.href = base + film.route; link.textContent = 'Read about the technology';
+      note.replaceChildren(document.createTextNode(film.duration + ' seconds · Silent film · '), link);
+      if (key === 'network') note.append(document.createTextNode(' · Illustrative 10/15 Gb/s original-data comparison; physical links remain at 10 Gb/s.'));
+      responsiveSource(video); video.currentTime = 0;
+      chooser.hidden = true; player.hidden = false; ended.hidden = true;
+      dialog.querySelector('[data-back-films]').focus();
+      video.play().catch(() => { status.textContent = 'Press Play in the video controls to start the film.'; });
+    });
   });
   dialog.querySelectorAll('[data-back-films]').forEach(button => button.addEventListener('click', showChoices));
   dialog.querySelector('[data-replay-film]').addEventListener('click', () => { video.currentTime = 0; ended.hidden = true; video.play().catch(() => {}); });
