@@ -1,0 +1,20 @@
+/* Scoped to the owner-approved image placements. Full frames are never cropped. */
+.r33-visual{min-width:0;max-width:100%;margin:24px 0 0}
+.page-head>.r33-masthead{grid-column:1/-1;margin:0;max-width:1200px}
+.r33-visual picture{display:block;max-width:100%}
+.r33-visual img{display:block;width:100%;max-width:100%;height:auto;background:#f5f6f6}
+.r33-visual figcaption{margin:12px 0 0;font-size:16px;line-height:1.5;color:var(--ink,#18363f);max-width:none}
+.r33-enlarge{display:inline-block;margin-left:12px;text-underline-offset:3px}
+.r33-visual .r33-mobile-link{display:none}
+.r33-diagram{margin:28px 0}
+.r33-diagram-description{font-size:16px;line-height:1.6;max-width:850px;margin:12px 0 0}
+@media(max-width:1000px){
+  .r33-visual .r33-desktop-link{display:none}
+  .r33-visual .r33-mobile-link{display:inline-block}
+  .page-head>.r33-masthead{max-width:840px}
+}
+@media(max-width:600px){
+  .r33-visual figcaption{font-size:15px}
+  .r33-enlarge{display:block;margin:6px 0 0}
+}
+@media print{.r33-enlarge{display:none!important}.r33-visual{break-inside:avoid}}
