@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" role="img" aria-labelledby="title desc">
+<title id="title">Per-point deviation · G-SAMPLE-L08 · synthetic sample — not a measurement</title>
+<desc id="desc">Synthetic sample — not a measurement. The lines illustrate per-point percentage deviation for eight sensors; point 0 is excluded.</desc>
+<rect width="720" height="540" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#202428;font-size:11px}.grid{stroke:#dce1e5;stroke-width:1}.axis{stroke:#333;stroke-width:1}path{fill:none;stroke-linejoin:round;stroke-linecap:round}</style>
+<text x="24.00" y="25.00" style="font-size:16px;font-weight:bold">Synthetic sample — not a measurement</text>
+<text x="24.00" y="46.00" style="font-size:14px">G-SAMPLE-L08 · start 13:20 · per-point deviation</text>
+<text x="24.00" y="64.00" >laboratory · GLC-007 · lab run 8 of 18</text>
+<rect x="90.0" y="95.0" width="330.0" height="330.0" fill="none" class="axis"/>
+<path class="grid" d="M 90.00 95.0 V 425.0"/>
+<text x="90.00" y="443.00" text-anchor="middle" data-axis="x">0</text>
+<path class="grid" d="M 200.00 95.0 V 425.0"/>
+<text x="200.00" y="443.00" text-anchor="middle" data-axis="x">10</text>
+<path class="grid" d="M 310.00 95.0 V 425.0"/>
+<text x="310.00" y="443.00" text-anchor="middle" data-axis="x">20</text>
+<path class="grid" d="M 420.00 95.0 V 425.0"/>
+<text x="420.00" y="443.00" text-anchor="middle" data-axis="x">30</text>
+<path class="grid" d="M 90.0 425.00 H 420.0"/>
+<text x="81.00" y="429.00" text-anchor="end">0.0</text>
+<path class="grid" d="M 90.0 377.86 H 420.0"/>
+<text x="81.00" y="381.86" text-anchor="end">2.0</text>
+<path class="grid" d="M 90.0 330.71 H 420.0"/>
+<text x="81.00" y="334.71" text-anchor="end">4.0</text>
+<path class="grid" d="M 90.0 283.57 H 420.0"/>
+<text x="81.00" y="287.57" text-anchor="end">6.0</text>
+<path class="grid" d="M 90.0 236.43 H 420.0"/>
+<text x="81.00" y="240.43" text-anchor="end">8.0</text>
+<path class="grid" d="M 90.0 189.29 H 420.0"/>
+<text x="81.00" y="193.29" text-anchor="end">10.0</text>
+<path class="grid" d="M 90.0 142.14 H 420.0"/>
+<text x="81.00" y="146.14" text-anchor="end">12.0</text>
+<path class="grid" d="M 90.0 95.00 H 420.0"/>
+<text x="81.00" y="99.00" text-anchor="end">14.0</text>
+<text x="255.00" y="468.00" text-anchor="middle">Point index</text>
+<text transform="translate(20 260.0) rotate(-90)" text-anchor="middle">Deviation (%)</text>
+<path d="M 101.00 256.71 L 112.00 352.96 L 123.00 373.88 L 134.00 168.16 L 145.00 199.67 L 156.00 149.34 L 167.00 163.22 L 178.00 170.23 L 189.00 224.09 L 200.00 235.90 L 211.00 350.54 L 222.00 333.29 L 233.00 181.36 L 244.00 301.83 L 255.00 203.60 L 266.00 169.20 L 277.00 224.10 L 288.00 156.36 L 299.00 166.11 L 310.00 170.21 L 321.00 330.90 L 332.00 310.43 L 343.00 235.11 L 354.00 356.96 L 365.00 221.87 L 376.00 324.37 L 387.00 264.68 L 398.00 356.45 L 409.00 222.72 L 420.00 236.40" stroke="#005a8d" stroke-width="1.3" stroke-dasharray="8 3"/>
+<path d="M 101.00 269.97 L 112.00 362.16 L 123.00 232.55 L 134.00 359.78 L 145.00 205.36 L 156.00 230.43 L 167.00 208.98 L 178.00 149.80 L 189.00 354.66 L 200.00 294.84 L 211.00 169.55 L 222.00 302.97 L 233.00 166.96 L 244.00 216.24 L 255.00 245.66 L 266.00 260.80 L 277.00 348.19 L 288.00 319.24 L 299.00 260.34 L 310.00 353.13 L 321.00 367.26 L 332.00 210.95 L 343.00 356.39 L 354.00 301.28 L 365.00 361.26 L 376.00 355.18 L 387.00 317.22 L 398.00 162.36 L 409.00 307.52 L 420.00 189.52" stroke="#a63b00" stroke-width="1.3" stroke-dasharray="3 3"/>
+<path d="M 101.00 349.16 L 112.00 293.68 L 123.00 183.08 L 134.00 246.36 L 145.00 323.28 L 156.00 292.80 L 167.00 255.32 L 178.00 313.73 L 189.00 336.11 L 200.00 185.34 L 211.00 240.78 L 222.00 214.34 L 233.00 211.73 L 244.00 376.74 L 255.00 257.54 L 266.00 336.63 L 277.00 182.69 L 288.00 371.32 L 299.00 181.84 L 310.00 295.16 L 321.00 306.67 L 332.00 275.90 L 343.00 282.54 L 354.00 157.63 L 365.00 166.88 L 376.00 145.52 L 387.00 357.54 L 398.00 165.89 L 409.00 222.23 L 420.00 218.28" stroke="#00664b" stroke-width="1.3" stroke-dasharray="10 3 2 3"/>
+<path d="M 101.00 335.09 L 112.00 359.06 L 123.00 281.85 L 134.00 156.31 L 145.00 247.29 L 156.00 250.31 L 167.00 240.49 L 178.00 258.72 L 189.00 173.92 L 200.00 181.12 L 211.00 247.90 L 222.00 235.71 L 233.00 218.92 L 244.00 319.08 L 255.00 294.08 L 266.00 265.36 L 277.00 347.60 L 288.00 182.97 L 299.00 186.90 L 310.00 337.02 L 321.00 263.44 L 332.00 325.21 L 343.00 180.66 L 354.00 357.51 L 365.00 256.73 L 376.00 245.34 L 387.00 273.51 L 398.00 222.88 L 409.00 318.43 L 420.00 160.26" stroke="#693f99" stroke-width="1.3" stroke-dasharray="2 2"/>
+<path d="M 101.00 244.30 L 112.00 276.40 L 123.00 325.21 L 134.00 144.94 L 145.00 312.76 L 156.00 295.44 L 167.00 264.38 L 178.00 241.49 L 189.00 159.10 L 200.00 147.05 L 211.00 190.93 L 222.00 295.35 L 233.00 259.39 L 244.00 236.12 L 255.00 324.86 L 266.00 156.30 L 277.00 220.40 L 288.00 229.59 L 299.00 219.02 L 310.00 335.08 L 321.00 246.63 L 332.00 372.13 L 343.00 296.03 L 354.00 341.29 L 365.00 325.66 L 376.00 286.62 L 387.00 201.31 L 398.00 256.37 L 409.00 355.28 L 420.00 344.76" stroke="#a02365" stroke-width="1.3" stroke-dasharray="12 4"/>
+<path d="M 101.00 208.68 L 112.00 256.15 L 123.00 188.56 L 134.00 227.10 L 145.00 361.54 L 156.00 293.37 L 167.00 209.59 L 178.00 252.21 L 189.00 224.36 L 200.00 276.80 L 211.00 228.12 L 222.00 249.55 L 233.00 329.30 L 244.00 142.88 L 255.00 300.43 L 266.00 332.39 L 277.00 249.43 L 288.00 186.31 L 299.00 154.58 L 310.00 244.29 L 321.00 166.27 L 332.00 201.80 L 343.00 344.06 L 354.00 367.99 L 365.00 364.99 L 376.00 143.26 L 387.00 259.39 L 398.00 187.36 L 409.00 239.35 L 420.00 353.37" stroke="#526d00" stroke-width="1.3" stroke-dasharray="5 2 1 2"/>
+<path d="M 101.00 217.58 L 112.00 164.08 L 123.00 198.19 L 134.00 221.76 L 145.00 322.47 L 156.00 223.08 L 167.00 195.58 L 178.00 279.96 L 189.00 257.79 L 200.00 220.88 L 211.00 199.21 L 222.00 223.49 L 233.00 281.31 L 244.00 304.13 L 255.00 173.62 L 266.00 170.73 L 277.00 247.29 L 288.00 327.73 L 299.00 257.92 L 310.00 188.17 L 321.00 167.30 L 332.00 192.65 L 343.00 145.52 L 354.00 198.67 L 365.00 204.41 L 376.00 263.49 L 387.00 288.51 L 398.00 177.29 L 409.00 296.39 L 420.00 214.67" stroke="#72503a" stroke-width="1.3" stroke-dasharray="8 2 2 2 2 2"/>
+<path d="M 101.00 374.22 L 112.00 338.05 L 123.00 298.74 L 134.00 173.87 L 145.00 150.77 L 156.00 288.95 L 167.00 333.33 L 178.00 371.00 L 189.00 282.47 L 200.00 375.42 L 211.00 157.34 L 222.00 160.26 L 233.00 150.92 L 244.00 231.29 L 255.00 173.18 L 266.00 324.73 L 277.00 208.89 L 288.00 281.78 L 299.00 282.97 L 310.00 273.26 L 321.00 286.04 L 332.00 319.57 L 343.00 316.72 L 354.00 376.26 L 365.00 263.16 L 376.00 360.99 L 387.00 201.39 L 398.00 158.01 L 409.00 270.62 L 420.00 347.38" stroke="#3949a3" stroke-width="1.3" stroke-dasharray="1 4"/>
+<path d="M 495 100 H 528" stroke="#005a8d" stroke-width="1.6" stroke-dasharray="8 3"/>
+<text x="537.00" y="104.00" >Sensor 1</text>
+<path d="M 495 126 H 528" stroke="#a63b00" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="537.00" y="130.00" >Sensor 2</text>
+<path d="M 495 152 H 528" stroke="#00664b" stroke-width="1.6" stroke-dasharray="10 3 2 3"/>
+<text x="537.00" y="156.00" >Sensor 3</text>
+<path d="M 495 178 H 528" stroke="#693f99" stroke-width="1.6" stroke-dasharray="2 2"/>
+<text x="537.00" y="182.00" >Sensor 4</text>
+<path d="M 495 204 H 528" stroke="#a02365" stroke-width="1.6" stroke-dasharray="12 4"/>
+<text x="537.00" y="208.00" >Sensor 5</text>
+<path d="M 495 230 H 528" stroke="#526d00" stroke-width="1.6" stroke-dasharray="5 2 1 2"/>
+<text x="537.00" y="234.00" >Sensor 6</text>
+<path d="M 495 256 H 528" stroke="#72503a" stroke-width="1.6" stroke-dasharray="8 2 2 2 2 2"/>
+<text x="537.00" y="260.00" >Sensor 7</text>
+<path d="M 495 282 H 528" stroke="#3949a3" stroke-width="1.6" stroke-dasharray="1 4"/>
+<text x="537.00" y="286.00" >Sensor 8</text>
+<text x="495.00" y="352.00" >Point 0 excluded</text>
+<text x="24.00" y="525.00" >Synthetic values illustrate the layout; they are not evidence.</text>
+</svg>

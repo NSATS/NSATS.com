@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" role="img" aria-labelledby="title desc">
+<title id="title">Per-point deviation · G-SAMPLE-002 · synthetic sample — not a measurement</title>
+<desc id="desc">Synthetic sample — not a measurement. The lines illustrate per-point percentage deviation for eight sensors; point 0 is excluded.</desc>
+<rect width="720" height="540" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#202428;font-size:11px}.grid{stroke:#dce1e5;stroke-width:1}.axis{stroke:#333;stroke-width:1}path{fill:none;stroke-linejoin:round;stroke-linecap:round}</style>
+<text x="24.00" y="25.00" style="font-size:16px;font-weight:bold">Synthetic sample — not a measurement</text>
+<text x="24.00" y="46.00" style="font-size:14px">G-SAMPLE-002 · start 09:55 · per-point deviation</text>
+<text x="24.00" y="64.00" >open water · GLC-002</text>
+<rect x="90.0" y="95.0" width="330.0" height="330.0" fill="none" class="axis"/>
+<path class="grid" d="M 90.00 95.0 V 425.0"/>
+<text x="90.00" y="443.00" text-anchor="middle" data-axis="x">0</text>
+<path class="grid" d="M 172.50 95.0 V 425.0"/>
+<text x="172.50" y="443.00" text-anchor="middle" data-axis="x">5</text>
+<path class="grid" d="M 255.00 95.0 V 425.0"/>
+<text x="255.00" y="443.00" text-anchor="middle" data-axis="x">10</text>
+<path class="grid" d="M 337.50 95.0 V 425.0"/>
+<text x="337.50" y="443.00" text-anchor="middle" data-axis="x">15</text>
+<path class="grid" d="M 420.00 95.0 V 425.0"/>
+<text x="420.00" y="443.00" text-anchor="middle" data-axis="x">20</text>
+<path class="grid" d="M 90.0 425.00 H 420.0"/>
+<text x="81.00" y="429.00" text-anchor="end">0.0</text>
+<path class="grid" d="M 90.0 377.86 H 420.0"/>
+<text x="81.00" y="381.86" text-anchor="end">2.0</text>
+<path class="grid" d="M 90.0 330.71 H 420.0"/>
+<text x="81.00" y="334.71" text-anchor="end">4.0</text>
+<path class="grid" d="M 90.0 283.57 H 420.0"/>
+<text x="81.00" y="287.57" text-anchor="end">6.0</text>
+<path class="grid" d="M 90.0 236.43 H 420.0"/>
+<text x="81.00" y="240.43" text-anchor="end">8.0</text>
+<path class="grid" d="M 90.0 189.29 H 420.0"/>
+<text x="81.00" y="193.29" text-anchor="end">10.0</text>
+<path class="grid" d="M 90.0 142.14 H 420.0"/>
+<text x="81.00" y="146.14" text-anchor="end">12.0</text>
+<path class="grid" d="M 90.0 95.00 H 420.0"/>
+<text x="81.00" y="99.00" text-anchor="end">14.0</text>
+<text x="255.00" y="468.00" text-anchor="middle">Point index</text>
+<text transform="translate(20 260.0) rotate(-90)" text-anchor="middle">Deviation (%)</text>
+<path d="M 106.50 231.68 L 123.00 237.02 L 139.50 159.24 L 156.00 201.29 L 172.50 328.11 L 189.00 355.62 L 205.50 314.82 L 222.00 246.87 L 238.50 147.83 L 255.00 312.82 L 271.50 323.42 L 288.00 282.46 L 304.50 275.30 L 321.00 372.15 L 337.50 208.12 L 354.00 225.12 L 370.50 154.92 L 387.00 304.19 L 403.50 369.75 L 420.00 277.32" stroke="#005a8d" stroke-width="1.3" stroke-dasharray="8 3"/>
+<path d="M 106.50 211.61 L 123.00 262.27 L 139.50 281.42 L 156.00 322.71 L 172.50 152.32 L 189.00 237.71 L 205.50 143.70 L 222.00 367.29 L 238.50 174.02 L 255.00 242.72 L 271.50 255.60 L 288.00 239.20 L 304.50 304.66 L 321.00 171.53 L 337.50 224.64 L 354.00 330.16 L 370.50 260.81 L 387.00 178.62 L 403.50 310.27 L 420.00 196.37" stroke="#a63b00" stroke-width="1.3" stroke-dasharray="3 3"/>
+<path d="M 106.50 343.09 L 123.00 176.73 L 139.50 233.33 L 156.00 362.76 L 172.50 146.87 L 189.00 230.38 L 205.50 230.93 L 222.00 234.88 L 238.50 236.70 L 255.00 220.14 L 271.50 276.58 L 288.00 304.63 L 304.50 344.10 L 321.00 282.14 L 337.50 304.05 L 354.00 296.83 L 370.50 302.83 L 387.00 344.47 L 403.50 367.79 L 420.00 150.05" stroke="#00664b" stroke-width="1.3" stroke-dasharray="10 3 2 3"/>
+<path d="M 106.50 159.41 L 123.00 172.14 L 139.50 173.25 L 156.00 153.42 L 172.50 270.43 L 189.00 219.47 L 205.50 275.94 L 222.00 186.89 L 238.50 147.13 L 255.00 170.48 L 271.50 282.58 L 288.00 226.17 L 304.50 265.59 L 321.00 165.88 L 337.50 173.31 L 354.00 369.61 L 370.50 194.16 L 387.00 213.59 L 403.50 331.72 L 420.00 364.55" stroke="#693f99" stroke-width="1.3" stroke-dasharray="2 2"/>
+<path d="M 106.50 241.02 L 123.00 308.27 L 139.50 145.69 L 156.00 143.08 L 172.50 154.90 L 189.00 207.45 L 205.50 243.90 L 222.00 245.90 L 238.50 352.79 L 255.00 280.47 L 271.50 177.76 L 288.00 265.26 L 304.50 356.53 L 321.00 173.68 L 337.50 306.09 L 354.00 191.51 L 370.50 311.14 L 387.00 165.09 L 403.50 161.47 L 420.00 357.22" stroke="#a02365" stroke-width="1.3" stroke-dasharray="12 4"/>
+<path d="M 106.50 165.16 L 123.00 149.45 L 139.50 229.39 L 156.00 213.09 L 172.50 339.70 L 189.00 357.01 L 205.50 326.76 L 222.00 262.12 L 238.50 327.87 L 255.00 187.23 L 271.50 206.27 L 288.00 215.86 L 304.50 222.16 L 321.00 296.80 L 337.50 204.35 L 354.00 146.83 L 370.50 361.86 L 387.00 337.76 L 403.50 252.14 L 420.00 234.66" stroke="#526d00" stroke-width="1.3" stroke-dasharray="5 2 1 2"/>
+<path d="M 106.50 259.64 L 123.00 235.03 L 139.50 266.24 L 156.00 245.73 L 172.50 176.55 L 189.00 202.89 L 205.50 332.35 L 222.00 284.70 L 238.50 246.93 L 255.00 223.68 L 271.50 280.92 L 288.00 349.58 L 304.50 155.04 L 321.00 230.49 L 337.50 253.50 L 354.00 291.79 L 370.50 325.84 L 387.00 377.63 L 403.50 293.93 L 420.00 157.98" stroke="#72503a" stroke-width="1.3" stroke-dasharray="8 2 2 2 2 2"/>
+<path d="M 106.50 376.37 L 123.00 226.95 L 139.50 357.94 L 156.00 293.58 L 172.50 298.30 L 189.00 251.94 L 205.50 364.31 L 222.00 175.37 L 238.50 354.75 L 255.00 155.37 L 271.50 346.79 L 288.00 355.21 L 304.50 161.39 L 321.00 333.14 L 337.50 351.84 L 354.00 182.49 L 370.50 268.37 L 387.00 154.66 L 403.50 347.10 L 420.00 220.11" stroke="#3949a3" stroke-width="1.3" stroke-dasharray="1 4"/>
+<path d="M 495 100 H 528" stroke="#005a8d" stroke-width="1.6" stroke-dasharray="8 3"/>
+<text x="537.00" y="104.00" >Sensor 1</text>
+<path d="M 495 126 H 528" stroke="#a63b00" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="537.00" y="130.00" >Sensor 2</text>
+<path d="M 495 152 H 528" stroke="#00664b" stroke-width="1.6" stroke-dasharray="10 3 2 3"/>
+<text x="537.00" y="156.00" >Sensor 3</text>
+<path d="M 495 178 H 528" stroke="#693f99" stroke-width="1.6" stroke-dasharray="2 2"/>
+<text x="537.00" y="182.00" >Sensor 4</text>
+<path d="M 495 204 H 528" stroke="#a02365" stroke-width="1.6" stroke-dasharray="12 4"/>
+<text x="537.00" y="208.00" >Sensor 5</text>
+<path d="M 495 230 H 528" stroke="#526d00" stroke-width="1.6" stroke-dasharray="5 2 1 2"/>
+<text x="537.00" y="234.00" >Sensor 6</text>
+<path d="M 495 256 H 528" stroke="#72503a" stroke-width="1.6" stroke-dasharray="8 2 2 2 2 2"/>
+<text x="537.00" y="260.00" >Sensor 7</text>
+<path d="M 495 282 H 528" stroke="#3949a3" stroke-width="1.6" stroke-dasharray="1 4"/>
+<text x="537.00" y="286.00" >Sensor 8</text>
+<text x="495.00" y="352.00" >Point 0 excluded</text>
+<text x="24.00" y="525.00" >Synthetic values illustrate the layout; they are not evidence.</text>
+</svg>
