@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" role="img" aria-labelledby="title desc">
+<title id="title">Relative track · G-SAMPLE-L11 · synthetic sample — not a measurement</title>
+<desc id="desc">Synthetic sample — not a measurement. The solid black line is the reference path; labelled dashed lines distinguish the eight sensor paths in metres east and north of the start point.</desc>
+<rect width="720" height="540" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#202428;font-size:11px}.grid{stroke:#dce1e5;stroke-width:1}.axis{stroke:#333;stroke-width:1}path{fill:none;stroke-linejoin:round;stroke-linecap:round}</style>
+<text x="24.00" y="25.00" style="font-size:16px;font-weight:bold">Synthetic sample — not a measurement</text>
+<text x="24.00" y="46.00" style="font-size:14px">G-SAMPLE-L11 · start 12:25 · relative track</text>
+<text x="24.00" y="64.00" >laboratory · GLC-007 · lab run 11 of 18</text>
+<rect x="90.0" y="95.0" width="330.0" height="330.0" fill="none" class="axis"/>
+<path class="grid" d="M 111.55 95.0 V 425.0"/>
+<text x="111.55" y="443.00" text-anchor="middle" data-axis="x">-10</text>
+<path class="grid" d="M 168.43 95.0 V 425.0"/>
+<text x="168.43" y="443.00" text-anchor="middle" data-axis="x">-8</text>
+<path class="grid" d="M 225.32 95.0 V 425.0"/>
+<text x="225.32" y="443.00" text-anchor="middle" data-axis="x">-6</text>
+<path class="grid" d="M 282.21 95.0 V 425.0"/>
+<text x="282.21" y="443.00" text-anchor="middle" data-axis="x">-4</text>
+<path class="grid" d="M 339.09 95.0 V 425.0"/>
+<text x="339.09" y="443.00" text-anchor="middle" data-axis="x">-2</text>
+<path class="grid" d="M 395.98 95.0 V 425.0"/>
+<text x="395.98" y="443.00" text-anchor="middle" data-axis="x">0</text>
+<path class="grid" d="M 90.0 401.52 H 420.0"/>
+<text x="81.00" y="405.52" text-anchor="end">-6</text>
+<path class="grid" d="M 90.0 344.63 H 420.0"/>
+<text x="81.00" y="348.63" text-anchor="end">-4</text>
+<path class="grid" d="M 90.0 287.75 H 420.0"/>
+<text x="81.00" y="291.75" text-anchor="end">-2</text>
+<path class="grid" d="M 90.0 230.86 H 420.0"/>
+<text x="81.00" y="234.86" text-anchor="end">0</text>
+<path class="grid" d="M 90.0 173.97 H 420.0"/>
+<text x="81.00" y="177.97" text-anchor="end">2</text>
+<path class="grid" d="M 90.0 117.09 H 420.0"/>
+<text x="81.00" y="121.09" text-anchor="end">4</text>
+<text x="255.00" y="468.00" text-anchor="middle">Metres east of start</text>
+<text transform="translate(20 260.0) rotate(-90)" text-anchor="middle">Metres north of start</text>
+<path d="M 395.98 230.86 L 395.86 287.66 L 373.62 340.11 L 332.72 379.50 L 279.53 399.98 L 222.84 397.76 L 171.16 373.73 L 133.22 331.55 L 115.10 277.65 L 119.40 220.88 L 145.56 170.45 L 189.48 134.15 L 244.06 117.74 L 300.55 123.86 L 350.27 151.70 L 385.00 196.67 L 399.28 251.68 L 390.97 307.80 L 361.11 356.32 L 314.92 389.72 L 259.54 402.40 L 203.45 392.30 L 156.20 360.90 L 124.74 313.40 L 114.36 257.34 L 126.74 201.93 L 159.76 155.60 L 208.48 125.82 L 264.80 117.54 L 319.92 131.93 L 365.06 166.83" stroke="#111111" stroke-width="2.2"/>
+<path d="M 395.98 230.86 L 397.49 292.38 L 372.46 341.87 L 337.21 383.43 L 280.90 400.07 L 226.91 392.39 L 168.35 368.24 L 134.33 330.98 L 113.40 272.93 L 117.80 226.34 L 142.98 173.40 L 192.21 132.87 L 244.83 119.08 L 300.27 128.21 L 353.68 151.30 L 387.56 197.15 L 394.93 247.47 L 386.68 311.75 L 358.38 358.43 L 313.83 391.05 L 258.51 403.48 L 202.17 390.14 L 156.26 364.88 L 126.25 308.37 L 110.49 258.02 L 125.17 198.49 L 156.46 158.39 L 204.76 124.34 L 264.94 116.18 L 321.32 131.20 L 364.35 161.63" stroke="#005a8d" stroke-width="1.3" stroke-dasharray="8 3"/>
+<path d="M 395.98 230.86 L 390.60 291.64 L 368.10 343.30 L 329.54 379.56 L 280.04 404.62 L 221.28 398.05 L 171.93 369.12 L 129.81 327.71 L 116.18 278.42 L 121.45 215.84 L 145.99 173.49 L 187.40 130.83 L 246.25 116.01 L 297.71 123.60 L 353.66 149.57 L 387.79 191.55 L 401.50 250.40 L 395.58 310.56 L 359.23 354.25 L 311.47 392.36 L 259.37 395.77 L 202.39 395.94 L 159.90 364.06 L 127.28 311.75 L 113.45 256.40 L 128.87 205.12 L 155.49 153.89 L 206.26 121.98 L 259.85 121.67 L 316.51 132.70 L 366.00 167.57" stroke="#a63b00" stroke-width="1.3" stroke-dasharray="3 3"/>
+<path d="M 395.98 230.86 L 394.22 288.57 L 371.49 343.04 L 337.78 380.90 L 280.90 396.26 L 218.89 392.70 L 169.31 370.66 L 127.84 333.17 L 116.30 271.99 L 119.94 218.17 L 142.75 167.92 L 193.66 130.97 L 248.39 114.24 L 294.92 126.96 L 347.57 153.49 L 381.16 191.15 L 399.68 255.32 L 394.22 306.49 L 359.57 354.79 L 318.67 393.98 L 264.20 406.53 L 204.84 393.21 L 157.45 358.94 L 125.60 316.19 L 114.93 263.48 L 120.11 201.36 L 160.38 158.93 L 205.35 125.73 L 263.77 116.21 L 323.93 136.00 L 364.32 165.38" stroke="#00664b" stroke-width="1.3" stroke-dasharray="10 3 2 3"/>
+<path d="M 395.98 230.86 L 400.19 286.07 L 376.10 342.73 L 334.23 383.91 L 279.48 396.66 L 219.26 401.18 L 165.22 376.09 L 137.09 330.01 L 113.31 274.75 L 121.45 214.48 L 141.16 174.97 L 192.13 131.39 L 243.18 121.21 L 297.48 127.04 L 353.46 153.27 L 379.11 197.55 L 398.14 250.94 L 384.60 307.46 L 362.73 357.72 L 314.49 388.18 L 262.18 406.47 L 207.26 397.94 L 153.44 366.28 L 122.58 313.26 L 118.06 253.98 L 128.04 201.19 L 154.98 152.44 L 213.15 126.27 L 269.38 121.07 L 316.76 134.15 L 361.16 171.27" stroke="#693f99" stroke-width="1.3" stroke-dasharray="2 2"/>
+<path d="M 395.98 230.86 L 395.47 284.96 L 374.16 338.86 L 331.50 378.74 L 284.94 402.37 L 219.80 397.48 L 174.58 378.17 L 130.95 327.51 L 116.78 275.91 L 122.55 221.30 L 141.38 165.21 L 192.07 133.95 L 241.22 116.80 L 302.60 118.42 L 353.51 149.03 L 381.73 197.72 L 395.32 255.83 L 393.73 306.12 L 359.88 357.94 L 319.01 384.77 L 258.43 398.13 L 203.70 395.92 L 154.64 358.03 L 126.59 312.32 L 119.11 259.87 L 128.07 203.30 L 161.69 156.57 L 209.68 130.40 L 267.39 119.11 L 325.64 135.55 L 369.21 167.74" stroke="#a02365" stroke-width="1.3" stroke-dasharray="12 4"/>
+<path d="M 395.98 230.86 L 390.97 289.23 L 378.77 341.30 L 336.96 375.41 L 275.72 395.29 L 221.39 398.19 L 168.55 372.65 L 130.77 331.66 L 113.85 279.24 L 124.20 225.31 L 145.48 168.54 L 187.35 135.35 L 243.15 112.93 L 304.19 121.41 L 350.19 149.65 L 386.42 198.06 L 401.67 249.09 L 393.19 309.93 L 358.23 358.40 L 314.57 387.18 L 260.87 401.21 L 203.36 397.85 L 154.95 361.56 L 122.01 309.70 L 120.59 257.43 L 121.22 198.38 L 159.73 156.99 L 211.33 123.17 L 264.06 120.02 L 317.11 132.13 L 362.67 166.49" stroke="#526d00" stroke-width="1.3" stroke-dasharray="5 2 1 2"/>
+<path d="M 395.98 230.86 L 395.01 285.73 L 378.40 340.08 L 328.88 383.77 L 282.58 396.29 L 225.15 395.66 L 173.07 379.62 L 134.64 331.78 L 119.03 277.17 L 119.17 224.72 L 150.09 174.77 L 190.65 131.56 L 249.64 114.93 L 295.77 123.06 L 344.92 155.80 L 388.73 197.41 L 402.32 252.99 L 394.67 308.65 L 361.90 354.93 L 316.79 386.64 L 261.36 399.19 L 202.22 393.36 L 157.57 358.94 L 121.93 313.29 L 107.68 256.37 L 126.48 199.49 L 158.62 157.73 L 213.52 122.18 L 266.05 118.54 L 325.52 128.18 L 364.83 169.71" stroke="#72503a" stroke-width="1.3" stroke-dasharray="8 2 2 2 2 2"/>
+<path d="M 395.98 230.86 L 394.58 286.30 L 369.58 334.62 L 333.43 377.94 L 276.43 395.52 L 228.62 401.12 L 170.85 378.51 L 137.57 334.62 L 113.25 278.25 L 118.89 226.54 L 144.00 169.93 L 184.73 133.98 L 249.30 116.86 L 303.25 124.34 L 345.04 149.48 L 384.74 198.72 L 398.65 245.65 L 392.11 307.57 L 366.57 356.98 L 315.74 394.12 L 263.01 407.07 L 197.79 391.73 L 155.75 362.98 L 125.65 315.65 L 116.38 257.82 L 125.46 205.06 L 159.47 153.32 L 211.84 124.71 L 267.87 121.58 L 315.63 130.91 L 362.61 162.80" stroke="#3949a3" stroke-width="1.3" stroke-dasharray="1 4"/>
+<circle cx="395.98" cy="230.86" r="4" fill="white" stroke="#111" stroke-width="2"/>
+<text x="402.98" y="223.86" >Start</text>
+<path d="M 90.0 485 h 56.89" stroke="#111" stroke-width="3"/>
+<text x="90.00" y="501.00" >2 m</text>
+<path d="M 495 100 H 528" stroke="#111" stroke-width="2.2"/>
+<text x="537.00" y="104.00" >Reference</text>
+<path d="M 495 125 H 528" stroke="#005a8d" stroke-width="1.6" stroke-dasharray="8 3"/>
+<text x="537.00" y="129.00" >Sensor 1</text>
+<path d="M 495 151 H 528" stroke="#a63b00" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="537.00" y="155.00" >Sensor 2</text>
+<path d="M 495 177 H 528" stroke="#00664b" stroke-width="1.6" stroke-dasharray="10 3 2 3"/>
+<text x="537.00" y="181.00" >Sensor 3</text>
+<path d="M 495 203 H 528" stroke="#693f99" stroke-width="1.6" stroke-dasharray="2 2"/>
+<text x="537.00" y="207.00" >Sensor 4</text>
+<path d="M 495 229 H 528" stroke="#a02365" stroke-width="1.6" stroke-dasharray="12 4"/>
+<text x="537.00" y="233.00" >Sensor 5</text>
+<path d="M 495 255 H 528" stroke="#526d00" stroke-width="1.6" stroke-dasharray="5 2 1 2"/>
+<text x="537.00" y="259.00" >Sensor 6</text>
+<path d="M 495 281 H 528" stroke="#72503a" stroke-width="1.6" stroke-dasharray="8 2 2 2 2 2"/>
+<text x="537.00" y="285.00" >Sensor 7</text>
+<path d="M 495 307 H 528" stroke="#3949a3" stroke-width="1.6" stroke-dasharray="1 4"/>
+<text x="537.00" y="311.00" >Sensor 8</text>
+<text x="495.00" y="373.00" >Equal axis scale</text>
+<text x="24.00" y="525.00" >Synthetic values illustrate the layout; they are not evidence.</text>
+</svg>
