@@ -1,0 +1,33 @@
+<svg aria-labelledby="t d" height="300" role="img" viewBox="0 0 800 300" width="800" xmlns="http://www.w3.org/2000/svg">
+<title id="t">Stages in the regeneration task</title>
+<desc id="d">An input passes through a swap gate to an output. The gate’s retained input and output information goes to an external processor, which produces a regenerated input for a subsequent calculation.</desc>
+<defs>
+<marker id="arrow" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#202428"></path>
+</marker>
+</defs>
+<g fill="#202428" font-family="NSATS Sans, IBM Plex Sans, Arial, sans-serif" font-size="15" text-anchor="middle">
+<!-- Row 1: input → swap gate → output -->
+<rect fill="#ffffff" height="56" stroke="#202428" stroke-width="1.5" width="150" x="40" y="60"></rect>
+<text x="115" y="94">Input</text>
+<line marker-end="url(#arrow)" stroke="#202428" stroke-width="1.5" x1="190" x2="300" y1="88" y2="88"></line>
+<rect fill="#ffffff" height="56" stroke="#202428" stroke-width="1.5" width="200" x="300" y="60"></rect>
+<text x="400" y="94">Swap gate</text>
+<line marker-end="url(#arrow)" stroke="#202428" stroke-width="1.5" x1="500" x2="610" y1="88" y2="88"></line>
+<rect fill="#ffffff" height="56" stroke="#202428" stroke-width="1.5" width="150" x="610" y="60"></rect>
+<text x="685" y="94">Output</text>
+<!-- Retained information: gate → external processor (dashed) -->
+<line marker-end="url(#arrow)" stroke="#202428" stroke-dasharray="6 4" stroke-width="1.5" x1="400" x2="400" y1="116" y2="190"></line>
+<text font-size="13" text-anchor="start" transform="translate(8 0)" x="400" y="156">retained input and output information</text>
+<!-- Row 2: external processor → regenerated input → subsequent calculation -->
+<rect fill="#ffffff" height="56" stroke="#202428" stroke-width="1.5" width="200" x="300" y="190"></rect>
+<text x="400" y="224">External processor</text>
+<line marker-end="url(#arrow)" stroke="#202428" stroke-width="1.5" x1="500" x2="610" y1="218" y2="218"></line>
+<text font-size="13" x="555" y="208">regenerates</text>
+<rect fill="#ffffff" height="56" stroke="#202428" stroke-width="1.5" width="150" x="610" y="190"></rect>
+<text x="685" y="217">Regenerated</text>
+<text x="685" y="235">input</text>
+<line marker-end="url(#arrow)" stroke="#202428" stroke-width="1.5" x1="685" x2="685" y1="246" y2="280"></line>
+<text font-size="13" x="685" y="296">to subsequent calculation</text>
+</g>
+</svg>
