@@ -1,0 +1,20 @@
+/* Approved Batch 07 artwork: complete frames, responsive sources and live callouts. */
+.r33-batch07-placement{padding-top:24px;padding-bottom:24px;min-width:0}
+.r33-batch07-visual{margin:0;max-width:1120px;min-width:0}
+.r33-batch07-visual picture,.r33-batch07-visual img{display:block;width:100%;max-width:100%;height:auto}
+.r33-batch07-visual figcaption{margin:16px 0 0;max-width:960px;font-size:16px;line-height:1.6;color:var(--ink,#161616)}
+.r33-batch07-visual figcaption a{margin-left:12px;text-underline-offset:3px}
+.r33-batch07-visual .batch07-mobile-link{display:none}
+.r33-batch07-callouts{max-width:960px;margin:16px 0 0;padding-left:24px;font-size:16px;line-height:1.6}
+.r33-batch07-callouts>li{display:list-item;margin:8px 0}
+.library-list>li.r33-batch07-list-item{grid-template-columns:minmax(0,1fr)}
+.library-list>li.r33-batch07-list-item>*{grid-column:1}
+.library-list>li.r33-batch07-list-item>h2{grid-row:auto}
+@media(max-width:760px){
+ .r33-batch07-placement{padding-top:16px;padding-bottom:16px}
+ .r33-batch07-visual{max-width:600px}
+ .r33-batch07-visual figcaption,.r33-batch07-callouts{font-size:15px}
+ .r33-batch07-visual .batch07-desktop-link{display:none}
+ .r33-batch07-visual .batch07-mobile-link{display:block;margin:6px 0 0}
+}
+@media print{.r33-batch07-visual figcaption a{display:none}}

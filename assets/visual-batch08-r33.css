@@ -1,0 +1,16 @@
+/* Approved complete compositions and publication thumbnails; no cropping. */
+.r33-batch08-visual{margin:32px 0;max-width:1120px;min-width:0;grid-column:1/-1;scroll-margin-top:96px}
+.r33-batch08-visual picture,.r33-batch08-visual img{display:block;width:100%;max-width:100%;height:auto}
+.r33-batch08-visual figcaption{margin:16px 0 0;max-width:960px;font-size:16px;line-height:1.6;color:var(--ink,#161616)}
+.r33-batch08-visual figcaption a{margin-left:12px;text-underline-offset:3px}
+.r33-batch08-visual .batch08-mobile-link{display:none}
+.r33-batch08-cover{max-width:260px;margin:0 0 20px}
+.library-list>li.r33-batch08-list-item{display:block}
+@media(max-width:760px){
+ .r33-batch08-visual{margin:24px 0;max-width:100%}
+ .r33-batch08-visual figcaption{font-size:15px}
+ .r33-batch08-visual .batch08-desktop-link{display:none}
+ .r33-batch08-visual .batch08-mobile-link{display:block;margin:6px 0 0}
+ .r33-batch08-cover{margin-top:0;margin-bottom:20px}
+}
+@media print{.r33-batch08-visual figcaption a{display:none}}

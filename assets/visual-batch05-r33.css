@@ -1,0 +1,20 @@
+/* Approved explanatory artwork, complete frames and dedicated mobile compositions. */
+.r33-batch05-placement{padding-top:24px;padding-bottom:24px;min-width:0}
+.r33-batch05-visual{margin:0;max-width:1120px;min-width:0}
+.r33-batch05-visual picture,.r33-batch05-visual img{display:block;width:100%;max-width:100%;height:auto}
+.r33-batch05-visual figcaption{margin:16px 0 0;max-width:960px;font-size:16px;line-height:1.6;color:var(--ink,#161616)}
+.r33-batch05-visual figcaption a{margin-left:12px;text-underline-offset:3px}
+.r33-batch05-visual .batch05-mobile-link{display:none}
+@media(max-width:760px){
+ .r33-batch05-placement{padding-top:16px;padding-bottom:16px}
+ .r33-batch05-visual{max-width:600px}
+ .r33-batch05-visual figcaption{font-size:15px}
+ .r33-batch05-visual .batch05-desktop-link{display:none}
+ .r33-batch05-visual .batch05-mobile-link{display:block;margin:6px 0 0}
+}
+@media print{.r33-batch05-visual figcaption a{display:none}}
+
+/* Tutorial entries are list items, each with its own heading and figure. */
+.library-list>li.r33-batch05-list-item{grid-template-columns:minmax(0,1fr)}
+.library-list>li.r33-batch05-list-item>*{grid-column:1}
+.library-list>li.r33-batch05-list-item>h2{grid-row:auto}
