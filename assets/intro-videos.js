@@ -9,6 +9,7 @@
     const mobile = media.matches;
     const source = mobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
     const poster = mobile ? video.dataset.mobilePoster : video.dataset.desktopPoster;
+    video.dataset.filmLayout = mobile ? 'portrait' : 'landscape';
     if (poster) video.poster = poster;
     if (source && video.getAttribute('src') !== source) { video.src = source; video.load(); }
   };
@@ -58,9 +59,9 @@
   dialog.addEventListener('close', () => { video.pause(); document.documentElement.classList.remove('nsats-film-open'); trigger?.focus(); });
   const base = document.body.dataset.base || '../';
   const films = {
-    geomagnetism: {title:'Geomagnetic positioning', duration:75, desktop:'nsats-geomagnetism-final-16x9.mp4', mobile:'nsats-geomagnetism-final-4x5.mp4', poster:'geomagnetism-poster-16x9.jpg', mobilePoster:'geomagnetism-poster-4x5.jpg', route:'nsats/geomagnetism/index.html'},
-    quantum: {title:'Quantum-inspired computing', duration:46, desktop:'nsats-quantum-16x9.mp4', mobile:'nsats-quantum-4x5.mp4', poster:'quantum-poster-16x9.jpg', mobilePoster:'quantum-poster-4x5.jpg', route:'nsats/quantum/index.html'},
-    network: {title:'Quantum-classical networking', duration:36, desktop:'nsats-network-card-final.mp4', mobile:'nsats-network-card-final.mp4', poster:'network-card-poster.jpg', mobilePoster:'network-card-poster.jpg', route:'nsats/industries/index.html'}
+    geomagnetism: {title:'Geomagnetic positioning', duration:75, desktop:'nsats-geomagnetism-final-16x9.mp4', mobile:'nsats-geomagnetism-mobile-4x5.mp4', poster:'geomagnetism-poster-16x9.jpg', mobilePoster:'geomagnetism-mobile-poster.jpg', route:'nsats/geomagnetism/index.html'},
+    quantum: {title:'Quantum-inspired computing', duration:46, desktop:'nsats-quantum-16x9.mp4', mobile:'nsats-quantum-mobile-4x5.mp4', poster:'quantum-poster-16x9.jpg', mobilePoster:'quantum-mobile-poster.jpg', route:'nsats/quantum/index.html'},
+    network: {title:'Quantum-classical networking', duration:36, desktop:'nsats-network-card-final.mp4', mobile:'nsats-network-card-mobile-4x5.mp4', poster:'network-card-poster.jpg', mobilePoster:'network-mobile-poster.jpg', route:'nsats/industries/index.html'}
   };
   Object.entries(films).forEach(([key, film]) => {
     dialog.querySelector('[data-watch-' + key + ']').addEventListener('click', () => {

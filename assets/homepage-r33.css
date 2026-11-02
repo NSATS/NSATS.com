@@ -13,8 +13,7 @@
 .r33-reference-number{font-weight:600}
 .r33-source-back{display:inline-block;margin-left:8px}
 [data-page-id="N-HOME"] .band-card .nsats-intro-media{width:100%;align-self:start;margin:0 0 24px}
-[data-page-id="N-HOME"] .band-card .nsats-intro-media figcaption{flex-direction:column;align-items:flex-start;gap:4px;min-height:46px}
-[data-page-id="N-HOME"] .band-card .nsats-film-description p{font-size:14px}
+[data-page-id="N-HOME"] .band-card .nsats-intro-media figcaption{flex-direction:column;align-items:flex-start;gap:0;min-height:22px}
 [data-page-id="N-HOME"] .band-card video{max-width:100%}
 @media(max-width:1000px){.hero.r33-home-image-hero{gap:28px;padding:40px 28px}.hero.r33-home-image-hero .lead{font-size:18px}}
 @media(max-width:760px){.hero.r33-home-image-hero{grid-template-columns:1fr;padding:32px 20px;gap:24px}.hero.r33-home-image-hero .hero-copy{padding:0}}

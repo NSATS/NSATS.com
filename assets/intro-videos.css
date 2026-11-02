@@ -67,3 +67,8 @@ html.nsats-film-open{overflow:hidden}
 video[data-film-kind="network"]{aspect-ratio:16/9!important;object-fit:contain}
 @media(max-width:1000px){.nsats-applications-video{gap:28px}}
 @media(max-width:760px){.nsats-applications-video{grid-template-columns:1fr;gap:24px}.nsats-network-media{width:100%}}
+
+/* Mobile film editions, 2 November 2026. Follow the loaded source on rotation. */
+video[data-film-layout="portrait"]{aspect-ratio:4/5!important;object-fit:contain}
+video[data-film-layout="landscape"]{aspect-ratio:16/9!important;object-fit:contain}
+@media(max-width:760px){video[data-mobile-edition="2026-11-02"]:not([data-film-layout]){aspect-ratio:4/5!important}}
