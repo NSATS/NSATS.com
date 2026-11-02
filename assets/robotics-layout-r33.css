@@ -1,0 +1,26 @@
+/* Local robotics-page layout trial; no global template overrides. */
+.r33-robotics-visual{padding-bottom:48px}
+.r33-robotics-visual figure{margin:0;max-width:1120px}
+.r33-robotics-visual picture,.r33-robotics-visual img{display:block;width:100%;height:auto}
+.r33-robotics-visual figcaption{max-width:960px;margin-top:16px;font-size:16px;line-height:1.6;color:var(--ink,#161616)}
+.r33-robotics-visual figcaption a{margin-left:12px;text-underline-offset:3px}
+.r33-robotics-visual .p10-mobile-link{display:none}
+.r33-robotics-flow{padding-top:56px;padding-bottom:56px}
+.r33-robotics-flow>.wrap>.split{display:block;max-width:960px}
+.r33-robotics-flow .split>div{width:100%;max-width:none}
+.r33-robotics-flow .split h2{max-width:none;margin:0 0 24px}
+.r33-robotics-flow .measure{width:100%;max-width:none}
+.r33-robotics-flow .measure p{max-width:none;line-height:1.65}
+.r33-robotics-flow .measure p:first-child{margin-top:0}
+.r33-robotics-flow .measure p:last-child{margin-bottom:0}
+@media(max-width:760px){
+ .r33-robotics-visual{padding-bottom:32px}
+ .r33-robotics-visual figure{max-width:600px}
+ .r33-robotics-visual .p10-desktop-link{display:none}
+ .r33-robotics-visual .p10-mobile-link{display:inline}
+ .r33-robotics-visual figcaption{font-size:15px}
+ .r33-robotics-visual figcaption a{display:block;margin:6px 0 0}
+ .r33-robotics-flow{padding-top:36px;padding-bottom:36px}
+ .r33-robotics-flow .split h2{margin-bottom:20px}
+}
+@media print{.r33-robotics-visual figcaption a{display:none}}

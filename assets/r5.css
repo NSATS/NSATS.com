@@ -275,3 +275,17 @@ p.practice-label{font-size:16px}
 @media (max-width:640px){.vacancy-facts p{display:block}.vacancy-facts .vf{display:block}.vacancy-facts .vf-sep{display:none}}
 /* Run-in bold labels in ordinary text (NT-PRIVACY): plain paragraphs, not proposed-practice boxes */
 p.run-in strong{font-weight:600}
+
+/* r33, 2 November 2026: explanatory text follows its heading site-wide.
+   Retains semantic paragraphs and the approved robotics reading width. */
+main .section:has(> .wrap > .split){padding-top:56px;padding-bottom:56px}
+main .section > .wrap > .split{display:block;max-width:960px}
+main .section > .wrap > .split > div{width:100%;max-width:none;min-width:0}
+main .section > .wrap > .split > div > h2{max-width:none;margin:0 0 24px}
+main .section > .wrap > .split > .measure p{max-width:none;line-height:1.65}
+main .section > .wrap > .split > .measure > :first-child{margin-top:0}
+main .section > .wrap > .split > .measure > :last-child{margin-bottom:0}
+@media(max-width:760px){
+ main .section:has(> .wrap > .split){padding-top:36px;padding-bottom:36px}
+ main .section > .wrap > .split > div > h2{margin-bottom:20px}
+}
