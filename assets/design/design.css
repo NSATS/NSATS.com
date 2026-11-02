@@ -104,12 +104,12 @@
 .ds-code{max-width:980px;white-space:pre-wrap}
 
 /* Typeface page (NSATS Sans 1.203) */
-.nc-hero{background:#062C38;color:#fff;padding:48px 0 40px}
+.nc-hero{background:var(--deep);color:#fff;padding:48px 0 40px}
 .nc-hero .eyebrow{color:#fff;opacity:.85}
 .nc-title{font-size:clamp(64px,13vw,212px);line-height:.95;letter-spacing:-.03em;font-weight:400;margin:8px 0 32px;transition:font-weight 0s}
 .nc-styles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .nc-style{background:transparent;color:#fff;border:1px solid #ffffff80;padding:8px 14px;font-size:15px;min-height:40px}
-.nc-style[aria-pressed=true]{background:#fff;color:#062C38;border-color:#fff}
+.nc-style[aria-pressed=true]{background:#fff;color:var(--deep);border-color:#fff}
 .nc-style:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px #FFDD00}
 .nc-hero .ds-status{color:var(--ink)}
 .nc-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
@@ -176,7 +176,7 @@
 .use-h{font-size:22px;margin-bottom:12px}
 .use-sheet table{font-size:12px}.use-sheet th,.use-sheet td{padding:8px 6px}
 .use-sheet td:last-child,.use-sheet th:last-child{text-align:end;font-variant-numeric:tabular-nums}
-.use-dark{background:#062C38;color:#fff;border-color:#062C38}
+.use-dark{background:var(--deep);color:#fff;border-color:var(--deep)}
 .use-eyebrow{font-size:11px;opacity:.85;margin-bottom:14px}
 .use-display{font-size:36px;line-height:1.05;margin-bottom:14px}
 .use-lead{font-size:13px;opacity:.92}

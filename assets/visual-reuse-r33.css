@@ -1,0 +1,18 @@
+/* Existing approved SVGs remain intact and readable at their native width. */
+.r33-reuse-figure{box-sizing:border-box;min-width:0;max-width:100%;margin:28px 0 32px;padding:20px;background:var(--paper,#fff);border:1px solid var(--line,#d8dfe3)}
+.r33-reuse-viewport{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-gutter:stable;outline-offset:4px}
+.r33-reuse-viewport img{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.r33-reuse-viewport.is-expanded img{max-width:none}
+.r33-reuse-viewport:focus-visible{outline:2px solid var(--action,#006b85)}
+.r33-reuse-figure figcaption,.r33-reuse-description{font-size:16px;line-height:1.6;max-width:none;margin:12px 0 0}
+.r33-reuse-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.r33-reuse-controls[hidden]{display:none}
+.r33-reuse-zoom{font:inherit;font-size:15px;line-height:1.4;padding:10px 14px;background:var(--paper,#fff);color:var(--action,#006b85);border:1px solid currentColor;cursor:pointer}
+.r33-reuse-zoom:focus-visible{outline:2px solid var(--action,#006b85);outline-offset:3px}
+.r33-reuse-hint{font-size:14px;line-height:1.5;color:var(--muted,#525252)}
+.r33-reuse-figure a,.r33-reuse-link a{text-underline-offset:3px}
+.r33-reuse-link{margin:16px 0;font-size:16px;line-height:1.6}
+.r33-reuse-topic-grid{grid-template-columns:minmax(0,1fr)!important}
+.r33-reuse-topic-grid>.topic-card{min-width:0}
+@media(max-width:600px){.r33-reuse-figure{padding:12px;margin:22px 0 26px}.r33-reuse-figure figcaption,.r33-reuse-description{font-size:15px}}
+@media print{.r33-reuse-viewport{overflow:visible}.r33-reuse-viewport img{width:100%!important;max-width:100%}.r33-reuse-controls{display:none}.r33-reuse-figure{break-inside:avoid}}

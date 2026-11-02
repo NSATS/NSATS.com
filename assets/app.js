@@ -3,27 +3,15 @@
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
   const base = document.body.dataset.base || './';
-  const THEMES = ['cyan', 'carbon', 'royal'];
   const KEY = 'nsats-template-review-v1';
   const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
   const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; } };
   let reviews = read(KEY, {});
   if (!reviews || typeof reviews !== 'object' || Array.isArray(reviews)) reviews = {};
-  function applyTheme(theme) {
-    if (![...THEMES, 'sections'].includes(theme)) theme = 'sections';
-    document.documentElement.dataset.theme = theme === 'sections' ? document.documentElement.dataset.sectionTheme : theme;
-    const saved = save('nsats-colour-mode-v3', theme);
-    $$('[data-theme-choice]').forEach(el => {
-      const active = el.dataset.themeChoice === theme;
-      el.setAttribute('aria-pressed', String(active));
-      el.closest('.theme-option')?.classList.toggle('selected', active);
-      el.textContent = el.dataset.themeChoice === 'sections' ? (active ? 'Section colours active ✓' : 'Use section colours') : (active ? 'Selected for preview ✓' : 'Preview this theme →');
-    });
-    const status = $('#theme-status');
-    if (status) status.textContent = theme === 'sections' ? 'Section colours active: 01 Technology, Partners, Company, Licensing · 02 Homepage, Applications, Developers, Search · 03 All other sections.' : `${{cyan:'NSATS cyan',carbon:'Carbon blue',royal:'Royal blue & teal'}[theme]} applied to all samples. ${saved ? 'Preference saved in this browser.' : 'Storage unavailable; export your review to keep it.'}`;
-  }
-  applyTheme(read('nsats-colour-mode-v3', 'sections'));
-  $$('[data-theme-choice]').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.themeChoice)));
+  // Page colours follow the approved section register. An older review-preview
+  // preference must never recolour the public site; the standalone comparison
+  // retains its own isolated component-preview preferences.
+  document.documentElement.dataset.theme = document.documentElement.dataset.sectionTheme;
   const menu = $('#main-navigation');
   $('#mobile-menu')?.addEventListener('click', e => {
     const expanded = menu.classList.toggle('open');
@@ -124,7 +112,7 @@
       $('#export-status').textContent=`${name} is ready. If your browser did not download it, open the export text below and save a copy.`;
     }
   }
-  $$('[data-export-review]').forEach(b=>b.addEventListener('click',()=>download('NSATS-review-backup.json',JSON.stringify({schema:1,exported:new Date().toISOString(),theme:document.documentElement.dataset.theme,colourMode:read('nsats-colour-mode-v3','sections'),reviews},null,2),'application/json')));
+  $$('[data-export-review]').forEach(b=>b.addEventListener('click',()=>download('NSATS-review-backup.json',JSON.stringify({schema:1,exported:new Date().toISOString(),theme:document.documentElement.dataset.theme,colourMode:'sections',reviews},null,2),'application/json')));
   $('#import-review')?.addEventListener('change',async e=>{
     const status=$('#import-status');
     try {
