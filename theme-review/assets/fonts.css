@@ -1,4 +1,4 @@
-/* Theme pages (NSATS Sans build, 7 October 2026): NSATS Sans 1.203 is the default; IBM Plex Sans (the template font) is the alternative. */
+/* Theme pages (NSATS Sans build, 7 October 2026): NSATS Sans 1.204 is the default; IBM Plex Sans (the template font) is the alternative. */
 @font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Plex"; src: url("fonts/plex/IBMPlexSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }

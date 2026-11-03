@@ -1,4 +1,4 @@
-NSATS Sans (formerly NSATS Clear) — FONTLOG, current version 1.203 (7 October 2026)
+NSATS Sans (formerly NSATS Clear) — FONTLOG, current version 1.204 (3 November 2026)
 The entries below are chronological and unchanged from the NSATS Clear 1.202 package; entries before 1.203 use the former name. The newest entry is at the end.
 
 FONTLOG for NSATS Clear (Regular, Italic, SemiBold, SemiBold Italic, Bold, Bold Italic), version 1.100
@@ -124,3 +124,26 @@ See records/ERRATA-01-ADDENDUM-04.md.
 The owner renamed the family "NSATS Sans" and approved 1.203 for the NSATS website and NSATS documents. Built in a new folder from the NSATS Clear 1.202 candidate (with Errata 01 and Addenda 01-04 records); no earlier file changed.
 Only change: the name table (family NSATS Clear -> NSATS Sans, PostScript NSATSClear-* -> NSATSSans-*, name IDs 1, 3, 4, 5, 6, 10, 16), head.fontRevision 1.203 and head.modified 2026-10-07. File names follow the PostScript names. All other tables are byte-identical to 1.202 in all 12 TTFs; WOFF2 recompiled from the 1.203 unhinted TTFs with identical outlines. See records/rename-acceptance-1.203.json.
 Every 1.202 test result and disclosed limitation carries over unchanged. Windows, mobile, staging-website, Word for Windows, hinted rendering, print, reader and native-language checks remain unverified. NSATS Clear 1.100 stays published and unchanged.
+
+3 November 2026 — NSATS SANS 1.204, owner-approved release.
+Requested by the owner after the Windows round-2 test (sheet S3): the vertical accent (caron) of ď ľ ť touched the next letter
+in SemiBold and Bold, and Word 2010 did not apply the kerning.
+- Caron placement: in ď ľ ť Ľ the caron is placed as in IBM Plex Sans 3.005, the same distance from the right edge of the
+  stem (1.200-1.203 placed it 38 units right of the whole base letter). Each italic caron has its upright's clearance from
+  the stem. Only the caron component moved; no outline was redrawn.
+- Spacing: ď ľ ť are a little wider, and new kerning keeps the caron at least 50 units from every following character with
+  kerning on. With kerning off, it keeps at least 15 units from every Slovak, Czech and English lowercase letter except
+  č ň ř š ž, from the quotation marks ' " ‘ ’ “ ” and from ! ?. Before characters that do not reach the caron, the extra width
+  is taken back by kerning. Widths ď/ľ/ť: Regular and Italic 603/279/321; SemiBold and SemiBold Italic 684/362/384;
+  Bold 719/399/419; Bold Italic 720/400/419. Ľ is unchanged at 501/521/530.
+- Known limit with kerning off (as in IBM Plex Sans): the caron can touch a following capital T V W X Y, ) ] } \,
+  ì î ï ĩ ī ĭ ĵ ħ ř and a few symbols.
+- Legacy TrueType kern table (version 0, one format-0 subtable, 10,920 pairs), generated from the font's own GPOS kerning:
+  every Windows-1252 pair, the new caron pairs, then the largest Central European pairs. Word 2010 now kerns with
+  "Kerning for fonts" on.
+- Unchanged: every other glyph, width and kerning pair; line metrics; character set (388); features; no hinting.
+- Tables changed: glyf/loca (the four caron composites), hmtx, GPOS, name, head; kern added.
+Development: candidate 01 was tested on Windows 11 (Word 2010, Edge, Chrome, Firefox; round 3, run 1): carons and Word 2010
+kerning confirmed in the uprights; the italic Ľ caron touched the slanted stem. Candidate 02 corrected the italics.
+Candidate 03 corrected the spacing measurement after an independent review (including the caron's part below the x-height
+in SemiBold and Bold) and was independently reviewed (AGREE WITH NOTES). The release fonts are candidate 03.
