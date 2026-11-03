@@ -57,6 +57,30 @@ p.practice-label{font-size:16px}
 .sub-panel .form-preview{margin:0;height:100%}
 .subscription{padding-bottom:40px}
 
+/* Rendered mega-menu masthead artwork, owner rework, 3 November 2026. */
+.menu-visual{width:100%;margin:0 0 22px;min-width:0}
+.menu-artwork{position:relative;background:#101c29;overflow:hidden;border:1px solid #203145}
+.menu-artwork .menu-art-image{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:1200/675;object-fit:contain}
+.menu-image-mark{position:absolute;top:0;left:0;right:0;display:flex;align-items:start;justify-content:space-between;padding:12px 13px;background:linear-gradient(#07111bc9,transparent);pointer-events:none}
+.menu-image-mark img{display:block;width:75px;height:auto;max-width:34%}
+.menu-image-mark span{color:#e5f7ff;font-size:11px;line-height:1.2;letter-spacing:.09em;text-transform:uppercase;padding-top:3px}
+.mega-intro .menu-art-caption{font-size:12px;line-height:1.5;color:#465660;margin:7px 0 0;max-width:none}
+.regional-contacts{border-top:1px solid var(--line,#d7dee3)}
+.regional-contact-intro{max-width:680px;margin:12px 0 28px;color:#465660}
+.regional-contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.regional-contact-card{padding:28px 30px;background:#fff;border:1px solid #d7dee3;border-top:3px solid #00a8b5}
+.regional-contact-card h3{font-size:24px;line-height:1.25;margin:0 0 24px}
+.regional-contact-card dl{margin:0}
+.regional-contact-card dl>div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid #e1e7ea}
+.regional-contact-card dt{font-weight:600}
+.regional-contact-card dd{margin:0;min-height:40px;overflow-wrap:anywhere}
+.regional-pending{color:#586975}
+@media(max-width:760px){.regional-contact-grid{grid-template-columns:1fr;gap:18px}.regional-contact-card{padding:24px}.regional-contact-card h3{font-size:22px}.regional-contact-card dl>div{grid-template-columns:90px minmax(0,1fr);gap:12px}}
+@media(min-width:1281px){
+ .mega-panel.wide:has(> div:nth-child(5))>.mega-intro:has(.menu-visual){display:grid;grid-template-columns:230px minmax(0,1fr);column-gap:26px;row-gap:4px;align-items:start}
+ .mega-panel.wide:has(> div:nth-child(5))>.mega-intro>.menu-visual{grid-column:1;grid-row:1/span 3;margin:0}
+ .mega-panel.wide:has(> div:nth-child(5))>.mega-intro>.eyebrow,.mega-panel.wide:has(> div:nth-child(5))>.mega-intro>h2,.mega-panel.wide:has(> div:nth-child(5))>.mega-intro>p{grid-column:2}
+}
 /* ---------- bands, heroes and contents ---------- */
 .text-hero{min-height:0}
 .text-hero .hero-copy{max-width:none}
@@ -289,3 +313,7 @@ main .section > .wrap > .split > .measure > :last-child{margin-bottom:0}
  main .section:has(> .wrap > .split){padding-top:36px;padding-bottom:36px}
  main .section > .wrap > .split > div > h2{margin-bottom:20px}
 }
+
+/* Leave room for focus outlines when native keyboard scrolling reveals menu links. */
+.main-nav,.mega-panel{scroll-padding-block:8px}
+.mega-panel a{scroll-margin-block:8px}
