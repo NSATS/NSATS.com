@@ -1,0 +1,162 @@
+{
+  "family": "NSATS Sans",
+  "former_family": "NSATS Clear",
+  "version": "1.204",
+  "status": "owner-approved release",
+  "approval_date": "2026-11-03",
+  "design": "1.203 with the accent (caron) of d-caron, l-caron, t-caron and L-caron repositioned as in IBM Plex Sans 3.005, with the spacing and kerning after them adjusted, and a legacy TrueType kern table added; every other glyph, width and kerning pair unchanged from 1.203",
+  "previous_release": "NSATS Sans 1.203 (unchanged); NSATS Clear 1.100 (unchanged)",
+  "licence": "SIL Open Font License 1.1 (OFL.txt)",
+  "fonts": [
+    {
+      "path": "fonts/ttf/NSATSSans-Regular.ttf",
+      "sha256": "ff5b0cf53bc57e45c41e5c122fe1b0cdcbcf3e06d59f4d592a24f0ee44ed7ab1",
+      "style": "Regular",
+      "weight": 400,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-Regular",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-Regular.woff2",
+      "sha256": "79306664ddc4a6e7e8e679b9b4fbb22562b50fa89aa1bf08d750ba17c3874dfb",
+      "style": "Regular",
+      "weight": 400,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-Regular",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSSans-Italic.ttf",
+      "sha256": "97c56bd359b31e476154390d2a59b0084e9c93d87328df32065589bedea1bc73",
+      "style": "Italic",
+      "weight": 400,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-Italic",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-Italic.woff2",
+      "sha256": "6d8e56c033a85839dff219a5744360c3233e31c43490be7fdf8e599b8faf0f50",
+      "style": "Italic",
+      "weight": 400,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-Italic",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSSans-SemiBold.ttf",
+      "sha256": "0f69ea206732230e69ccddb04fa4999c70c34573244cb2beca6a880a251a73ed",
+      "style": "SemiBold",
+      "weight": 600,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-SemiBold",
+      "menu_family": "NSATS Sans SemiBold",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-SemiBold.woff2",
+      "sha256": "517b48e83097cafa4e708d72242e6bc3f221a7bace218d6d2b63275a804778a9",
+      "style": "SemiBold",
+      "weight": 600,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-SemiBold",
+      "menu_family": "NSATS Sans SemiBold",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSSans-SemiBoldItalic.ttf",
+      "sha256": "3236a633e19af13d210eff023cdea53b10e4744b4ae2e119870edb2f24c00674",
+      "style": "SemiBoldItalic",
+      "weight": 600,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-SemiBoldItalic",
+      "menu_family": "NSATS Sans SemiBold",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-SemiBoldItalic.woff2",
+      "sha256": "b4b4e66e2e639c4de3cc0eb2ef345685470efb9b38642dd827cefff2eab462cf",
+      "style": "SemiBoldItalic",
+      "weight": 600,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-SemiBoldItalic",
+      "menu_family": "NSATS Sans SemiBold",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSSans-Bold.ttf",
+      "sha256": "dbd49758037baf5f1a17b263c339d27c9edbd0d3c0fb53408a69b3161b701da3",
+      "style": "Bold",
+      "weight": 700,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-Bold",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-Bold.woff2",
+      "sha256": "cd3405855e9becb586c2d720d14276e52ed42ea964da83b9568910c7f9b9a6ab",
+      "style": "Bold",
+      "weight": 700,
+      "css_style": "normal",
+      "postscript_name": "NSATSSans-Bold",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/ttf/NSATSSans-BoldItalic.ttf",
+      "sha256": "90f2c85de85abdef0fa0194b25529c540c0302f3c1da2d90e20ffb7fd34c856c",
+      "style": "BoldItalic",
+      "weight": 700,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-BoldItalic",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    },
+    {
+      "path": "fonts/woff2/NSATSSans-BoldItalic.woff2",
+      "sha256": "f864fc89e4339e34eabec561f419a01d53d772054ae0b76721b6bf0d0c72165e",
+      "style": "BoldItalic",
+      "weight": 700,
+      "css_style": "italic",
+      "postscript_name": "NSATSSans-BoldItalic",
+      "menu_family": "NSATS Sans",
+      "version": "1.204",
+      "encoded_characters": 388,
+      "embedding_fsType": 0
+    }
+  ],
+  "known_limitations": "RELEASE-NOTES.txt",
+  "developer_kits": {
+    "web": "NSATS-Sans-1.204-Web-Kit.zip",
+    "documents_print_design": "NSATS-Sans-1.204-Documents-Kit.zip",
+    "details": "developers.html"
+  }
+}

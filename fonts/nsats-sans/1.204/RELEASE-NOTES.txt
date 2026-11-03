@@ -1,0 +1,40 @@
+NSATS SANS 1.204 — RELEASE NOTES
+Owner approval: 3 November 2026, for the NSATS website and NSATS documents.
+
+What it is
+NSATS Sans 1.204 is NSATS Sans 1.203 with two corrections found in the Windows test of 1.203:
+- with kerning on, the accent (caron) of ď ľ ť no longer touches the next letter (with kerning off, see Known limitations);
+- Word 2010 and other older Windows programs now apply the kerning.
+Every other letter, width and kerning pair is unchanged from 1.203. NSATS Sans 1.203 and NSATS Clear 1.100 remain available unchanged.
+
+Contents
+Regular, Italic, SemiBold, SemiBold Italic, Bold and Bold Italic: six TTF files (fonts/ttf) for desktop, documents and print, and six WOFF2 files (fonts/woff2) for websites. 388 encoded characters: ASCII, Latin-1, Windows-1252, Latin Extended-A and Mac Roman (excluding the Apple logo), with 15 combining accents positioned by the font's mark features. This is not a full-Unicode font; other characters fall back to another font. Tabular figures are the default; the pnum feature selects proportional figures. The italics are designed 11-degree slants supplied as real fonts. The fonts are unhinted: in the Windows test an auto-hinted build was never clearer than these fonts.
+
+Changes since NSATS Sans 1.203
+- Accent spacing for ď ľ ť Ľ. The caron is placed as in IBM Plex Sans 3.005, the same distance from the stem; 1.203 placed it too far right, beyond the arm of Ľ. ď, ľ and ť are slightly wider. With kerning on, the caron keeps at least 1/20 em from every following character. With kerning off, it keeps at least 15/1000 em from every lowercase letter of Slovak, Czech and English (except č ň ř š ž, which do not follow these letters), from quotation marks, and from ! and ?.
+- Kerning for Word 2010. A legacy TrueType kerning table, generated from the font's own kerning, holds every Western European (Windows-1252) pair, the new accent pairs and the largest Central European pairs (10,920 pairs in all). Word 2010 and other programs that read only this table now kern when "Kerning for fonts" is on. Modern programs keep using the full OpenType kerning.
+
+Known limitations
+- Word applies the kerning only when "Kerning for fonts" is on. Keep it on; the templates in the Documents Kit do.
+- With kerning off, the accent of ď ľ ť can still touch a following capital T V W X Y (and their accented forms), a closing bracket ) ] } or \, the letters ì î ï ĩ ī ĭ ĵ ħ ř, and a few symbols (¥ ³ ¾ ™ ∏ ∑). IBM Plex Sans has the same limit; in Regular, ť before ")" and T overlaps more than in Plex. With kerning on, none of these touch.
+- SemiBold appears as a separate family, "NSATS Sans SemiBold", in applications that group four styles (observed in Word for Mac with the 1.202 fonts). In CSS it is weight 600 of "NSATS Sans".
+Stacked accents outside the character set:
+- Scope. These limitations were measured on a Mac with the NSATS Clear 1.202 fonts (macOS 26.6.2, recorded application versions). NSATS Sans 1.204 has the same glyph outlines and line metrics, and the same spacing and kerning apart from the letters ď ľ ť Ľ, so they apply unchanged; 1.204 itself was not re-measured in these applications.
+- Which text. Stacked accents outside the 388-character set: a capital letter that already carries an accent followed by an extra combining accent (for example Ê followed by U+0301), and Å or Ů followed by an extra combining ring.
+- Clipping in TextEdit (visual). At its default line height, TextEdit cut off the extra marks on these capitals in all six styles, and the extra ring on Bold Å and Ů. Pages and Word enlarged the line and showed every mark.
+- Overlap in Keynote (visual). With 11 pt text on 14 pt lines, the extra marks on these capitals overlapped the ogoneks (ą, ę) on the line above, in all six styles. Whether more line spacing avoids this was not tested.
+- Two encoded letters (visual exception). On the first line of a TextEdit page the clipping boundary is lower: in the measured TextEdit PDF it cut 0.06 pt or less from Bold Italic Å and SemiBold Italic ĥ, which was not visible at the sizes tested.
+- Coverage. Clipping of ordinary (encoded) text in other applications, line spacings and layouts has not been verified.
+- Copying text from PDFs (a separate problem). The extra marks use glyphs that have no character code of their own. In the tested PDFs exported from Pages, Keynote, TextEdit and Word, these glyphs had no ToUnicode entries, and in copies of those PDFs saved from Preview the five tested stacks became unrelated ASCII characters. PDFium recovered the five tested stacks from the Pages, Keynote and TextEdit PDFs, which carry ActualText, but not from the Word PDF, which does not. These results apply to the tested files and text only; other PDF readers and producers were not tested.
+- Ordinary accented text. The tested ordinary accented words showed no comparable visual problem and copied correctly from the tested PDFs (allowing for composed and decomposed forms); exact code-point preservation and search in every application are not claimed.
+
+Testing
+- Mac (native): Word, Pages, Keynote, TextEdit, Preview, Safari, Chrome and Firefox, with the NSATS Clear 1.202 fonts (macOS 26.6.2), which have the same outlines.
+- Windows 11, 1.203 fonts (round 2, 2 November 2026): installation; Word 2010, including PDFs with the fonts embedded; Edge, Chrome and Firefox, including loading the fonts from the NSATS site; DirectWrite and GDI rendering (live windows, all six styles at 8-14 pt); Paint; and print (8 and 9 pt clear on a 300 dpi scan). This test found the two problems corrected in 1.204.
+- Windows 11, first 1.204 candidate (round 3, 3 November 2026): installation and removal; Word 2010 kerning (now applied); the accent spacing in Word 2010, Edge, Chrome and Firefox in the upright styles. It found the italic Ľ problem, which was corrected before release.
+- 1.204 as released: not tested on Windows. It was checked by measurement (font tables and outlines compared with 1.203; accent clearance measured by two independent methods), by rendering on Linux (LibreOffice, Chromium) and by an independent review, which included Safari on macOS.
+- Not yet verified: the released 1.204 fonts on Windows and installed on a Mac; iPhone and Android with 1.204; hinted rendering beyond the round-2 comparison; reader studies; native-language review; complete clipping coverage. The developer kits were tested on Linux only.
+Approval is the owner's release decision, not a claim that these have passed.
+
+Licence
+SIL Open Font License 1.1; keep OFL.txt with the fonts. Modified from IBM Plex Sans 3.005 (Reserved Font Name "Plex" not used). Copyright IBM Corp.; modifications © 2026 National Scientific, AI & Technical Systems Limited. Not affiliated with or endorsed by IBM. See FONTLOG.txt for the history.

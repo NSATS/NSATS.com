@@ -1,5 +1,5 @@
-/* Website font (NSATS Sans build, 7 October 2026; owner decision): NSATS Sans 1.203, the owner-approved NSATS typeface, is the
-   default; IBM Plex Sans (the template font, styles.css) is the alternative in "Aa Font". Font files: NSATS Sans 1.203
+/* Website font (NSATS Sans build, 7 October 2026; owner decision): NSATS Sans 1.204, the owner-approved NSATS typeface, is the
+   default; IBM Plex Sans (the template font, styles.css) is the alternative in "Aa Font". Font files: NSATS Sans 1.204
    public release, unchanged (assets/fonts/nsats-sans/, SIL OFL 1.1). */
 @font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"NSATS Sans";src:url("fonts/nsats-sans/NSATSSans-Italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
