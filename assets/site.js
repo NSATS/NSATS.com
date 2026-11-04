@@ -1,4 +1,4 @@
-/* NSATS Phase 1 page layer: review-note toggle and draft search. No requests, no tracking. */
+/* NSATS Phase 1 page layer: optional notes toggle and draft search. No requests, no tracking. */
 (() => {
   const root = document.documentElement;
   const store = (k, v) => { try { v === undefined ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
