@@ -1,74 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>NSATS Login</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+<meta charset="utf-8"/>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>NSATS Login</title>
+<link href="styles.css" rel="stylesheet"/>
+<link data-launch-style="" href="../assets/launch-20261104.css" rel="stylesheet"/><script defer="" src="../assets/launch-20261104.js"></script></head>
 <body>
-
-  <div class="topbar">
-    <div class="brand">
-      <img class="brand-logo" src="NSATS_Logo.png" alt="NSATS Logo" />
-    </div>
-
-    <div class="topbar-actions">
-      <button id="toggleTheme" class="btn" title="Toggle theme">Theme</button>
-    </div>
-  </div>
-
+<div class="topbar">
+<div class="brand">
+<img alt="NSATS Logo" class="brand-logo" src="NSATS_Logo.png"/>
+</div>
+<div class="topbar-actions">
+<button class="btn" id="toggleTheme" title="Toggle theme">Theme</button>
+</div>
+</div>
 <div class="login-wrap">
-
-  <!-- Center icon above login card -->
-  <div class="login-icon">
-    <img src="NSATS_QL_White.png" alt="NSATS Quantum Layer Icon" />
-  </div>
-
-  <div class="login-card" role="dialog" aria-label="NSATS Login">
-    <div class="login-head">
-      <div class="login-title">Sign in</div>
-      <div class="login-sub">
+<!-- Center icon above login card -->
+<div class="login-icon">
+<img alt="NSATS Quantum Layer Icon" src="NSATS_QL_White.png"/>
+</div>
+<div aria-label="NSATS Login" class="login-card" role="dialog">
+<div class="login-head">
+<div class="login-title">Sign in</div>
+<div class="login-sub">
         Access Mail, Drive, Contacts, and Shared Files.
       </div>
-    </div>
-
-    <div class="login-body">
-      <label class="field">
-        <span>Username</span>
-        <input id="loginUser" type="text" autocomplete="username" />
-      </label>
-
-      <label class="field">
-        <span>Password</span>
-
-        <!-- Visible pre-filled password for demo -->
-        <input id="loginPass" type="text" autocomplete="current-password" />
-      </label>
-
-      <div class="login-hint">
+</div>
+<div class="login-body">
+<label class="field">
+<span>Username</span>
+<input autocomplete="username" id="loginUser" type="text"/>
+</label>
+<label class="field">
+<span>Password</span>
+<!-- Visible pre-filled password for demo -->
+<input autocomplete="current-password" id="loginPass" type="text"/>
+</label>
+<div class="login-hint">
         Demo credentials are pre-filled. Just click <b>Sign in</b>.
       </div>
-
-      <div id="loginError" class="login-error hidden" aria-live="polite"></div>
-    </div>
-
-    <div class="login-footer">
-      <button id="signInBtn" class="btn primary">Sign in</button>
-    </div>
-
-    <div class="login-footnote">
+<div aria-live="polite" class="login-error hidden" id="loginError"></div>
+</div>
+<div class="login-footer">
+<button class="btn primary" id="signInBtn">Sign in</button>
+</div>
+<div class="login-footnote">
       © NSATS Demo Environment · No live services connected
     </div>
-  </div>
-
 </div>
-
-  <div id="toast" class="toast hidden" role="status" aria-live="polite">
-    <div class="toast-card">Decompressing in progress..</div>
-  </div>
-
-  <script src="auth.js"></script>
+</div>
+<div aria-live="polite" class="toast hidden" id="toast" role="status">
+<div class="toast-card">Decompressing in progress..</div>
+</div>
+<script src="auth.js"></script>
 </body>
 </html>
