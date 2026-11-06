@@ -1,0 +1,66 @@
+/* Contact form style for every NSATS form (5 November 2026). */
+form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden]),select,textarea){display:block;width:100%;max-width:720px;margin:24px 0;padding:24px;border:1px solid #cbd1d5;background:#fff;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) fieldset{min-width:0;padding:0;border:0;margin:0}
+:is(form.form-panel,form.ev-form,.svc-main form) .field{display:block;margin:0 0 20px}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>label{display:inline;font-size:16px;line-height:1.5;font-weight:600;margin:0}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>.field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>.hint:not(.field-req){display:block;font-size:14px;margin:4px 0 8px}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field{display:block;margin:0 0 20px;font-size:16px;line-height:1.5;font-weight:600}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),.field>select,.field>textarea,label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>select,label.field>textarea,[data-email-format] select){display:block;width:100%;min-width:0;max-width:100%;min-height:44px;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;letter-spacing:normal;text-transform:none;color:inherit;border:1px solid #a8afb5;border-radius:0;background:#f6f7f8;box-sizing:border-box;cursor:auto}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){min-height:132px;resize:vertical}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field,label.field):has(input[type=file]) input[type=file]{display:block;width:100%;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;border:1px solid #a8afb5;background:#f6f7f8;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]){display:block;font-size:15px;font-weight:400}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox])>input{width:auto;min-height:0;margin:0 10px 0 0;vertical-align:middle}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]):has(>span){display:flex;flex-direction:row;gap:10px;align-items:flex-start}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]):has(>span)>input{flex:0 0 auto;margin:5px 0 0}
+:is(form.form-panel,form.ev-form,.svc-main form) [data-email-format]>label{display:block;font-size:16px;font-weight:600}
+:is(form.form-panel,form.ev-form,.svc-main form) [data-email-format]>.hint{display:block;font-size:14px;margin:4px 0 0}
+:is(form.form-panel,form.ev-form,.svc-main form) .button{min-height:44px;white-space:normal}
+form.form-panel>p:not([data-nsats-status],[data-launch-status],[role=status],[data-nsats-validation-status]){font-size:15px;margin:0 0 20px}
+.nsats-input-error{margin:6px 0 0;font-size:14px;font-weight:400;color:#a2191f}
+[data-nsats-validation-status]{margin:12px 0 0;font-size:14px}
+:is(form.form-panel,form.ev-form,.svc-main form) .field label .field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
+.r32-clean-card:has(form.form-panel){max-width:720px;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file])){min-height:48px;font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>select,label.field>select,.field>label>select,[data-email-format] select){height:44px;min-height:44px;font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) .r32-privacy-link{font-size:17px}
+/* Site frame for pages drawn by the NSATS server programs (5 November 2026). Works without scripts. */
+.svc-actions{display:flex;align-items:center;gap:16px;margin-left:auto}
+.svc-menu{position:relative}
+.svc-menu>summary{display:flex;align-items:center;min-height:44px;font-size:15px;cursor:pointer;list-style:none}
+.svc-menu>summary::-webkit-details-marker{display:none}
+.svc-menu>nav{position:absolute;top:100%;right:0;z-index:60;display:grid;grid-template-columns:repeat(2,minmax(170px,1fr));gap:2px 20px;width:max-content;max-width:calc(100vw - 32px);padding:16px 20px;border:1px solid #cbd1d5;background:#fff;box-shadow:0 8px 24px rgb(0 0 0 / 14%)}
+.svc-menu>nav a{display:flex;align-items:center;min-height:40px;color:var(--ink,#161616);text-decoration:none;font-size:15px}
+.svc-menu>nav a:hover{text-decoration:underline}
+.svc-search{display:flex;align-items:center;min-height:44px;color:var(--ink,#161616);text-decoration:none;font-size:15px}
+.svc-search:hover{text-decoration:underline}
+.nav-row .svc-cta{white-space:nowrap}
+.utility-links a{color:inherit}
+.svc-main{min-height:40vh;padding:40px 0 64px}
+.svc-main h1{font-size:clamp(30px,3.6vw,46px);line-height:1.15;font-weight:400;margin:0 0 20px}
+.svc-main .notice{max-width:720px;padding:16px;background:#e8f7fb;margin:0 0 20px;font-size:16px}
+.svc-main form button:not([type=button],.privacy-button,.ev-privacy){display:inline-flex;align-items:center;min-height:53px;padding:14px 22px;border:1px solid var(--action,#006b85);border-radius:0;background:var(--action,#006b85);color:#fff;font:inherit;font-size:16px;white-space:normal;cursor:pointer}
+.svc-main form p{font-size:14px;margin:4px 0 16px}
+.svc-main form+p,.svc-main form+nav{margin-top:20px}
+.svc-main nav{display:flex;flex-wrap:wrap;gap:12px 22px}
+.svc-main table{width:100%;border-collapse:collapse}.svc-main td,.svc-main th{padding:12px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}
+.svc-main dialog{max-width:680px;padding:24px;border:1px solid #525252}.svc-main dialog::backdrop{background:#0006}
+.svc-main small{font-size:14px}
+.privacy-button{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:none;color:var(--action,#006b85);font:inherit;font-size:17px;text-decoration:underline;cursor:pointer}
+.ev-privacy{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:transparent;color:var(--action,#006b85);font:inherit;font-size:17px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;appearance:none;-webkit-appearance:none}
+.download-panel .ev-form :is(.field>input,.field>select,.field>textarea,.field>label>select,[data-email-format] select){display:block;width:100%;min-height:48px;margin-top:8px;padding:10px 12px;border:1px solid #a8afb5;border-radius:0;background:#f6f7f8;box-sizing:border-box;font:inherit;font-size:17px;font-weight:400}
+.download-panel .ev-form :is(.field>select,.field>label>select,[data-email-format] select){height:44px;min-height:44px}
+.download-panel .ev-form .button{display:inline-flex;width:auto;margin-top:4px}
+.download-panel .ev-form .button>[aria-hidden]{display:none}
+.download-panel>h2{margin-bottom:16px}
+.download-panel #download-form input[type=text]{letter-spacing:normal;text-transform:none}
+label.field>.field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
+@media (max-width:760px){
+.svc-actions{gap:12px}
+.nav-row .svc-cta{display:none}
+.svc-menu>nav{position:fixed;top:auto;left:16px;right:16px;width:auto;grid-template-columns:1fr}
+.svc-main{padding:28px 0 48px}
+.privacy-button,.ev-privacy{display:block;margin:12px 0 0}
+form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden]),select,textarea){padding:20px 16px}
+}
