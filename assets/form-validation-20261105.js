@@ -3,6 +3,7 @@
   'use strict';
   if (window.NSATSValidation) return;
   var serial = 0;
+  var EMAIL_FORMAT = 'Enter a complete email address, for example name@example.com.';
   function bytes(s) { return unescape(encodeURIComponent(s)).length; }
   function emailOK(value) {
     var parts = value.split('@');
@@ -59,7 +60,7 @@
     try { path = new URL(form.action, location.href).pathname; } catch (_) { path = ''; }
     if (field.type === 'email' && clean) {
       field.value = clean;
-      if (!emailOK(clean)) return 'Enter a complete email address, for example name@example.com.';
+      if (!emailOK(clean)) return EMAIL_FORMAT;
       // The enquiry service does not support apostrophes, unlike the account service.
       if (form.hasAttribute('data-nsats-form') && clean.indexOf("'") !== -1) return 'This form cannot accept an apostrophe in an email address. Please use another address.';
       if (checksDomain(form)) {
@@ -152,9 +153,11 @@
   // Tell the visitor as soon as they leave the email box.
   document.addEventListener('focusout', function (event) {
     var field = event.target, form = field && field.form;
-    if (!form || field.type !== 'email' || !eligible(form) || !checksDomain(form)) return;
+    if (!form || field.type !== 'email' || !eligible(form)) return;
     var value = field.value.trim();
-    if (!value || !emailOK(value)) return;
+    if (!value) return;
+    if (!emailOK(value)) { clear(field); flag(field, EMAIL_FORMAT); return; }
+    if (!checksDomain(form)) return;
     var domain = domainOf(value);
     var show = function () { clear(field); flag(field, domainMessage(domain)); };
     if (!endingOK(domain)) { show(); return; }
