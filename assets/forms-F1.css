@@ -68,3 +68,30 @@
   .r32-dialog-head { gap: 16px; }
   .r32-dialog-head h2 { font-size: 22px; }
 }
+/* Contact form style for every NSATS form (5 November 2026). */
+form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden]),select,textarea){display:block;width:100%;max-width:720px;margin:24px 0;padding:24px;border:1px solid #cbd1d5;background:#fff;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) fieldset{min-width:0;padding:0;border:0;margin:0}
+:is(form.form-panel,form.ev-form,.svc-main form) .field{display:block;margin:0 0 20px}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>label{display:inline;font-size:16px;line-height:1.5;font-weight:600;margin:0}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>.field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
+:is(form.form-panel,form.ev-form,.svc-main form) .field>.hint:not(.field-req){display:block;font-size:14px;margin:4px 0 8px}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field{display:block;margin:0 0 20px;font-size:16px;line-height:1.5;font-weight:600}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),.field>select,.field>textarea,label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>select,label.field>textarea,[data-email-format] select){display:block;width:100%;min-width:0;max-width:100%;min-height:44px;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;letter-spacing:normal;text-transform:none;color:inherit;border:1px solid #a8afb5;border-radius:0;background:#f6f7f8;box-sizing:border-box;cursor:auto}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){min-height:132px;resize:vertical}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field,label.field):has(input[type=file]) input[type=file]{display:block;width:100%;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;border:1px solid #a8afb5;background:#f6f7f8;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]){display:block;font-size:15px;font-weight:400}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox])>input{width:auto;min-height:0;margin:0 10px 0 0;vertical-align:middle}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]):has(>span){display:flex;flex-direction:row;gap:10px;align-items:flex-start}
+:is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]):has(>span)>input{flex:0 0 auto;margin:5px 0 0}
+:is(form.form-panel,form.ev-form,.svc-main form) [data-email-format]>label{display:block;font-size:16px;font-weight:600}
+:is(form.form-panel,form.ev-form,.svc-main form) [data-email-format]>.hint{display:block;font-size:14px;margin:4px 0 0}
+:is(form.form-panel,form.ev-form,.svc-main form) .button{min-height:44px;white-space:normal}
+form.form-panel>p:not([data-nsats-status],[data-launch-status],[role=status],[data-nsats-validation-status]){font-size:15px;margin:0 0 20px}
+.nsats-input-error{margin:6px 0 0;font-size:14px;font-weight:400;color:#a2191f}
+[data-nsats-validation-status]{margin:12px 0 0;font-size:14px}
+:is(form.form-panel,form.ev-form,.svc-main form) .field label .field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
+.r32-clean-card:has(form.form-panel){max-width:720px;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file])){min-height:48px;font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>select,label.field>select,.field>label>select,[data-email-format] select){height:44px;min-height:44px;font-size:17px}
+:is(form.form-panel,form.ev-form,.svc-main form) .r32-privacy-link{font-size:17px}
