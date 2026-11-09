@@ -20,7 +20,7 @@ function datasetPlot(id,title,points,xLabel,yLabel,kind='scatter',width=720){
   else if(kind==='range')s+='<path d="M'+px(p.x)+' '+py(p.low)+'V'+py(p.y)+'" stroke-opacity=".55" stroke-width="1">'+tip+'</path>';
   else s+='<circle cx="'+px(p.x)+'" cy="'+py(p.y)+'" r="2.5" fill-opacity=".55" stroke="none">'+tip+'</circle>';
  }
- return s+'</g></svg>';
+ return labelQuantumChart(s+'</g></svg>',id);
 }
 function buildDatasetCharts(d,options={}){
  const out={};const add=(id,title,points,x,y,kind,caption)=>out[id]={svg:datasetPlot(id,title,points,x,y,kind,options.width||720),caption};
@@ -51,3 +51,15 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
  document.querySelector('[data-inspect]').addEventListener('click',inspect);input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inspect();}});inspect();
 });
+
+function labelQuantumChart(svg,id){
+ if(!['tc-tests','tc-rounds','tc-hist'].includes(id))return svg;
+ const match=svg.match(/viewBox="0 0 ([0-9.]+) ([0-9.]+)"/);if(!match)return svg;
+ const width=Number(match[1]),height=Number(match[2]),small=width<500,left=small?52:86,extra=small?52:38;
+ const label='Generated demonstration data — not measurements';
+ let out=svg.replace(match[0],'viewBox="0 0 '+width+' '+(height+extra)+'"');
+ out=out.replace(/(<title[^>]*>)([\s\S]*?)(<\/title>)/,(all,a,b,c)=>a+b+' — '+label+c);
+ out=out.replace(/(<desc[^>]*>)([\s\S]*?)(<\/desc>)/,(all,a,b,c)=>a+label+'. '+b+c);
+ const text=small?'<text x="'+left+'" y="'+(height+20)+'">Generated demonstration data</text><text x="'+left+'" y="'+(height+39)+'">— not measurements</text>':'<text x="'+left+'" y="'+(height+24)+'">'+label+'</text>';
+ return out.replace('</svg>','<g data-quantum-generated-label="true"><rect x="0" y="'+height+'" width="'+width+'" height="'+extra+'" fill="white"/><g font-family="Arial,sans-serif" font-size="'+(small?13:14)+'" fill="#26333d">'+text+'</g></g></svg>');
+}
