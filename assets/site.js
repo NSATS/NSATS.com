@@ -22,6 +22,7 @@
   const pf = document.getElementById('nsats-portfolio');
   const list = document.getElementById('nsats-results');
   const count = document.getElementById('nsats-count');
+  const sectionLabels = {corporate: 'Company and general information', quantum: 'NSATS Quantum', geomagnetism: 'NSATS Geomagnetism'};
   const norm = s => String(s || '').toLowerCase();
   function run() {
     const words = norm(q.value).trim().split(/\s+/).filter(Boolean);
@@ -35,10 +36,14 @@
       const h = document.createElement('h2'); const a = document.createElement('a');
       a.href = r.h; a.textContent = r.t; h.append(a);
       const p = document.createElement('p'); p.textContent = r.l;
-      const m = document.createElement('span'); m.className = 'eyebrow'; m.textContent = r.p + ' · ' + r.id;
+      const m = document.createElement('span'); m.className = 'eyebrow'; m.textContent = sectionLabels[r.p] || r.p;
       li.append(m, h, p); list.append(li);
     }
-    count.textContent = words.length || pf.value ? `${rows.length} ${rows.length === 1 ? 'page' : 'pages'} found` : '';
+    count.textContent = !rows.length
+      ? 'No matching pages. Try fewer words or select All sections.'
+      : words.length || pf.value
+        ? `${rows.length} ${rows.length === 1 ? 'page' : 'pages'} found`
+        : `Showing all ${rows.length} searchable pages.`;
   }
   q.value = new URLSearchParams(location.search).get('q') || '';
   form.addEventListener('submit', e => { e.preventDefault(); const u = new URL(location.href); u.searchParams.set('q', q.value); history.replaceState({}, '', u); run(); });
