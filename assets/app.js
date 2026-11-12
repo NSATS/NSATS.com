@@ -53,6 +53,17 @@
   $$('.mega').forEach(d => d.addEventListener('toggle', () => {
     if (d.open) $$('.mega').filter(other => other !== d).forEach(other => other.open = false);
   }));
+  // Batch 3 correction A (12 November 2026). An open desktop panel ends at the bottom edge of the screen,
+  // measured from where the panel actually starts (the header is shorter once the page is scrolled).
+  const fitPanel = () => {
+    const d = $('.mega[open]'), panel = d && $('.mega-panel', d);
+    if (!panel) return;
+    if (matchMedia('(min-width:1201px)').matches) panel.style.setProperty('--nsats-panel-max', Math.max(160, Math.ceil(innerHeight - panel.getBoundingClientRect().top)) + 'px');
+    else panel.style.removeProperty('--nsats-panel-max');
+  };
+  $$('.mega').forEach(d => d.addEventListener('toggle', fitPanel));
+  addEventListener('scroll', fitPanel, {passive: true});
+  addEventListener('resize', fitPanel);
   document.addEventListener('click', e => {
     if (!e.target.closest('details.mega')) $$('.mega').forEach(d => d.open = false);
     if (menu?.classList.contains('open') && !e.target.closest('.masthead')) { menu.classList.remove('open'); $('#mobile-menu').setAttribute('aria-expanded','false'); }
