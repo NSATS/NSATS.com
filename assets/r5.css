@@ -369,7 +369,7 @@ html.nsats-bar-in-menu .utility{display:none}
 /* L5: on very short screens (400% zoom, phones held sideways) the header scrolls with the page. */
 @media(max-height:480px){.masthead{position:relative}.page-contents,.page-contents-bar{top:0}}
 /* A6, O3: an open desktop menu ends at the bottom edge of the screen; on short screens it is more compact. */
-@media(min-width:1201px){header.masthead nav.main-nav .mega-panel{max-height:calc(100dvh - 115px);overscroll-behavior:contain}}
+@media(min-width:1201px){header.masthead nav.main-nav .mega-panel{max-height:var(--nsats-panel-max,calc(100dvh - 115px));overscroll-behavior:contain}}
 @media(min-width:1201px) and (max-height:860px){header.masthead nav.main-nav .menu-visual{display:none}header.masthead nav.main-nav .mega-panel.wide{padding:18px 48px 20px;gap:10px 30px}header.masthead nav.main-nav .mega-panel.wide .menu-option{padding-top:7px;padding-bottom:7px}header.masthead nav.main-nav .mega-panel.wide>.mega-intro{display:block;padding:10px 24px}}
 /* D1, L1: on the heading-and-text row pages and the glossaries, rows stack from 761 to 899 px, as they already do on phones. */
 @media(min-width:761px) and (max-width:899px){.fam-glossary .gloss-row,.fam-rows .row-section{grid-template-columns:1fr}}
