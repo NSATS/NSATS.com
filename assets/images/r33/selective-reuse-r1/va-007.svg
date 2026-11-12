@@ -1,1 +1,38 @@
-<svg aria-labelledby="diagram-01-title diagram-01-desc" font-family="var(--font-sans,'IBM Plex Sans','Helvetica Neue',Arial,sans-serif)" height="560" role="img" style="max-width:100%;height:auto;background:var(--paper,#fff)" viewBox="0 0 520 560" width="520" xmlns="http://www.w3.org/2000/svg"><title id="diagram-01-title">Where a licence sits</title><desc id="diagram-01-desc">An arrow leads from “NSATS licence” to “Licensee’s own design and build”, then to “Licensee’s system”. The design box lists chipset, controller, drive, memory, network card and device. Inside the system box, “Existing drives and RAM — ordinary classical storage” connects through “Licensee-added chipset or controller”. Arrows between these boxes identify participation through that added component in the licensee’s system.</desc><defs><marker id="diagram-01-arrow-end" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5"><path d="M0,0 L10,5 L0,10 z" fill="var(--action,#006b85)"></path></marker><marker id="diagram-01-arrow-start" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="1" refY="5"><path d="M10,0 L0,5 L10,10 z" fill="var(--action,#006b85)"></path></marker></defs><rect fill="var(--tint,#e8f7fb)" height="60" rx="4" stroke="var(--ink,#161616)" stroke-width="1.5" width="200" x="160" y="20"></rect><text fill="var(--ink,#161616)" font-size="16" font-weight="600" text-anchor="middle" x="260.0" y="55.6"><tspan dy="0" x="260.0">NSATS licence</tspan></text><line marker-end="url(#diagram-01-arrow-end)" stroke="var(--action,#006b85)" stroke-width="2" x1="260" x2="260" y1="80" y2="118"></line><rect fill="var(--paper,#fff)" height="110" rx="4" stroke="var(--ink,#161616)" stroke-width="1.5" width="300" x="110" y="120"></rect><text fill="var(--ink,#161616)" font-size="16" font-weight="600" text-anchor="middle" x="260.0" y="149.1"><tspan dy="0" x="260.0">Licensee’s own</tspan><tspan dy="21" x="260.0">design and build</tspan></text><text fill="var(--muted,#525252)" font-size="15" font-weight="400" text-anchor="middle" x="260.0" y="191.1"><tspan dy="0" x="260.0">chipset · controller · drive</tspan><tspan dy="20" x="260.0">memory · network card · device</tspan></text><line marker-end="url(#diagram-01-arrow-end)" stroke="var(--action,#006b85)" stroke-width="2" x1="260" x2="260" y1="230" y2="288"></line><rect fill="none" height="250" rx="6" stroke="var(--muted,#525252)" stroke-dasharray="8 6" stroke-width="1.5" width="440" x="40" y="290"></rect><text fill="var(--muted,#525252)" font-size="15" font-weight="400" text-anchor="start" x="50" y="282"><tspan dy="0" x="50">Licensee’s system</tspan></text><rect fill="var(--layer,#f4f4f4)" height="80" rx="4" stroke="var(--ink,#161616)" stroke-width="1.5" width="380" x="70" y="310"></rect><text fill="var(--ink,#161616)" font-size="16" font-weight="400" text-anchor="middle" x="260.0" y="345.1"><tspan dy="0" x="260.0">Existing drives and RAM —</tspan><tspan dy="21" x="260.0">ordinary classical storage</tspan></text><line marker-end="url(#diagram-01-arrow-end)" marker-start="url(#diagram-01-arrow-start)" stroke="var(--action,#006b85)" stroke-width="2" x1="260" x2="260" y1="390" y2="438"></line><rect fill="var(--tint,#e8f7fb)" height="80" rx="4" stroke="var(--ink,#161616)" stroke-width="1.5" width="380" x="70" y="440"></rect><text fill="var(--ink,#161616)" font-size="16" font-weight="400" text-anchor="middle" x="260.0" y="475.1"><tspan dy="0" x="260.0">Licensee-added</tspan><tspan dy="21" x="260.0">chipset or controller</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="560" viewBox="0 0 520 560" role="img" aria-labelledby="diagram-01-title diagram-01-desc" font-family="var(--font-sans,'Helvetica Neue',Arial,sans-serif)" style="max-width:100%;height:auto;background:var(--paper,#fff)">
+<title id="diagram-01-title">Where a licence sits — Quantum hardware example</title>
+<desc id="diagram-01-desc">Quantum hardware example. Licensed NSATS Quantum IP is incorporated into an added chipset or controller within the licensee’s system. Separate two-way connections link that component to existing drives and existing RAM. Drives provide retained storage for information kept for later use. RAM provides working memory for data used by running programs. The drives and RAM remain classical hardware. This example shows a hardware implementation, not every licensing or implementation route.</desc>
+<defs>
+<marker id="diagram-01-arrow-end" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 Z" fill="var(--action,#006b85)"/></marker>
+<marker id="diagram-01-arrow-start" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M8,0 L0,4 L8,8 Z" fill="var(--action,#006b85)"/></marker>
+</defs>
+<g fill="var(--ink,#161616)" text-anchor="middle">
+<text x="260" y="32" font-size="23" font-weight="600">Where a licence sits</text>
+<text x="260" y="58" font-size="17" fill="var(--action,#006b85)">Quantum hardware example</text>
+</g>
+<rect x="100" y="82" width="320" height="58" rx="5" fill="var(--tint,#e8f7fb)" stroke="var(--ink,#161616)" stroke-width="1.5"/>
+<text x="260" y="117" text-anchor="middle" font-size="18" font-weight="600" fill="var(--ink,#161616)">Licensed NSATS Quantum IP</text>
+<line x1="260" y1="140" x2="260" y2="228" stroke="var(--action,#006b85)" stroke-width="2" marker-end="url(#diagram-01-arrow-end)"/>
+<text x="278" y="169" font-size="15" fill="var(--muted,#525252)">Incorporated into</text>
+<rect x="24" y="190" width="472" height="330" rx="7" fill="none" stroke="var(--muted,#525252)" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="40" y="213" font-size="15" fill="var(--muted,#525252)">Licensee’s system</text>
+<rect x="80" y="230" width="360" height="76" rx="5" fill="var(--tint,#e8f7fb)" stroke="var(--ink,#161616)" stroke-width="1.5"/>
+<text x="260" y="260" text-anchor="middle" font-size="18" font-weight="600" fill="var(--ink,#161616)">Added chipset or controller</text>
+<text x="260" y="285" text-anchor="middle" font-size="15" fill="var(--muted,#525252)">Implements the licensed function</text>
+<g stroke="var(--action,#006b85)" stroke-width="2" marker-start="url(#diagram-01-arrow-start)" marker-end="url(#diagram-01-arrow-end)">
+<line x1="148" y1="308" x2="148" y2="364"/>
+<line x1="372" y1="308" x2="372" y2="364"/>
+</g>
+<g fill="var(--layer,#f4f4f4)" stroke="var(--ink,#161616)" stroke-width="1.5">
+<rect x="44" y="366" width="208" height="130" rx="5"/>
+<rect x="268" y="366" width="208" height="130" rx="5"/>
+</g>
+<g text-anchor="middle" fill="var(--ink,#161616)">
+<text x="148" y="396" font-size="18" font-weight="600">Existing drives</text>
+<text x="148" y="421" font-size="16">Retained storage</text>
+<text x="148" y="454" font-size="15" fill="var(--muted,#525252)"><tspan x="148">Information kept</tspan><tspan x="148" dy="20">for later use</tspan></text>
+<text x="372" y="396" font-size="18" font-weight="600">Existing RAM</text>
+<text x="372" y="421" font-size="16">Working memory</text>
+<text x="372" y="454" font-size="15" fill="var(--muted,#525252)"><tspan x="372">Data used by</tspan><tspan x="372" dy="20">running programs</tspan></text>
+<text x="260" y="547" font-size="15" fill="var(--muted,#525252)">Drives and RAM remain classical hardware.</text>
+</g>
+</svg>

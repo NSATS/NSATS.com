@@ -20,7 +20,7 @@
 .r32-clean-card .field > .hint:not(.field-req) { display: block; font-size: 14px; margin: 4px 0 8px; }
 .r32-clean-card .field > input:not([type=checkbox]), .r32-clean-card .field > select, .r32-clean-card .field > textarea {
   display: block; width: 100%; min-width: 0; min-height: 44px; margin-top: 8px; padding: 10px 12px;
-  font: inherit; border: 1px solid #a8afb5; border-radius: 0; background: #f6f7f8; box-sizing: border-box;
+  font: inherit; border: 1px solid #525252; border-radius: 0; background: #f6f7f8; box-sizing: border-box;
 }
 .r32-clean-card .field > textarea { min-height: 132px; resize: vertical; }
 .r32-clean-card .check { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0; }
@@ -76,9 +76,9 @@ form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden
 :is(form.form-panel,form.ev-form,.svc-main form) .field>.field-req{display:inline;margin-left:8px;font-size:13px;font-weight:400;color:#525c65}
 :is(form.form-panel,form.ev-form,.svc-main form) .field>.hint:not(.field-req){display:block;font-size:14px;margin:4px 0 8px}
 :is(form.form-panel,form.ev-form,.svc-main form) label.field{display:block;margin:0 0 20px;font-size:16px;line-height:1.5;font-weight:600}
-:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),.field>select,.field>textarea,label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>select,label.field>textarea,[data-email-format] select){display:block;width:100%;min-width:0;max-width:100%;min-height:44px;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;letter-spacing:normal;text-transform:none;color:inherit;border:1px solid #a8afb5;border-radius:0;background:#f6f7f8;box-sizing:border-box;cursor:auto}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),.field>select,.field>textarea,label.field>input:not([type=checkbox],[type=radio],[type=hidden],[type=file]),label.field>select,label.field>textarea,[data-email-format] select){display:block;width:100%;min-width:0;max-width:100%;min-height:44px;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;letter-spacing:normal;text-transform:none;color:inherit;border:1px solid #525252;border-radius:0;background:#f6f7f8;box-sizing:border-box;cursor:auto}
 :is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){min-height:132px;resize:vertical}
-:is(form.form-panel,form.ev-form,.svc-main form) :is(.field,label.field):has(input[type=file]) input[type=file]{display:block;width:100%;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;border:1px solid #a8afb5;background:#f6f7f8;box-sizing:border-box}
+:is(form.form-panel,form.ev-form,.svc-main form) :is(.field,label.field):has(input[type=file]) input[type=file]{display:block;width:100%;margin-top:8px;padding:10px 12px;font:inherit;font-weight:400;border:1px solid #525252;background:#f6f7f8;box-sizing:border-box}
 :is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]){display:block;font-size:15px;font-weight:400}
 :is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox])>input{width:auto;min-height:0;margin:0 10px 0 0;vertical-align:middle}
 :is(form.form-panel,form.ev-form,.svc-main form) label.field:has(>input[type=checkbox]):has(>span){display:flex;flex-direction:row;gap:10px;align-items:flex-start}
@@ -95,3 +95,15 @@ form.form-panel>p:not([data-nsats-status],[data-launch-status],[role=status],[da
 :is(form.form-panel,form.ev-form,.svc-main form) :is(.field>textarea,label.field>textarea){font-size:17px}
 :is(form.form-panel,form.ev-form,.svc-main form) :is(.field>select,label.field>select,.field>label>select,[data-email-format] select){height:44px;min-height:44px;font-size:17px}
 :is(form.form-panel,form.ev-form,.svc-main form) .r32-privacy-link{font-size:17px}
+
+/* Design-review batch 2 (12 November 2026): error summary above the first field; failed-sending message. */
+.nsats-error-summary,form p[data-nsats-status].nsats-form-failure,form p[data-launch-status].nsats-form-failure{padding:16px 20px;border:2px solid #a2191f;border-left-width:8px;background:#fff1f1;color:#161616;font-size:16px;font-weight:400;line-height:1.5;box-sizing:border-box}
+.nsats-error-summary{margin:0 0 24px}
+form p[data-nsats-status].nsats-form-failure,form p[data-launch-status].nsats-form-failure{margin:16px 0}
+form p.nsats-form-failure:empty,form p.nsats-form-failure[hidden]{display:none}
+.nsats-error-summary-title{margin:0 0 8px;font-size:17px;font-weight:600;color:#161616}
+.nsats-error-summary ul{margin:0;padding:0 0 0 20px}
+.nsats-error-summary li{margin:4px 0}
+.nsats-error-summary a{color:#a2191f;font-weight:400;text-decoration:underline;text-underline-offset:3px}
+.nsats-error-summary a:hover{color:#161616}
+.nsats-error-summary a:focus-visible{outline:3px solid #1b63d9;outline-offset:3px}

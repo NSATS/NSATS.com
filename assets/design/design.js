@@ -45,13 +45,45 @@
   const big = document.querySelector('[data-cs-big]');
   if (big) {
     const nm = document.querySelector('[data-cs-name]'), cp = document.querySelector('[data-cs-cp]');
-    document.querySelectorAll('.cell').forEach(c => {
+    const cells = Array.from(document.querySelectorAll('.cell'));
+    // One keyboard stop for the whole grid. Arrow keys, Home and End move between cells.
+    let current = cells[0];
+    const stop = c => { if (current) current.tabIndex = -1; current = c; c.tabIndex = 0; };
+    const nextRow = (c, dir) => {
+      const r = c.getBoundingClientRect(), half = r.height / 2;
+      let near = Infinity, best = null, bestDx = Infinity;
+      const gap = x => (x.getBoundingClientRect().top - r.top) * dir;
+      cells.forEach(x => { const g = gap(x); if (g >= half && g < near) near = g; });
+      cells.forEach(x => {
+        const g = gap(x); if (g < half || g > near + half) return;
+        const dx = Math.abs(x.getBoundingClientRect().left - r.left);
+        if (dx < bestDx) { bestDx = dx; best = x; }
+      });
+      return best;
+    };
+    cells.forEach(c => {
+      c.tabIndex = -1;
       c.setAttribute('aria-pressed', 'false');
+      c.addEventListener('focus', () => stop(c));
       c.addEventListener('click', () => {
         document.querySelectorAll('.cell[aria-pressed=true]').forEach(x => x.setAttribute('aria-pressed', 'false'));
-        c.setAttribute('aria-pressed', 'true');
+        c.setAttribute('aria-pressed', 'true'); stop(c);
         big.textContent = c.dataset.ch || ' '; nm.textContent = c.dataset.name; cp.textContent = c.dataset.cp;
       });
+      c.addEventListener('keydown', e => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const i = cells.indexOf(c); let to;
+        if (e.key === 'ArrowRight') to = cells[i + 1];
+        else if (e.key === 'ArrowLeft') to = cells[i - 1];
+        else if (e.key === 'ArrowDown') to = nextRow(c, 1);
+        else if (e.key === 'ArrowUp') to = nextRow(c, -1);
+        else if (e.key === 'Home') to = cells[0];
+        else if (e.key === 'End') to = cells[cells.length - 1];
+        else return;
+        e.preventDefault();
+        if (to) { stop(to); to.focus(); }
+      });
     });
+    if (current) current.tabIndex = 0;
   }
 })();
