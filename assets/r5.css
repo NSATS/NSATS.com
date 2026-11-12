@@ -360,7 +360,7 @@ body>.utility{margin:0;padding-block:0}
 /* A5, O4: in the folded menu the links come before the picture card. The card holds no links. */
 @media(max-width:1200px){.main-nav .mega-panel>.mega-intro{order:99}.main-nav{max-height:var(--nsats-menu-max,calc(100dvh - 90px));overscroll-behavior:contain}html.nsats-menu-open{overflow:hidden}}
 /* A3, A4: on phones the grey bar's entries and the licensing button sit at the end of the menu (moved there by app.js). */
-@media(max-width:760px) and (scripting:enabled){.utility{display:none}}
+@media(max-width:760px) and (scripting:enabled){html:has(#main-navigation) .utility{display:none}}
 html.nsats-bar-in-menu .utility{display:none}
 .main-nav>a.nsats-moved,.main-nav>button.nsats-moved{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:54px;padding:16px 24px;border:0;background:none;color:var(--ink);font:inherit;font-size:18px;text-align:start;text-decoration:none;cursor:pointer}
 .main-nav>a.nsats-moved:hover,.main-nav>button.nsats-moved:hover{background:var(--layer)}
