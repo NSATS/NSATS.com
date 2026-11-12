@@ -69,6 +69,8 @@
       }
     }
     if (field.required && !/^(checkbox|radio|file)$/.test(field.type) && !clean) return 'Please complete this field.';
+    if (field.required && field.type === 'checkbox' && !field.checked) return 'Tick this box to continue.';
+    if (field.required && field.type === 'file' && !(field.files && field.files.length)) return 'Choose a file to upload.';
     if (field.type === 'password') {
       if (/\/mynsats\/(register|reset)$/.test(path) && bytes(value) < 12) return 'Use a password of at least 12 characters.';
       if (bytes(value) > 128) return 'This password exceeds the supported length (128 bytes). Please use a shorter password.';
@@ -103,22 +105,59 @@
     field.setCustomValidity(msg); field.setAttribute('aria-invalid', 'true');
     field.setAttribute('aria-describedby', ((field.getAttribute('aria-describedby') || '') + ' ' + error.id).trim());
   }
+  // The words a visitor sees beside the field, without the Required/Optional marker.
+  function labelOf(field) {
+    var label = field.labels && field.labels[0], text = '';
+    if (label) {
+      var copy = label.cloneNode(true);
+      Array.prototype.forEach.call(copy.querySelectorAll('.field-req, .nsats-input-error, input, select, textarea'), function (n) { n.remove(); });
+      text = copy.textContent;
+    }
+    text = (text || field.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+    var stop = text.indexOf('. ');
+    if (stop !== -1) text = text.slice(0, stop);
+    return text.replace(/[.:]$/, '');
+  }
+  // Error panel above the first field: one link per field in error.
+  function summarise(form, errors) {
+    var panel = form.querySelector('[data-nsats-error-summary]');
+    if (!errors.length) { if (panel) panel.remove(); return; }
+    if (!panel) {
+      panel = document.createElement('div'); panel.className = 'nsats-error-summary';
+      panel.setAttribute('data-nsats-error-summary', ''); panel.setAttribute('role', 'alert');
+    }
+    panel.textContent = '';
+    var title = document.createElement('p'); title.className = 'nsats-error-summary-title';
+    title.textContent = 'Please correct ' + errors.length + (errors.length === 1 ? ' field' : ' fields') + '. Your form has not been sent.';
+    var list = document.createElement('ul');
+    errors.forEach(function (e) {
+      if (!e.field.id) e.field.id = 'nsats-field-' + (++serial);
+      var item = document.createElement('li'), link = document.createElement('a'), label = labelOf(e.field);
+      link.href = '#' + e.field.id; link.textContent = (label ? label + ': ' : '') + e.msg;
+      link.addEventListener('click', function (event) { event.preventDefault(); e.field.focus(); });
+      item.appendChild(link); list.appendChild(item);
+    });
+    panel.appendChild(title); panel.appendChild(list);
+    form.insertBefore(panel, form.firstChild);
+  }
   function validate(form) {
     if (!eligible(form)) return true;
-    var first = null, count = 0;
+    var first = null, count = 0, errors = [];
     Array.prototype.forEach.call(form.elements, function (field) {
       clear(field);
       var msg = message(field, form);
       if (!msg) return;
       flag(field, msg);
+      errors.push({ field: field, msg: msg });
       first = first || field; count++;
     });
     var summary = form.querySelector('[data-nsats-validation-status]');
     if (!summary) {
       summary = document.createElement('p'); summary.setAttribute('data-nsats-validation-status', ''); summary.setAttribute('role', 'alert'); form.appendChild(summary);
     }
-    summary.textContent = count ? 'Please correct ' + count + (count === 1 ? ' field' : ' fields') + ' above. Your form has not been sent.' : '';
-    summary.hidden = !count;
+    // The line at the end of the form now carries progress messages only; errors go in the panel at the top.
+    summary.textContent = ''; summary.hidden = true;
+    summarise(form, errors);
     if (first) first.focus();
     return !first;
   }
@@ -168,6 +207,7 @@
     if (!eligible(event.target)) return;
     Array.prototype.forEach.call(event.target.elements, clear);
     var summary = event.target.querySelector('[data-nsats-validation-status]'); if (summary) summary.hidden = true;
+    var panel = event.target.querySelector('[data-nsats-error-summary]'); if (panel) panel.remove();
   });
   window.NSATSValidation = { validate: validate, emailOK: emailOK, endingOK: endingOK };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

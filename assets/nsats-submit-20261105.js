@@ -32,9 +32,9 @@
     return el;
   }
 
-  function status(form, text) {
+  function status(form, text, failed) {
     var el = form.querySelector("[data-nsats-status]");
-    if (el) { el.textContent = text; el.hidden = !text; } else if (text) { window.alert(text); }
+    if (el) { el.classList.toggle("nsats-form-failure", !!(failed && text)); el.textContent = text; el.hidden = !text; } else if (text) { window.alert(text); }
   }
 
   // Forms marked data-nsats-local are answered in the browser: their fields have no names,
@@ -76,7 +76,7 @@
     if (!name) return;
     ev.preventDefault();
     if (form.getAttribute('data-nsats-busy') === '1') return;
-    if (!window.NSATSValidation) { status(form, "This form could not be prepared. Please reload the page and try again."); return; }
+    if (!window.NSATSValidation) { status(form, "This form could not be prepared. Please reload the page and try again.", true); return; }
     if (!window.NSATSValidation.validate(form)) return;
     form.setAttribute('data-nsats-busy', '1');
     ev.preventDefault();
@@ -99,7 +99,7 @@
       if (btn) { btn.disabled = false; btn.textContent = label; }
       status(form, e.message === "busy"
         ? "Too many attempts from your network. Please try again later."
-        : "The security check could not be completed. Please check your connection and try again.");
+        : "The security check could not be completed. Please check your connection and try again.", true);
     } finally {
       if (!sent) {
         form.removeAttribute('data-nsats-busy');

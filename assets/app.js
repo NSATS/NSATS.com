@@ -13,6 +13,33 @@
   // retains its own isolated component-preview preferences.
   document.documentElement.dataset.theme = document.documentElement.dataset.sectionTheme;
   const menu = $('#main-navigation');
+  // Batch 3 (12 November 2026). While the folded menu is open the page behind does not scroll,
+  // and the panel ends at the bottom edge of the screen.
+  if (menu) {
+    const syncMenu = () => {
+      const open = menu.classList.contains('open');
+      document.documentElement.classList.toggle('nsats-menu-open', open);
+      if (open) menu.style.setProperty('--nsats-menu-max', Math.max(120, innerHeight - Math.round($('.masthead').getBoundingClientRect().bottom)) + 'px');
+    };
+    new MutationObserver(syncMenu).observe(menu, {attributes: true, attributeFilter: ['class']});
+    addEventListener('resize', () => {
+      const button = $('#mobile-menu');
+      if (menu.classList.contains('open') && button && button.offsetParent === null) { menu.classList.remove('open'); button.setAttribute('aria-expanded', 'false'); }
+      else syncMenu();
+    });
+    // On phones the grey bar's entries and the licensing button join the end of the menu; on wider screens they go back.
+    const bar = $('.utility-links'), cta = $('.header-cta');
+    if (bar) {
+      const phone = matchMedia('(max-width:760px)');
+      const barItems = [...bar.children], ctaParent = cta?.parentNode, ctaNext = cta?.nextSibling;
+      const place = () => {
+        barItems.forEach(el => { el.classList.toggle('nsats-moved', phone.matches); (phone.matches ? menu : bar).append(el); });
+        if (cta) { cta.classList.toggle('nsats-moved', phone.matches); if (phone.matches) menu.append(cta); else ctaParent.insertBefore(cta, ctaNext); }
+        document.documentElement.classList.toggle('nsats-bar-in-menu', phone.matches);
+      };
+      place(); phone.addEventListener('change', place);
+    }
+  }
   $('#mobile-menu')?.addEventListener('click', e => {
     const expanded = menu.classList.toggle('open');
     e.currentTarget.setAttribute('aria-expanded', String(expanded));
@@ -27,7 +54,8 @@
     if (d.open) $$('.mega').filter(other => other !== d).forEach(other => other.open = false);
   }));
   document.addEventListener('click', e => {
-    if (!e.target.closest('.masthead, .utility')) $$('.mega').forEach(d => d.open = false);
+    if (!e.target.closest('details.mega')) $$('.mega').forEach(d => d.open = false);
+    if (menu?.classList.contains('open') && !e.target.closest('.masthead')) { menu.classList.remove('open'); $('#mobile-menu').setAttribute('aria-expanded','false'); }
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
@@ -39,7 +67,7 @@
   });
   const portfolio = $('.portfolio details');
   if (portfolio) {
-    const mq = matchMedia('(min-width:761px)');
+    const mq = matchMedia('(min-width:1000px)');
     const adapt = () => portfolio.open = mq.matches;
     adapt(); mq.addEventListener('change', adapt);
   }

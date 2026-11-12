@@ -74,7 +74,7 @@ p.practice-label{font-size:16px}
 .regional-contact-card dd{margin:0;overflow-wrap:anywhere}
 .regional-pending{color:var(--muted)}
 @media(max-width:760px){.regional-contact-card dl>div{grid-template-columns:90px minmax(0,1fr);gap:12px}}
-@media(min-width:1281px){
+@media(min-width:1201px){
  .mega-panel.wide:has(> div:nth-child(5))>.mega-intro:has(.menu-visual){display:grid;grid-template-columns:230px minmax(0,1fr);column-gap:26px;row-gap:4px;align-items:start}
  .mega-panel.wide:has(> div:nth-child(5))>.mega-intro>.menu-visual{grid-column:1;grid-row:1/span 3;margin:0}
  .mega-panel.wide:has(> div:nth-child(5))>.mega-intro>.eyebrow,.mega-panel.wide:has(> div:nth-child(5))>.mega-intro>h2,.mega-panel.wide:has(> div:nth-child(5))>.mega-intro>p{grid-column:2}
@@ -163,7 +163,7 @@ p.practice-label{font-size:16px}
 .mega-panel.wide:has(> div:nth-child(5))>.mega-intro{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;column-gap:28px;align-items:start}
 .mega-panel.wide:has(> div:nth-child(5))>.mega-intro .menu-motif{grid-row:span 3}
 
-@media(max-width:1280px){
+@media(max-width:1200px){
   .mega-panel.wide,.mega-panel.wide:has(> div:nth-child(5)){grid-template-columns:1fr 1fr}
   .mega-panel.wide>.mega-intro{grid-column:1/-1}
   .page-contents{top:68px}
@@ -217,7 +217,7 @@ p.practice-label{font-size:16px}
 .fam-faq .qa-answer{padding-inline-start:20px}
 .practice-region .rail-dot{inset-inline-start:-72px}
 .form-column>.form-preview:first-child,.form-column>.content-placeholder:first-child{margin-top:0}
-@media(max-width:1280px){.page-contents-bar{top:68px}}
+@media(max-width:1200px){.page-contents-bar{top:68px}}
 @media(max-width:760px){
   .practice-region{padding:6px 16px 2px}
   .practice-region .rail-dot{inset-inline-start:-52px}
@@ -225,7 +225,7 @@ p.practice-label{font-size:16px}
   .band-grid .card h2{font-size:24px}
 }
 /* wide mega menus (Technologies, Developers): compact introduction row so all options fit without scrolling */
-@media(min-width:1281px){
+@media(min-width:1201px){
   .mega-panel.wide{padding:28px 48px 32px;gap:28px 36px;max-height:calc(100vh - 130px)}
   .mega-panel.wide:has(> div:nth-child(5))>.mega-intro{padding:18px 24px;grid-template-columns:1fr;row-gap:4px}
   .mega-panel.wide:has(> div:nth-child(5))>.mega-intro .menu-motif{display:none}
@@ -281,8 +281,8 @@ p.practice-label{font-size:16px}
 .signin-result p{margin:0 0 8px;font-size:16px}
 .signin-result .link-row{margin:6px 0 0}
 /* MyNSATS menu: a single column beside its introduction (desktop); full width below 1281px */
-@media(min-width:1281px){.mega-panel:has(> div:nth-child(2):last-child){grid-template-columns:1.25fr 2fr}}
-@media(max-width:1280px){.mega-panel:has(> div:nth-child(2):last-child)>div:last-child{grid-column:1/-1}}
+@media(min-width:1201px){.mega-panel:has(> div:nth-child(2):last-child){grid-template-columns:1.25fr 2fr}}
+@media(max-width:1200px){.mega-panel:has(> div:nth-child(2):last-child)>div:last-child{grid-column:1/-1}}
 
 /* ---------- final-8 (6 October 2026) ---------- */
 /* Review-copy draft bar: hand-over final-8 §4 wording first, build details after it */
@@ -328,7 +328,7 @@ body>.utility{margin:0;padding-block:0}
  .mega-panel.wide:has(>div:nth-child(5))>.mega-intro>h2{grid-column:2;grid-row:2;margin:0}
  .mega-panel.wide:has(>div:nth-child(5))>.mega-intro>p{grid-column:2;grid-row:3;margin:0;max-width:none}
 }
-@media(min-width:1281px){
+@media(min-width:1201px){
  .mega-panel.wide:has(>div:nth-child(5)){gap:18px 30px;align-items:start}
  .mega-panel.wide:has(>div:nth-child(5))>.mega-intro{padding:18px 24px}
  /* Developers: existing four groups in two columns and two rows. */
@@ -343,7 +343,7 @@ body>.utility{margin:0;padding-block:0}
 }
 
 /* beta-review-fixes-20261103 */
-@media(min-width:1281px){
+@media(min-width:1201px){
  .mega-panel.wide:has(>div:nth-child(5)):has([data-menu-art="Developers"]){grid-template-columns:minmax(0,.95fr) repeat(2,minmax(0,1fr));row-gap:8px}
  .mega-panel.wide:has(>div:nth-child(5)):has([data-menu-art="Developers"])>.mega-intro:has(.menu-visual){display:block;grid-column:1;grid-row:1 / span 2}
  .mega-panel.wide:has(>div:nth-child(5)):has([data-menu-art="Developers"])>.mega-intro>.menu-visual{margin-bottom:18px}
@@ -351,3 +351,27 @@ body>.utility{margin:0;padding-block:0}
  .mega-panel.wide:has(>div:nth-child(5)):has([data-menu-art="Developers"])>.mega-intro>h2{margin-bottom:14px}
  .mega-panel.wide:has(>div:nth-child(5)):has([data-menu-art="Technologies"]){row-gap:6px}
 }
+
+/* Design-review batch 3 (12 November 2026): header, menus and tablet range. No wording. */
+/* L2, A4: the grey bar stays on one row from 761 px. */
+@media(min-width:761px) and (max-width:799px){.utility{gap:8px;padding-inline:12px}.utility>span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.utility-links{flex:none;gap:6px}.utility-links>*{white-space:nowrap}}
+/* L3: from 761 to 999 px the section bar uses the folded form it already has on phones. */
+@media(min-width:761px) and (max-width:999px){.portfolio details{width:100%}.portfolio details>summary{display:block;cursor:pointer;padding:6px 0;font-size:14px}.portfolio nav{display:block}.portfolio a{border-top:1px solid var(--line)}.portfolio strong{font-size:17px}}
+/* A5, O4: in the folded menu the links come before the picture card. The card holds no links. */
+@media(max-width:1200px){.main-nav .mega-panel>.mega-intro{order:99}.main-nav{max-height:var(--nsats-menu-max,calc(100dvh - 90px));overscroll-behavior:contain}html.nsats-menu-open{overflow:hidden}}
+/* A3, A4: on phones the grey bar's entries and the licensing button sit at the end of the menu (moved there by app.js). */
+@media(max-width:760px) and (scripting:enabled){.utility{display:none}}
+html.nsats-bar-in-menu .utility{display:none}
+.main-nav>a.nsats-moved,.main-nav>button.nsats-moved{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:54px;padding:16px 24px;border:0;background:none;color:var(--ink);font:inherit;font-size:18px;text-align:start;text-decoration:none;cursor:pointer}
+.main-nav>a.nsats-moved:hover,.main-nav>button.nsats-moved:hover{background:var(--layer)}
+.main-nav>a.header-cta.nsats-moved{display:flex;justify-content:center;width:auto;min-height:48px;margin:16px 24px 28px;background:var(--action);color:#fff;font-size:16px!important}
+.main-nav>a.header-cta.nsats-moved:hover{background:var(--deep)}
+/* L5: on very short screens (400% zoom, phones held sideways) the header scrolls with the page. */
+@media(max-height:480px){.masthead{position:relative}.page-contents,.page-contents-bar{top:0}}
+/* A6, O3: an open desktop menu ends at the bottom edge of the screen; on short screens it is more compact. */
+@media(min-width:1201px){header.masthead nav.main-nav .mega-panel{max-height:calc(100dvh - 115px);overscroll-behavior:contain}}
+@media(min-width:1201px) and (max-height:860px){header.masthead nav.main-nav .menu-visual{display:none}header.masthead nav.main-nav .mega-panel.wide{padding:18px 48px 20px;gap:10px 30px}header.masthead nav.main-nav .mega-panel.wide .menu-option{padding-top:7px;padding-bottom:7px}header.masthead nav.main-nav .mega-panel.wide>.mega-intro{display:block;padding:10px 24px}}
+/* D1, L1: on the heading-and-text row pages and the glossaries, rows stack from 761 to 899 px, as they already do on phones. */
+@media(min-width:761px) and (max-width:899px){.fam-glossary .gloss-row,.fam-rows .row-section{grid-template-columns:1fr}}
+/* B13: a side menu taller than the screen scrolls within itself. */
+@media(min-width:761px){.side-nav{max-height:calc(100dvh - 112px);overflow-y:auto;overscroll-behavior:contain}}
