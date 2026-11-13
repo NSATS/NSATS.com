@@ -72,7 +72,7 @@
     if (field.required && field.type === 'checkbox' && !field.checked) return 'Tick this box to continue.';
     if (field.required && field.type === 'file' && !(field.files && field.files.length)) return 'Choose a file to upload.';
     if (field.type === 'password') {
-      if (/\/mynsats\/(register|reset)$/.test(path) && bytes(value) < 12) return 'Use a password of at least 12 characters.';
+      if (/\/mynsats\/(register|reset)$/.test(path) && Array.from(value).length < 12) return 'Use a password of at least 12 characters.';
       if (bytes(value) > 128) return 'This password exceeds the supported length (128 bytes). Please use a shorter password.';
     }
     if (/\/mynsats\/|\/careers\/apply$/.test(path) && /^(name|organisation)$/.test(field.name) && bytes(clean) > 200) return 'Please shorten this entry (maximum 200 bytes).';

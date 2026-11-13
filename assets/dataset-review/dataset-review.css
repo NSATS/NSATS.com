@@ -2,3 +2,14 @@
 
 /* Visible static PNG baseline, enhanced only after chart JavaScript succeeds. */
 .dataset-review .chart-scroll{overflow:visible}.dataset-review .chart-scroll img{display:block;width:100%;max-width:720px;height:auto;margin:0 auto}.dataset-review .chart-scroll svg{margin:0 auto;max-width:720px}.dataset-review .chart-card{margin-bottom:24px}.dataset-review .chart-control,.dataset-review .inspect-record{display:none}.dataset-review.dataset-enhanced .chart-control,.dataset-review.dataset-enhanced .inspect-record{display:flex}.dataset-review .chart-image-link{font-size:14px}.dataset-review .chart-image-link a{display:inline-block;margin:4px 18px 4px 0}@media(max-width:760px){.dataset-review .chart-card{padding:12px}.dataset-review .chart-scroll{margin-left:-4px;margin-right:-4px}}
+
+/* Design-review round 2 (12 November 2026). */
+/* B11, M5: Carbon action colour and the site's own field and button styles. */
+.dataset-review .dataset-button{background:var(--action);border-color:var(--action)}
+.dataset-review .dataset-button:hover{background:var(--deep);border-color:var(--deep)}
+.dataset-review .dataset-button.secondary{background:#fff;color:var(--action)}
+.inspect-record input{min-height:48px;border:1px solid #525252;background:#f6f7f8;border-radius:0;padding:10px 12px;font:inherit}
+.inspect-record input[aria-invalid=true]{border-color:#a2191f;outline:1px solid #a2191f}
+.inspect-record button{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;border:1px solid var(--action);background:var(--action);color:#fff;border-radius:0;font:inherit;cursor:pointer}
+.inspect-record button:hover{background:var(--deep);border-color:var(--deep)}
+.inspect-record output.inspect-error{color:#a2191f}

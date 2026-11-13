@@ -7,7 +7,7 @@ function datasetPlot(id,title,points,xLabel,yLabel,kind='scatter',width=720){
  if(!points.length)return '<p>No rows in this selection.</p>';
  if(xmax===xmin){xmin-=.5;xmax+=.5;}if(ymax===ymin)ymax=ymin+1;
  const px=x=>L+(x-xmin)/(xmax-xmin)*(W-L-R),py=y=>H-B-(y-ymin)/(ymax-ymin)*(H-T-B);
- let s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-labelledby="'+id+'-title '+id+'-desc"><title id="'+id+'-title">'+datasetEscape(title)+'</title><desc id="'+id+'-desc">'+datasetEscape(xLabel+' against '+yLabel+'. '+points.length+' plotted items. Summary and inspection controls accompany this chart.')+'</desc><rect width="'+W+'" height="'+H+'" fill="white"/><g font-family="Arial,sans-serif" font-size="'+(small?13:18)+'" fill="#26333d">';
+ let s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-labelledby="'+id+'-title '+id+'-desc"><title id="'+id+'-title">'+datasetEscape(title)+'</title><desc id="'+id+'-desc">'+datasetEscape(xLabel+' against '+yLabel+'. '+points.length+' plotted items. Summary and inspection controls accompany this chart.')+'</desc><rect width="'+W+'" height="'+H+'" fill="white"/><g font-family="NSATS Sans,Arial,sans-serif" font-size="'+(small?13:18)+'" fill="#26333d">';
  for(const y of (id==='geo-registry'?[0,200,400,600,800]:Array.from({length:5},(_,i)=>ymin+(ymax-ymin)*i/4))){
   s+='<path d="M'+L+' '+py(y)+'H'+(W-R)+'" stroke="#dce2e6"/><text text-anchor="end" x="'+(L-12)+'" y="'+(py(y)+6)+'">'+datasetNumber(y)+'</text>';
  }
@@ -15,7 +15,7 @@ function datasetPlot(id,title,points,xLabel,yLabel,kind='scatter',width=720){
  for(const x of xticks)s+='<text text-anchor="middle" x="'+px(x)+'" y="'+(H-B+30)+'">'+datasetNumber(x)+'</text>';
  s+='<text x="'+L+'" y="22" font-size="'+(small?12:16)+'">'+datasetEscape(yLabel)+'</text><text x="'+(L+(W-L-R)/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="'+(small?12:16)+'">'+datasetEscape(xLabel)+'</text></g><g fill="#2457f5" stroke="#2457f5">';
  for(const p of points){const tip='<title>'+datasetEscape(p.label)+'</title>';
-  if(kind==='bar'||kind==='category'){const x=px(p.x),w=Math.max(1,px(p.x2)-x-1);s+='<rect x="'+x+'" y="'+py(p.y)+'" width="'+w+'" height="'+Math.max(0,py(0)-py(p.y))+'" stroke="none" fill-opacity=".8">'+tip+'</rect>';if(id==='geo-registry')s+='<text x="'+px((p.x+p.x2)/2)+'" y="'+(py(p.y)-8)+'" text-anchor="middle" fill="#26333d" stroke="none" font-family="Arial,sans-serif" font-size="'+(small?13:18)+'">'+p.y+'</text>';}
+  if(kind==='bar'||kind==='category'){const x=px(p.x),w=Math.max(1,px(p.x2)-x-1);s+='<rect x="'+x+'" y="'+py(p.y)+'" width="'+w+'" height="'+Math.max(0,py(0)-py(p.y))+'" stroke="none" fill-opacity=".8">'+tip+'</rect>';if(id==='geo-registry')s+='<text x="'+px((p.x+p.x2)/2)+'" y="'+(py(p.y)-8)+'" text-anchor="middle" fill="#26333d" stroke="none" font-family="NSATS Sans,Arial,sans-serif" font-size="'+(small?13:18)+'">'+p.y+'</text>';}
   else if(kind==='range')s+='<path d="M'+px(p.x)+' '+py(p.low)+'V'+py(p.y)+'" stroke-opacity=".55" stroke-width="1">'+tip+'</path>';
   else s+='<circle cx="'+px(p.x)+'" cy="'+py(p.y)+'" r="2.5" fill-opacity=".55" stroke="none">'+tip+'</circle>';
  }
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  function redraw(){const width=Math.min(...Array.from(document.querySelectorAll('[data-chart]'),el=>el.clientWidth));const charts=buildDatasetCharts(d,{width,metric:get('tc-metric'),round:get('tc-round'),histRound:get('tc-hist-round'),sensors:get('geo-sensors')});for(const [id,c]of Object.entries(charts)){document.querySelector('[data-chart="'+id+'"]').innerHTML=c.svg;document.querySelector('[data-caption="'+id+'"]').textContent=c.caption;}}
  document.querySelectorAll('.chart-control select').forEach(el=>el.addEventListener('change',redraw));redraw();document.querySelector('.dataset-review').classList.add('dataset-enhanced');let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(redraw,120);});
  const input=document.getElementById('inspect-number'),output=document.getElementById('inspect-result');
- function inspect(){if(!input.reportValidity())return;const n=Number(input.value);
+ function inspect(){if(!input.checkValidity()){output.textContent='Enter a whole number from '+input.min+' to '+input.max+'.';output.classList.add('inspect-error');input.setAttribute('aria-invalid','true');return;}output.classList.remove('inspect-error');input.removeAttribute('aria-invalid');const n=Number(input.value);
   if(d.kind==='quantum'){const t=d.tests.find(t=>t.n===n);output.textContent='Test '+n+': '+t.input.toLocaleString('en-GB')+' original bits; '+t.stored.toLocaleString('en-GB')+' stored bits; '+t.compression+'% compression; '+t.duration+' s; '+t.rounds+' rounds; '+t.rotations.toLocaleString('en-GB')+' rotations.';}
   else{const r=d.runs[n-1];output.textContent=r.id+': '+r.sensors+' sensors; '+r.rows.toLocaleString('en-GB')+' point/sensor rows; minimum '+r.min.toFixed(3)+' m; maximum '+r.max.toFixed(3)+' m. Start-point zeros included.';}
  }
@@ -61,7 +61,7 @@ function labelQuantumChart(svg,id){
  out=out.replace(/(<title[^>]*>)([\s\S]*?)(<\/title>)/,(all,a,b,c)=>a+b+' — '+label+c);
  out=out.replace(/(<desc[^>]*>)([\s\S]*?)(<\/desc>)/,(all,a,b,c)=>a+label+'. '+b+c);
  const text=small?'<text x="'+left+'" y="'+(height+20)+'">Generated demonstration data</text><text x="'+left+'" y="'+(height+39)+'">— not measurements</text>':'<text x="'+left+'" y="'+(height+24)+'">'+label+'</text>';
- return out.replace('</svg>','<g data-quantum-generated-label="true"><rect x="0" y="'+height+'" width="'+width+'" height="'+extra+'" fill="white"/><g font-family="Arial,sans-serif" font-size="'+(small?13:14)+'" fill="#26333d">'+text+'</g></g></svg>');
+ return out.replace('</svg>','<g data-quantum-generated-label="true"><rect x="0" y="'+height+'" width="'+width+'" height="'+extra+'" fill="white"/><g font-family="NSATS Sans,Arial,sans-serif" font-size="'+(small?13:14)+'" fill="#26333d">'+text+'</g></g></svg>');
 }
 
 function labelGeomagnetismChart(svg,id){
@@ -73,5 +73,5 @@ function labelGeomagnetismChart(svg,id){
  out=out.replace(/(<title[^>]*>)([\s\S]*?)(<\/title>)/,(all,a,b,c)=>a+b+' — '+label+c);
  out=out.replace(/(<desc[^>]*>)([\s\S]*?)(<\/desc>)/,(all,a,b,c)=>a+label+'. '+b+c);
  const text=small?'<text x="'+left+'" y="'+(height+20)+'">Generated demonstration data</text><text x="'+left+'" y="'+(height+39)+'">— not measurements</text>':'<text x="'+left+'" y="'+(height+24)+'">'+label+'</text>';
- return out.replace('</svg>','<g data-geomagnetism-generated-label="true"><rect x="0" y="'+height+'" width="'+width+'" height="'+extra+'" fill="white"/><g font-family="Arial,sans-serif" font-size="'+(small?13:14)+'" fill="#26333d">'+text+'</g></g></svg>');
+ return out.replace('</svg>','<g data-geomagnetism-generated-label="true"><rect x="0" y="'+height+'" width="'+width+'" height="'+extra+'" fill="white"/><g font-family="NSATS Sans,Arial,sans-serif" font-size="'+(small?13:14)+'" fill="#26333d">'+text+'</g></g></svg>');
 }

@@ -126,3 +126,7 @@
 }
 
 .tsx-card-strips .tsx-contrast{margin-top:10px}
+
+/* Design-review round 2 (12 November 2026). */
+/* L7, M7: the shared colours (now nine with the form greys) wrap into rows above phone width, so no label runs outside its box. */
+@media (min-width:761px) and (max-width:1399px){.tsx .strips-shared{display:grid;grid-template-columns:repeat(3,1fr);min-height:0}.tsx .strips-shared .strip{min-height:260px}}
