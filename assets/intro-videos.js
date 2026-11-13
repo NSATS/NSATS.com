@@ -61,7 +61,7 @@
   const films = {
     geomagnetism: {title:'Geomagnetic positioning', duration:75, desktop:'nsats-geomagnetism-final-16x9.mp4', mobile:'nsats-geomagnetism-mobile-4x5.mp4', poster:'geomagnetism-poster-16x9.jpg', mobilePoster:'geomagnetism-mobile-poster.jpg', route:'nsats/geomagnetism/index.html'},
     quantum: {title:'Quantum-inspired computing', duration:46, desktop:'nsats-quantum-16x9.mp4', mobile:'nsats-quantum-mobile-4x5.mp4', poster:'quantum-poster-16x9.jpg', mobilePoster:'quantum-mobile-poster.jpg', route:'nsats/quantum/index.html'},
-    network: {title:'Quantum-classical networking', duration:36, desktop:'nsats-network-card-final.mp4', mobile:'nsats-network-card-mobile-4x5.mp4', poster:'network-card-poster.jpg', mobilePoster:'network-mobile-poster.jpg', route:'nsats/industries/index.html'}
+    network: {title:'Quantum-Classical Networking', duration:36, desktop:'nsats-network-card-final.mp4', mobile:'nsats-network-card-mobile-4x5.mp4', poster:'network-card-poster.jpg', mobilePoster:'network-mobile-poster.jpg', route:'nsats/industries/index.html'}
   };
   Object.entries(films).forEach(([key, film]) => {
     dialog.querySelector('[data-watch-' + key + ']').addEventListener('click', () => {

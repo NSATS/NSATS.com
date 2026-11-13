@@ -419,3 +419,23 @@ main :is(p,li,dd,figcaption):not(#nsats-none){max-width:58ch}
 .page-head:has(>h1){gap:0}
 /* M12: topic strips that scroll sideways show a shadow at the edge where more links are. */
 .page-contents-bar .wrap{background:linear-gradient(to right,#fff 30%,#fff0) left/40px 100% no-repeat local,linear-gradient(to left,#fff 30%,#fff0) right/40px 100% no-repeat local,linear-gradient(to right,#00000029,#0000) left/14px 100% no-repeat scroll,linear-gradient(to left,#00000029,#0000) right/14px 100% no-repeat scroll}
+
+/* Design-review round 3 (13 November 2026). */
+/* E4: inside every form the "Email format" list (and any other list) matches the text fields. */
+main form select:not(#nsats-none){min-height:48px;font-size:17px}
+/* N4: text kept for screen readers only (the footer's heading). */
+.nsats-vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+/* Q1-Q3: with scripts turned off the pages still work. */
+.nsats-nojs-only{display:none}
+@media (scripting:none){
+  .nsats-nojs-only{display:inline-flex}
+  /* the analytics notice stays (legal text, with its no-script line); only its buttons, which need scripts, are hidden */
+  #nsats-analytics-choice .nsats-choice-actions,#nsats-analytics-choice .nsats-choice-close,[data-r32-privacy-open],.locale-link{display:none!important}
+}
+@media (scripting:none) and (max-width:1200px){
+  /* owner, 13 November 2026: nothing is hidden; the menu and the search box are shown open instead of their buttons */
+  .masthead .mobile-menu,.masthead .mobile-search{display:none!important}
+  .masthead .nav-row{flex-wrap:wrap}
+  .masthead .main-nav{display:flex!important;position:static;flex-direction:column;width:100%;max-height:none;overflow:visible;box-shadow:none;order:5}
+  .masthead .header-search{display:flex!important;position:static;box-shadow:none;width:100%;max-width:none;order:6;padding:8px 0}
+}
