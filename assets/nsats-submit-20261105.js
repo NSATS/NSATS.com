@@ -1,7 +1,9 @@
 /*
  * NSATS forms helper (forms.nsats.com/nsats-forms.js)
  * For any <form data-nsats-form="NAME">: records time on page, solves the NSATS
- * proof-of-work check (no third party involved), then sends the form.
+ * proof-of-work check (no third party involved), then sends the form. The puzzle is
+ * fetched when the visitor starts on the form; forms.nsats.com measures the minimum
+ * time itself from handing out the puzzle (13 November 2026).
  * For <form data-nsats-local="reset">: shows a fixed message only; nothing is sent.
  */
 (function () {
@@ -25,6 +27,50 @@
     }
     return -1;
   }
+
+  // Puzzle timing (owner decision, 13 November 2026). The puzzle is requested when the visitor starts on the form
+  // and solved in the background. A server that records the issue time in the puzzle measures the minimum time on
+  // the page itself, from handing out the puzzle to receiving the form, so the form then goes no sooner than 3.2
+  // seconds after the puzzle arrived (or the server's own minimum, when it states one, plus 0.2 seconds); usually
+  // that time has long passed. Each puzzle is used once.
+  var puzzles = new WeakMap();
+  function sleep(ms) { return new Promise(function (ok) { setTimeout(ok, ms); }); }
+  function puzzleInfo(c, n, at) {
+    var i = /[?&]issued=(\d+)/.exec(c.salt || ""), e = /[?&]expires=(\d+)/.exec(c.salt || "");
+    var ttl = i && e ? e[1] * 1000 - i[1] : 20000;
+    var wait = (typeof c.min_ms === "number" && c.min_ms >= 0 && c.min_ms <= 60000 ? c.min_ms : 3000) + 200;
+    return { c: c, n: n, timed: !!i, at: at, wait: wait, fresh: Math.max(0, ttl - Math.min(60000, ttl / 4)) };
+  }
+  function warm(key, load) {
+    if (!puzzles.has(key)) { var p = load(); p.catch(function () {}); puzzles.set(key, p); }
+  }
+  async function takePuzzle(key, load) {
+    var p = puzzles.get(key), res;
+    puzzles.delete(key);
+    if (p) { try { res = await p; } catch (e) { res = undefined; } }
+    if (!res || Date.now() - res.at > res.fresh) res = await load(); // none ready, failed, skipped or too old: ask again
+    if (res && res.timed) { var wait = res.at + res.wait - Date.now(); if (wait > 0) await sleep(wait); }
+    return res;
+  }
+  function powValue(res) {
+    return btoa(JSON.stringify({ algorithm: res.c.algorithm, challenge: res.c.challenge, number: res.n, salt: res.c.salt, signature: res.c.signature }));
+  }
+  function puzzleLoader(name) {
+    return async function () {
+      var r = await fetch(ENDPOINT + "challenge?form=" + encodeURIComponent(name), { credentials: "omit", cache: "no-store" });
+      if (!r.ok) throw new Error(r.status === 429 ? "busy" : "challenge");
+      var at = Date.now(), c = await r.json(), n = await solve(c);
+      if (n < 0) throw new Error("solve");
+      return puzzleInfo(c, n, at);
+    };
+  }
+  ["focusin", "pointerdown", "input"].forEach(function (type) {
+    document.addEventListener(type, function (ev) {
+      var t = ev.target, form = t && (t.form || (t.closest && t.closest("form[data-nsats-form]")));
+      var name = form && form.getAttribute && form.getAttribute("data-nsats-form");
+      if (name) warm(form, puzzleLoader(name));
+    });
+  });
 
   function hidden(form, name) {
     var el = form.querySelector('input[name="' + name + '"]');
@@ -84,11 +130,8 @@
     if (btn) { btn.setAttribute("data-nsats-label", label); btn.disabled = true; btn.textContent = "Sending…"; }
     status(form, "");
     try {
-      var r = await fetch(ENDPOINT + "challenge?form=" + encodeURIComponent(name), { credentials: "omit", cache: "no-store" });
-      if (!r.ok) throw new Error(r.status === 429 ? "busy" : "challenge");
-      var c = await r.json(), n = await solve(c);
-      if (n < 0) throw new Error("solve");
-      hidden(form, "_pow").value = btoa(JSON.stringify({ algorithm: c.algorithm, challenge: c.challenge, number: n, salt: c.salt, signature: c.signature }));
+      var res = await takePuzzle(form, puzzleLoader(name));
+      hidden(form, "_pow").value = powValue(res);
       hidden(form, "_elapsed").value = String(Date.now() - loadedAt);
       if (window.NSATSValidation.validate(form)) {
         // Keep the button disabled while the browser sends the form; pageshow re-enables it on return.
