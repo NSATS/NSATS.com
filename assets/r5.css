@@ -375,3 +375,47 @@ html.nsats-bar-in-menu .utility{display:none}
 @media(min-width:761px) and (max-width:899px){.fam-glossary .gloss-row,.fam-rows .row-section{grid-template-columns:1fr}}
 /* B13: a side menu taller than the screen scrolls within itself. */
 @media(min-width:761px){.side-nav{max-height:calc(100dvh - 112px);overflow-y:auto;overscroll-behavior:contain}}
+
+/* Design-review round 2 (12 November 2026). */
+/* N-1: grey-bar menus at 761-799 px; text inside the panels wraps again. */
+@media(min-width:761px) and (max-width:799px){.utility .mega-panel,.utility .mega-panel *{white-space:normal}}
+/* M4: Request the PDF pages keep the same space above the heading as other research pages. */
+main.r32-pdf-request>.wrap>.r32-article{margin-top:40px}
+/* C2: breadcrumb and "Back to top" links are at least 24 px tall on phones. */
+@media(max-width:760px){.crumb a,.page-tools-row .text-link{display:inline-block;min-height:24px;line-height:24px}}
+/* C3: on phones the path is shown once; the eyebrow above the heading is hidden when a breadcrumb is present. */
+@media(max-width:760px){main:has(.crumb) .eyebrow:has(+ h1){display:none}}
+/* C5: table headings wrap inside their cells on narrow phones. */
+@media(max-width:480px){main table th{white-space:normal}}
+/* L7: colour-strip labels stay inside their boxes from 761 to 860 px. */
+@media(min-width:761px) and (max-width:860px){.strips-shared .strip-body{padding-inline:12px}.strips-shared .strip-role{font-size:18px;overflow-wrap:anywhere}}
+/* Q5, Q6: print layout. */
+@media print{#nsats-analytics-choice,.skip,.back-to-top,a[href="#main"].back-top,.r32-back-top,a.back-top{display:none!important}.nsats-print-head{display:block!important;font-size:10pt;margin:0 0 12pt;border-bottom:1px solid #000;padding-bottom:6pt}main table{width:100%!important;table-layout:fixed;font-size:8.5pt}main table td,main table th{overflow-wrap:anywhere;white-space:normal}.table-wrap{overflow:visible!important}}
+.nsats-print-head{display:none}
+
+/* B1: Home and the Quantum and Geomagnetism landing pages use the ordinary main-heading size
+   (the extra "body" outranks the later homepage-r33.css and intro-videos.css rules). */
+body .hero.r33-home-image-hero h1,body .hero.nsats-video-hero h1{font-size:clamp(38px,4.3vw,68px)}
+/* M3: notices on content pages line up with the rest of the page. */
+main:not([data-page-id^="NT-"]) .wrap.r3-legal:is([data-legal-page="P09"],[data-legal-page="P10"],[data-legal-page="P11"]){max-width:var(--max)}
+
+/* J1, J7 (owner decision 6): continuing introduction paragraphs share the first paragraph's size; the page-head block is
+   about 1,000 px and the opening text stops at 780 px (owner, 13 November 2026: shorter lines accepted). */
+.page-head:not(.with-aside)>.page-head-copy,.page-head:not(.with-aside):has(>h1){max-width:1000px}
+.page-head .lead-block>p.lead:not(#nsats-none){max-width:780px}
+.page-head .lead-block>p.lead+p.lead{margin-top:0}
+/* L4: running text stops at a readable line length (58ch, measured in NSATS Sans: full lines median 70, mostly 65 to 80 characters).
+   ":not(#nsats-none)" outranks the older "max-width:none" rules for these blocks. */
+main :is(p,li,dd,figcaption):not(#nsats-none){max-width:58ch}
+
+/* O5: highlighted search words. */
+.result-list mark{background:#fff1b8;color:inherit;padding:0 1px}
+
+/* B8: on phones the article section headings are no larger than the other section headings. */
+@media(max-width:760px){.article h2,.np-section h2{font-size:28px}}
+/* M9: one weight for submit buttons (white-paper request forms were semi-bold). */
+.wp23 form .button[type=submit]{font-weight:400}
+/* M12: page heads whose heading sits directly inside use the ordinary spacing (search, sitemap, 404, policies). */
+.page-head:has(>h1){gap:0}
+/* M12: topic strips that scroll sideways show a shadow at the edge where more links are. */
+.page-contents-bar .wrap{background:linear-gradient(to right,#fff 30%,#fff0) left/40px 100% no-repeat local,linear-gradient(to left,#fff 30%,#fff0) right/40px 100% no-repeat local,linear-gradient(to right,#00000029,#0000) left/14px 100% no-repeat scroll,linear-gradient(to left,#00000029,#0000) right/14px 100% no-repeat scroll}
