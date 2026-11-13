@@ -23,23 +23,9 @@
     });
     if (persist) say(`${NAMES[id]} applied to the component preview.${set(KEY_T, id) ? '' : ' (Not saved: browser storage unavailable.)'}`);
   }
-  // NSATS Sans build (8 October 2026): NSATS Sans 1.203 is the default; IBM Plex Sans is the alternative. Labels come from the page.
-  const fc = root.querySelector('.tsx-font-controls');
-  const fd = fc ? fc.dataset : {};
-  function font(id, persist) {
-    const plex = id === 'plex';
-    const sp = root.querySelector('.tsx-specimen');
-    if (plex) sp.dataset.font = 'plex'; else delete sp.dataset.font;
-    root.querySelectorAll('[data-font-name]').forEach(e => { e.textContent = plex ? fd.namePlex : fd.nameSans; });
-    root.querySelectorAll('[data-display-weight]').forEach(e => { e.textContent = plex ? 'Light 300' : 'Regular 400'; });
-    root.querySelectorAll('[data-font-choice]').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.fontChoice === 'plex') === plex)));
-    const fs = root.querySelector('.tsx-font-status');
-    if (fs) fs.textContent = plex ? fd.msgPlex : fd.msgSans;
-    if (persist) set(KEY_F, plex ? 'plex' : null);
-  }
+  // Owner decision 13 November 2026: NSATS Sans only; the IBM Plex Sans option is removed.
   root.querySelectorAll('[data-preview-theme]').forEach(b => b.addEventListener('click', () => theme(b.dataset.previewTheme, true)));
-  root.querySelectorAll('[data-font-choice]').forEach(b => b.addEventListener('click', () => font(b.dataset.fontChoice, true)));
-  root.querySelector('[data-tsx-reset]')?.addEventListener('click', () => { set(KEY_T, null); set(KEY_F, null); theme('cyan'); font('nsats-sans'); say(fd.msgReset); });
+  root.querySelector('[data-tsx-reset]')?.addEventListener('click', () => { set(KEY_T, null); set(KEY_F, null); theme('cyan'); say('Selection reset: NSATS cyan.'); });
 
   async function copy(text) {
     try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (e) {}
@@ -55,5 +41,4 @@
     setTimeout(() => { b.textContent = 'Copy HEX'; }, 1800);
   }));
   theme(get(KEY_T) || 'cyan');
-  font(get(KEY_F) === 'plex' ? 'plex' : 'nsats-sans');
 })();
