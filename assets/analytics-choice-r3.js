@@ -1,10 +1,13 @@
 /* Necessary privacy preference only. No analytics, remote requests or third-party dependencies.
  * Future analytics MUST check window.NSATSAnalyticsConsent?.isAllowed() === true
  * before every collection, storage, load and send; cancel work on nsats:analytics-choice.
+ * 14 November 2026 (owner, A12/O1/U1): closing the notice with × or Escape is remembered for this browser session
+ * only (sessionStorage, no cookie, nothing sent); the settings panel shows the saved choice and its dates.
  */
 (() => {
   'use strict';
   const NAME = 'nsats_analytics_choice';
+  const CLOSED = 'nsats_analytics_notice_closed';
   const VERSION = 'legal-r3-2026-11-11';
   const region = document.getElementById('nsats-analytics-choice');
   const now = () => Date.now();
@@ -39,8 +42,30 @@
   const message = region.querySelector('[data-choice-message]');
   const status = document.getElementById('nsats-analytics-status');
   const links = Array.from(document.querySelectorAll('[data-analytics-settings]'));
+  const stateLine = settings ? settings.querySelectorAll('p')[1] : null;
   let returnFocus = null;
   let dismissed = false;
+  let saveFailed = false;
+  function closedThisSession() {
+    try { return window.sessionStorage.getItem(CLOSED) === '1'; } catch (_) { return false; }
+  }
+  function rememberClosed(on) {
+    try {
+      if (on) window.sessionStorage.setItem(CLOSED, '1');
+      else window.sessionStorage.removeItem(CLOSED);
+    } catch (_) { /* Without session storage the notice simply appears again on the next page. */ }
+  }
+  function day(time) {
+    return new Date(time).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function describe() {
+    if (!stateLine) return;
+    const record = read();
+    if (saveFailed) stateLine.textContent = 'Optional NSATS analytics: off. Your browser could not save a choice.';
+    else if (record && record.choice === 'accept') stateLine.textContent = 'Optional NSATS analytics: on. You accepted on ' + day(record.decidedAt) + '; this choice lasts until ' + day(record.expiresAt) + '.';
+    else if (record) stateLine.textContent = 'Optional NSATS analytics: off. You rejected on ' + day(record.decidedAt) + '; this choice lasts until ' + day(record.expiresAt) + '.';
+    else stateLine.textContent = 'Optional NSATS analytics: off until chosen';
+  }
   let last = JSON.stringify(read());
   function announce(reason, record = read()) {
     window.dispatchEvent(new CustomEvent('nsats:analytics-choice', {
@@ -53,6 +78,7 @@
     settingsButton.hidden = asSettings;
     heading.textContent = asSettings ? 'Analytics settings' : 'Your analytics choice';
     message.textContent = '';
+    describe();
     if (focus) { heading.focus(); region.scrollIntoView({ block: 'start' }); }
   }
   function hide() {
@@ -76,12 +102,17 @@
     const saved = read();
     if (!saved || saved.choice !== choice || saved.decidedAt !== decidedAt) {
       forcedOff = true;
+      saveFailed = true;
+      describe();
       message.textContent = 'Your browser could not save this choice. Optional analytics remains off.';
       announce('storage-unavailable');
       return;
     }
     forcedOff = false;
     dismissed = false;
+    saveFailed = false;
+    rememberClosed(false);
+    describe();
     last = JSON.stringify(saved);
     announce('choice', saved);
     status.textContent = choice === 'accept' ? 'Your analytics choice has been saved.' : 'Your choice has been saved. Optional analytics is now off in this browser. Contact our privacy team about information already collected.';
@@ -95,9 +126,10 @@
   settingsButton.addEventListener('click', () => show(true, true));
   const close = region.querySelector('[data-choice-close]');
   close.disabled = false;
-  close.addEventListener('click', () => { dismissed = true; hide(); });
+  function dismiss() { dismissed = true; if (!read()) rememberClosed(true); hide(); }
+  close.addEventListener('click', dismiss);
   region.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { event.preventDefault(); dismissed = true; hide(); }
+    if (event.key === 'Escape') { event.preventDefault(); dismiss(); }
   });
   links.forEach(link => link.addEventListener('click', event => {
     event.preventDefault(); returnFocus = link; show(true, true);
@@ -108,7 +140,8 @@
     if (next !== last) {
       last = next;
       announce(record ? 'other-page-choice' : 'expired-or-removed', record);
-      if (!record) { dismissed = false; show(false, false); }
+      describe();
+      if (!record) { dismissed = closedThisSession(); if (!dismissed) show(false, false); }
       else if (!settings.hidden) { /* Preserve an open settings interaction. */ }
       else hide();
     } else if (!record && !dismissed && region.hidden) show(false, false);
@@ -118,6 +151,8 @@
   document.addEventListener('visibilitychange', sync);
   window.setInterval(sync, 1000);
   if (read()) region.hidden = true;
+  else if (closedThisSession()) { dismissed = true; region.hidden = true; }
   else show(false, false);
+  describe();
   announce('initial');
 })();

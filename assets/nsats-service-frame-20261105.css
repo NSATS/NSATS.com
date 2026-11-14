@@ -64,3 +64,33 @@ label.field>.field-req{display:inline;margin-left:8px;font-size:13px;font-weight
 .privacy-button,.ev-privacy{display:block;margin:12px 0 0}
 form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden]),select,textarea){padding:20px 16px}
 }
+
+/* BEGIN NSATS M8 TYPE SCALE — proposal, 14 November 2026. Screen only.
+   Nine tokens; only font-size, line-height and their custom properties.
+   Keep print, analytics notice and named type specimens unchanged. */
+@media screen {
+  :root {
+    --nsats-type-micro: .8125rem;
+    --nsats-type-small: .875rem;
+    --nsats-type-control: 1rem;
+    --nsats-type-body: 1.0625rem;
+    --nsats-type-lead: clamp(1.25rem, calc(1.125rem + .277777778vw), 1.375rem);
+    --nsats-type-subheading: 1.5rem;
+    --nsats-type-card: 1.75rem;
+    --nsats-type-section: clamp(1.75rem, calc(1.25rem + 1.527777778vw), 2.625rem);
+    --nsats-type-title: clamp(2.375rem, calc(1.5rem + 2.633333333vw), 4.25rem);
+  }
+  body:not(#nsats-none) { font-size: var(--nsats-type-body); line-height: 1.55; }
+  body:not(#nsats-none) .svc-main h1 { font-size: var(--nsats-type-title); line-height: 1.12; }
+  body:not(#nsats-none) .svc-main h2 { font-size: var(--nsats-type-card); line-height: 1.2; }
+  body:not(#nsats-none) .svc-main h3, body:not(#nsats-none) .svc-main legend { font-size: var(--nsats-type-subheading); line-height: 1.25; }
+  body:not(#nsats-none) .svc-main .lead { font-size: var(--nsats-type-lead); line-height: 1.5; }
+  body:not(#nsats-none) .svc-main p { font-size: var(--nsats-type-body); line-height: 1.55; }
+  body:not(#nsats-none) .svc-main .notice, body:not(#nsats-none) .svc-main table, body:not(#nsats-none) .svc-menu>summary, body:not(#nsats-none) .svc-menu>nav a, body:not(#nsats-none) .svc-search { font-size: var(--nsats-type-control); line-height: 1.5; }
+  body:not(#nsats-none) :is(form.form-panel,form.ev-form,.svc-main form) :is(label,.check span,button,.button) { font-size: var(--nsats-type-control); line-height: 1.5; }
+  body:not(#nsats-none) :is(input,select,textarea), body:not(#nsats-none) .download-panel .ev-form :is(.field>input,.field>select,.field>textarea,.field>label>select,[data-email-format] select), body:not(#nsats-none) :is(.r32-privacy-link,.privacy-button,.ev-privacy) { font-size: var(--nsats-type-body); line-height: 1.55; }
+  body:not(#nsats-none) :is(.field-req,.footer-bottom,.utility,.locale-link) { font-size: var(--nsats-type-micro); line-height: 1.5; }
+  body:not(#nsats-none) :is(.hint,.nsats-input-error,[data-nsats-validation-status],.svc-main small,.svc-main .small,.footer a,.footer p) { font-size: var(--nsats-type-small); line-height: 1.5; }
+  body:not(#nsats-none) .footer h3 { font-size: var(--nsats-type-control); line-height: 1.5; }
+}
+/* END NSATS M8 TYPE SCALE — service frame */

@@ -231,3 +231,5 @@
 .ds .ds-review-link-wrap{padding-top:32px}   /* design.css loads before styles.css, so .wrap needs the extra class */
 .ds-review-link{max-width:72ch;margin:0;font-size:18px}
 .ds-review-link a{font-weight:600}
+/* Round 4, part C (14 November 2026): the three "in use" sample sheets on the NSATS Sans design page keep their 1:1.2 shape but grow taller when the scale's larger text needs more room, instead of cutting the text off. Layout only. */
+@media screen{.use-sheet{overflow:visible}}
