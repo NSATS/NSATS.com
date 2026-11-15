@@ -919,3 +919,6 @@ main form select:not(#nsats-none){min-height:48px;font-size:17px}
   }
   html[data-nsats-type="font-kit"] body:not(#nsats-none) .nsats-choice { font-size: 1.0625rem; line-height: 1.6; }
 }
+
+/* Round 5 (14 November 2026): newsletter, account and careers forms on 320-360 px phones */
+@media screen and (max-width:360px){body .launch-account form.form-panel{padding-left:12px;padding-right:12px}}

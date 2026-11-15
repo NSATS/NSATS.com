@@ -1,7 +1,7 @@
 function datasetEscape(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function datasetNumber(n){const a=Math.abs(n);return a>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':a>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':Number(n.toFixed(2)).toLocaleString('en-GB');}
 function datasetPlot(id,title,points,xLabel,yLabel,kind='scatter',width=720){
- const W=Math.max(280,Math.min(720,width)),small=W<500,H=small?340:360,L=small?(id==='geo-registry'?80:52):86,R=small?22:42,T=54,B=62;
+ const W=Math.max(280,Math.min(720,width)),small=W<500,H=small?340:360,L=small?(id==='geo-registry'?80:60):86,R=small?22:42,T=54,B=62;
  let xmin=Infinity,xmax=-Infinity,ymin=0,ymax=0;
  for(const p of points){xmin=Math.min(xmin,p.x);xmax=Math.max(xmax,p.x2??p.x);ymin=Math.min(ymin,p.low??p.y,p.y);ymax=Math.max(ymax,p.y);}
  if(!points.length)return '<p>No rows in this selection.</p>';
@@ -13,7 +13,7 @@ function datasetPlot(id,title,points,xLabel,yLabel,kind='scatter',width=720){
  }
  const xticks=kind==='category'?points.map(p=>(p.x+p.x2)/2):Array.from({length:small?3:5},(_,i)=>kind==='bar'?xmin+(xmax-xmin)*i/(small?2:4):Math.round(xmin+(xmax-xmin)*i/(small?2:4)));
  for(const x of xticks)s+='<text text-anchor="middle" x="'+px(x)+'" y="'+(H-B+30)+'">'+datasetNumber(x)+'</text>';
- s+='<text x="'+L+'" y="22" font-size="'+(small?12:16)+'">'+datasetEscape(yLabel)+'</text><text x="'+(L+(W-L-R)/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="'+(small?12:16)+'">'+datasetEscape(xLabel)+'</text></g><g fill="#2457f5" stroke="#2457f5">';
+ s+='<text x="'+L+'" y="22" font-size="'+(small?13:16)+'">'+datasetEscape(yLabel)+'</text><text x="'+(L+(W-L-R)/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="'+(small?13:16)+'">'+datasetEscape(xLabel)+'</text></g><g fill="#2457f5" stroke="#2457f5">';
  for(const p of points){const tip='<title>'+datasetEscape(p.label)+'</title>';
   if(kind==='bar'||kind==='category'){const x=px(p.x),w=Math.max(1,px(p.x2)-x-1);s+='<rect x="'+x+'" y="'+py(p.y)+'" width="'+w+'" height="'+Math.max(0,py(0)-py(p.y))+'" stroke="none" fill-opacity=".8">'+tip+'</rect>';if(id==='geo-registry')s+='<text x="'+px((p.x+p.x2)/2)+'" y="'+(py(p.y)-8)+'" text-anchor="middle" fill="#26333d" stroke="none" font-family="NSATS Sans,Arial,sans-serif" font-size="'+(small?13:18)+'">'+p.y+'</text>';}
   else if(kind==='range')s+='<path d="M'+px(p.x)+' '+py(p.low)+'V'+py(p.y)+'" stroke-opacity=".55" stroke-width="1">'+tip+'</path>';

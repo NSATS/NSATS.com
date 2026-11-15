@@ -94,3 +94,6 @@ form.form-panel:not(.r32-clean-card *),.svc-main form:has(input:not([type=hidden
   body:not(#nsats-none) .footer h3 { font-size: var(--nsats-type-control); line-height: 1.5; }
 }
 /* END NSATS M8 TYPE SCALE — service frame */
+
+/* Round 5 (14 November 2026): file-delivery panels on 320-360 px phones (files.nsats.com) */
+@media screen and (max-width:360px){body .download-panel{padding-left:16px;padding-right:16px}}
