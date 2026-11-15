@@ -1,0 +1,8 @@
+/* Owner-approved landing artwork, 14 November 2026. Scoped to the 48 selected page heads. */
+main .nsats-approved-landing-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+main .nsats-approved-landing-head>.page-head-copy,main .nsats-approved-landing-head>.ds-hero-copy{min-width:0;max-width:none}
+main .nsats-approved-landing-media{display:block;min-width:0;width:100%;margin:0;align-self:center;background:#0b202b}
+main .nsats-approved-landing-media img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+@media(max-width:1000px){main .nsats-approved-landing-head{gap:28px}}
+@media(max-width:760px){main .nsats-approved-landing-head{grid-template-columns:minmax(0,1fr);gap:24px}}
+@media print{main .nsats-approved-landing-head{display:block}main .nsats-approved-landing-media{max-width:160mm;break-inside:avoid;margin:16px 0}}
