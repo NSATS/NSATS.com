@@ -27,3 +27,8 @@ main .paper-entry-details>h2{margin-top:0}
 
 /* Owner correction, 15 November 2026: distinguish the complete paper covers. */
 main:is([data-page-id="GR-PAPERS"],[data-page-id="R-PUBS"]) .r33-batch08-cover img{border:1px solid #8d8d8d;box-sizing:border-box}
+
+/* Owner correction, 15 November 2026: covers vertically centred in their rows and clear of the divider lines. */
+main .paper-entry:has(>.paper-entry-details)>.r33-batch08-cover{align-self:center}
+main[data-page-id="GR-PAPERS"] .paper-entry:has(>.paper-entry-details)>.r33-batch08-cover{margin:22px 0}
+@media(max-width:760px){main[data-page-id="GR-PAPERS"] .paper-entry:has(>.paper-entry-details)>.r33-batch08-cover{margin:22px 0 0}}
