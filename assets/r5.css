@@ -922,3 +922,27 @@ main form select:not(#nsats-none){min-height:48px;font-size:17px}
 
 /* Round 5 (14 November 2026): newsletter, account and careers forms on 320-360 px phones */
 @media screen and (max-width:360px){body .launch-account form.form-panel{padding-left:12px;padding-right:12px}}
+
+/* Owner correction, 15 November 2026: use the available content width.
+   This supersedes the earlier 58ch / 780px / 960px reading-width limits.
+   Grid columns, side navigation, artwork, cards and the type scale stay intact. */
+main :is(p,li,dd,figcaption):not(#nsats-none),
+main .page-head .lead-block>p.lead:not(#nsats-none){max-width:none}
+main .page-head:not(.with-aside)>.page-head-copy,
+main .page-head:not(.with-aside):has(>h1),
+main .section>.wrap>.split,
+main :is(.measure,.article,.r32-article),
+main .r32-article>:is(p,ul,ol){max-width:none}
+/* Documentation headings precede full-width text and tables; no empty heading column. */
+main .library-list>li{display:block;min-width:0}
+main .library-list>li>h2{margin-bottom:24px}
+main .library-list>li>*+*{margin-top:16px}
+main .library-list>li>.fragment-alias{margin:0}
+/* Keep wide tables reachable within their own keyboard-scrollable region. */
+main .table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto}
+main .table-wrap table{width:100%}
+/* Rows containing several direct paragraphs must not auto-flow into alternating columns. */
+main .fam-rows .row-section:has(>p){display:block}
+main .fam-rows .row-section:has(>p)>h2{margin-bottom:24px}
+/* Owner decision, 15 November 2026: summaries on email-verification (gated) pages use the full content width. */
+main .gate-summary{max-width:none}
