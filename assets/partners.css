@@ -5,15 +5,15 @@
 .np-contents li{margin:0;border-bottom:1px solid var(--line)}
 .np-contents a{display:block;padding:11px 0;font-size:16px;line-height:1.35;text-decoration:none}
 .np-contents a:hover{text-decoration:underline}
-.np-article{max-width:1100px;padding-bottom:24px}
+.np-article{max-width:none;padding-bottom:24px}
 .np-section{margin:0 0 72px}
 .np-section.np-routes-start{padding-top:72px}  /* spacing only: start of the collaboration routes */
 .np-section h2{font-size:34px;scroll-margin-top:110px}
 .np-section h2:focus{outline:none}
 .np-section h2:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 7px var(--focus)}
 .np-section h3{font-size:25px;margin-top:44px}
-.np-section p,.np-section li{max-width:740px;font-size:18px}
-.np-section .link-row{max-width:740px}
+.np-section p,.np-section li{max-width:none;font-size:18px}
+.np-section .link-row{max-width:none}
 .np-prominent{font-size:19px;font-weight:600;border-bottom-width:2px}
 .np-related{margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
 .np-related p{font-size:16px;margin-bottom:0}

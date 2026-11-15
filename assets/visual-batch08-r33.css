@@ -14,3 +14,13 @@
  .r33-batch08-cover{margin-top:0;margin-bottom:20px}
 }
 @media print{.r33-batch08-visual figcaption a{display:none}}
+
+/* Owner correction, 15 November 2026: publication covers beside their details. */
+main .paper-entry:has(>.paper-entry-details){display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:24px 40px;align-items:start}
+main .paper-entry:has(>.paper-entry-details)>.r33-batch08-cover{grid-column:1;margin:0;width:100%}
+main .paper-entry>.paper-entry-details{grid-column:2;min-width:0;margin:0}
+main .paper-entry-details>h2{margin-top:0}
+@media(max-width:760px){
+ main .paper-entry:has(>.paper-entry-details){grid-template-columns:minmax(0,1fr)}
+ main .paper-entry>.paper-entry-details{grid-column:1}
+}
