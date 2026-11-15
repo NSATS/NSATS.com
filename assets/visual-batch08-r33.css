@@ -24,3 +24,6 @@ main .paper-entry-details>h2{margin-top:0}
  main .paper-entry:has(>.paper-entry-details){grid-template-columns:minmax(0,1fr)}
  main .paper-entry>.paper-entry-details{grid-column:1}
 }
+
+/* Owner correction, 15 November 2026: distinguish the complete paper covers. */
+main:is([data-page-id="GR-PAPERS"],[data-page-id="R-PUBS"]) .r33-batch08-cover img{border:1px solid #8d8d8d;box-sizing:border-box}
