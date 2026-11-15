@@ -12,7 +12,7 @@
   const say = msg => { if (status) { status.textContent = ''; setTimeout(() => { status.textContent = msg; }, 30); } };
 
   function theme(id, persist) {
-    if (!NAMES[id]) id = 'cyan';
+    if (!NAMES[id]) id = 'carbon';
     const pv = root.querySelector('.tsx-preview');
     pv.dataset.theme = id;
     pv.querySelector('[data-preview-name]').textContent = NAMES[id];
@@ -25,7 +25,7 @@
   }
   // Owner decision 13 November 2026: NSATS Sans only; the IBM Plex Sans option is removed.
   root.querySelectorAll('[data-preview-theme]').forEach(b => b.addEventListener('click', () => theme(b.dataset.previewTheme, true)));
-  root.querySelector('[data-tsx-reset]')?.addEventListener('click', () => { set(KEY_T, null); set(KEY_F, null); theme('cyan'); say('Selection reset: NSATS cyan.'); });
+  root.querySelector('[data-tsx-reset]')?.addEventListener('click', () => { set(KEY_T, null); set(KEY_F, null); theme('carbon'); say('Selection reset: Carbon blue.'); });
 
   async function copy(text) {
     try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (e) {}
@@ -40,5 +40,5 @@
     say(ok ? `Copied ${v}.` : `Copy not available here. Select ${v} and copy it manually.`);
     setTimeout(() => { b.textContent = 'Copy HEX'; }, 1800);
   }));
-  theme(get(KEY_T) || 'cyan');
+  theme(get(KEY_T) || 'carbon');
 })();

@@ -45,7 +45,7 @@ const state = {
   sort: "date_desc",
   page: 1,
 
-  theme: localStorage.getItem(LS.theme) || "dark",
+  theme: "carbon",
 
   deleted: new Set(JSON.parse(localStorage.getItem(LS.deleted) || "[]")),
   unread: new Set(JSON.parse(localStorage.getItem(LS.unread) || "[]")),
@@ -1474,7 +1474,7 @@ $("#logoutBtn")?.addEventListener("click", () => {
   });
 
   $("#toggleTheme")?.addEventListener("click", () => {
-    state.theme = state.theme === "dark" ? "light" : "dark";
+    state.theme = "carbon";
     initTheme();
     persist();
   });

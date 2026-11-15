@@ -10,13 +10,13 @@ const DEMO_USER = "demo_user@nsats.com";
 const DEMO_PASS = "123@123"; // you can change this
 
 function initTheme() {
-  const theme = localStorage.getItem(LS_THEME) || "dark";
+  const theme = "carbon";
   document.documentElement.setAttribute("data-theme", theme);
 }
 
 function toggleTheme() {
-  const current = localStorage.getItem(LS_THEME) || "dark";
-  const next = current === "dark" ? "light" : "dark";
+  const current = "carbon";
+  const next = "carbon";
   localStorage.setItem(LS_THEME, next);
   document.documentElement.setAttribute("data-theme", next);
 }

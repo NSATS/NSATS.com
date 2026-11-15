@@ -39,16 +39,16 @@ form.form-panel>p:not([data-nsats-status],[data-launch-status],[role=status],[da
 .utility-links a{color:inherit}
 .svc-main{min-height:40vh;padding:40px 0 64px}
 .svc-main h1{font-size:clamp(30px,3.6vw,46px);line-height:1.15;font-weight:400;margin:0 0 20px}
-.svc-main .notice{max-width:720px;padding:16px;background:#e8f7fb;margin:0 0 20px;font-size:16px}
-.svc-main form button:not([type=button],.privacy-button,.ev-privacy){display:inline-flex;align-items:center;min-height:53px;padding:14px 22px;border:1px solid var(--action,#006b85);border-radius:0;background:var(--action,#006b85);color:#fff;font:inherit;font-size:16px;white-space:normal;cursor:pointer}
+.svc-main .notice{max-width:720px;padding:16px;background:#edf5ff;margin:0 0 20px;font-size:16px}
+.svc-main form button:not([type=button],.privacy-button,.ev-privacy){display:inline-flex;align-items:center;min-height:53px;padding:14px 22px;border:1px solid var(--action,#0f62fe);border-radius:0;background:var(--action,#0f62fe);color:#fff;font:inherit;font-size:16px;white-space:normal;cursor:pointer}
 .svc-main form p{font-size:14px;margin:4px 0 16px}
 .svc-main form+p,.svc-main form+nav{margin-top:20px}
 .svc-main nav{display:flex;flex-wrap:wrap;gap:12px 22px}
 .svc-main table{width:100%;border-collapse:collapse}.svc-main td,.svc-main th{padding:12px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}
 .svc-main dialog{max-width:680px;padding:24px;border:1px solid #525252}.svc-main dialog::backdrop{background:#0006}
 .svc-main small{font-size:14px}
-.privacy-button{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:none;color:var(--action,#006b85);font:inherit;font-size:17px;text-decoration:underline;cursor:pointer}
-.ev-privacy{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:transparent;color:var(--action,#006b85);font:inherit;font-size:17px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;appearance:none;-webkit-appearance:none}
+.privacy-button{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:none;color:var(--action,#0f62fe);font:inherit;font-size:17px;text-decoration:underline;cursor:pointer}
+.ev-privacy{display:inline-block;margin:0 0 0 16px;padding:0;border:0;background:transparent;color:var(--action,#0f62fe);font:inherit;font-size:17px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;appearance:none;-webkit-appearance:none}
 .download-panel .ev-form :is(.field>input,.field>select,.field>textarea,.field>label>select,[data-email-format] select){display:block;width:100%;min-height:48px;margin-top:8px;padding:10px 12px;border:1px solid #525252;border-radius:0;background:#f6f7f8;box-sizing:border-box;font:inherit;font-size:17px;font-weight:400}
 .download-panel .ev-form :is(.field>select,.field>label>select,[data-email-format] select){height:44px;min-height:44px}
 .download-panel .ev-form .button{display:inline-flex;width:auto;margin-top:4px}
