@@ -69,6 +69,8 @@
       }
     }
     if (field.required && !/^(checkbox|radio|file)$/.test(field.type) && !clean) return 'Please complete this field.';
+    // NSATS document terms: owner-approved message, 12 November 2026
+    if (field.type === 'checkbox' && field.name === 'document_terms' && field.required && !field.checked) return 'Tick this box to continue.';
     if (field.required && field.type === 'checkbox' && !field.checked) return 'Tick this box to continue.';
     if (field.required && field.type === 'file' && !(field.files && field.files.length)) return 'Choose a file to upload.';
     if (field.type === 'password') {

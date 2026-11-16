@@ -107,3 +107,6 @@ form p.nsats-form-failure:empty,form p.nsats-form-failure[hidden]{display:none}
 .nsats-error-summary a{color:#a2191f;font-weight:400;text-decoration:underline;text-underline-offset:3px}
 .nsats-error-summary a:hover{color:#161616}
 .nsats-error-summary a:focus-visible{outline:3px solid #1b63d9;outline-offset:3px}
+
+/* Approved NSATS document terms, 12 November 2026. */
+form .ev-terms label.field{margin:0 0 6px} form .ev-terms .hint{display:block;font-size:14px;margin:0 0 20px 30px}
