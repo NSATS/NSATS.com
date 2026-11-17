@@ -4,11 +4,24 @@
   if (window.NSATSValidation) return;
   var serial = 0;
   var EMAIL_FORMAT = 'Enter a complete email address, for example name@example.com.';
+  var EMAIL_CHARS = 'An email address can contain only letters, numbers, dots (.), dashes (-) and underscores (_), with one @.';
+  // Owner, 17 November 2026: no special characters other than dot, dash and underscore.
+  function charsOK(value) { return /^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+$/.test(value); }
   function bytes(s) { return unescape(encodeURIComponent(s)).length; }
   function emailOK(value) {
     var parts = value.split('@');
     if (value.length > 254 || parts.length !== 2 || parts[0].length > 64) return false;
-    // Unquoted dot-atom local parts: punctuation such as +, /, ? and = is valid.
+    // Letters, numbers, dashes and underscores, with single dots between them (owner, 17 November 2026).
+    if (!/^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*$/i.test(parts[0])) return false;
+    var labels = parts[1].split('.');
+    return labels.length > 1 && !/^\d+$/.test(labels[labels.length - 1]) && labels.every(function (s) {
+      return s.length <= 63 && /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(s);
+    });
+  }
+  // The rule before 17 November 2026, kept for signing in and unsubscribing only.
+  function legacyOK(value) {
+    var parts = value.split('@');
+    if (value.length > 254 || parts.length !== 2 || parts[0].length > 64) return false;
     if (!/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*$/i.test(parts[0])) return false;
     var labels = parts[1].split('.');
     return labels.length > 1 && !/^\d+$/.test(labels[labels.length - 1]) && labels.every(function (s) {
@@ -60,7 +73,8 @@
     try { path = new URL(form.action, location.href).pathname; } catch (_) { path = ''; }
     if (field.type === 'email' && clean) {
       field.value = clean;
-      if (!emailOK(clean)) return EMAIL_FORMAT;
+      if (checksDomain(form) && !charsOK(clean)) return EMAIL_CHARS;
+      if (checksDomain(form) ? !emailOK(clean) : !legacyOK(clean)) return EMAIL_FORMAT;
       // The enquiry service does not support apostrophes, unlike the account service.
       if (form.hasAttribute('data-nsats-form') && clean.indexOf("'") !== -1) return 'This form cannot accept an apostrophe in an email address. Please use another address.';
       if (checksDomain(form)) {
@@ -197,8 +211,9 @@
     if (!form || field.type !== 'email' || !eligible(form)) return;
     var value = field.value.trim();
     if (!value) return;
+    if (!checksDomain(form)) { if (!legacyOK(value)) { clear(field); flag(field, EMAIL_FORMAT); } return; }
+    if (!charsOK(value)) { clear(field); flag(field, EMAIL_CHARS); return; }
     if (!emailOK(value)) { clear(field); flag(field, EMAIL_FORMAT); return; }
-    if (!checksDomain(form)) return;
     var domain = domainOf(value);
     var show = function () { clear(field); flag(field, domainMessage(domain)); };
     if (!endingOK(domain)) { show(); return; }
