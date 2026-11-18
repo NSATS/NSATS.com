@@ -7,6 +7,27 @@
   var EMAIL_CHARS = 'An email address can contain only letters, numbers, dots (.), dashes (-) and underscores (_), with one @.';
   // Owner, 17 November 2026: no special characters other than dot, dash and underscore.
   function charsOK(value) { return /^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+$/.test(value); }
+  var NAME_CHARS = "A name can contain only letters, spaces, dashes (-), apostrophes (') and dots (.).";
+  var COMPANY_CHARS = "A company or organisation name can contain only letters, numbers, spaces, ampersands (&), dashes (-), apostrophes ('), dots (.) and commas (,).";
+  // Owner, 18 November 2026. Letters include accented letters; ' and the typed apostrophe ’ count as one.
+  // Browsers without Unicode classes in patterns fall back to Latin letters; the server checks every letter.
+  function pattern(modern, older) { try { return new RegExp(modern, 'u'); } catch (_) { return new RegExp(older); } }
+  var NAME_ALLOWED = pattern("^[\\p{L}\\p{M} '\u2019.\\-]+$", "^[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F '\u2019.\\-]+$");
+  var NAME_LETTER = pattern("\\p{L}", "[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]");
+  var COMPANY_ALLOWED = pattern("^[\\p{L}\\p{M}\\p{Nd} &'\u2019.,\\-]+$", "^[A-Za-z0-9\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F &'\u2019.,\\-]+$");
+  var COMPANY_LETTER = pattern("[\\p{L}\\p{Nd}]", "[A-Za-z0-9\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]");
+  function textRule(field) {
+    if (field.tagName !== 'INPUT' || !/^(text|search)$/.test(field.type)) return '';
+    if (field.name === 'name') return 'name';
+    if (/^(company|organisation|organization)$/.test(field.name)) return 'company';
+    return '';
+  }
+  function textMessage(field, value) {
+    var rule = textRule(field);
+    if (!value || !rule) return '';
+    if (rule === 'name') return NAME_ALLOWED.test(value) && NAME_LETTER.test(value) ? '' : NAME_CHARS;
+    return COMPANY_ALLOWED.test(value) && COMPANY_LETTER.test(value) ? '' : COMPANY_CHARS;
+  }
   function bytes(s) { return unescape(encodeURIComponent(s)).length; }
   function emailOK(value) {
     var parts = value.split('@');
@@ -82,6 +103,8 @@
         if (!endingOK(domain) || known[domain] === 'bad') return domainMessage(domain);
       }
     }
+    var textError = textMessage(field, clean);
+    if (textError) return textError;
     if (field.required && !/^(checkbox|radio|file)$/.test(field.type) && !clean) return 'Please complete this field.';
     // NSATS document terms: owner-approved message, 12 November 2026
     if (field.type === 'checkbox' && field.name === 'document_terms' && field.required && !field.checked) return 'Tick this box to continue.';
@@ -204,6 +227,13 @@
         if (form.dispatchEvent(again)) HTMLFormElement.prototype.submit.call(form);
       }
     });
+  }, true);
+  // Tell the visitor as soon as they leave a name or company box.
+  document.addEventListener('focusout', function (event) {
+    var field = event.target, form = field && field.form;
+    if (!form || !eligible(form) || !textRule(field)) return;
+    var msg = textMessage(field, field.value.trim());
+    if (msg) { clear(field); flag(field, msg); }
   }, true);
   // Tell the visitor as soon as they leave the email box.
   document.addEventListener('focusout', function (event) {
