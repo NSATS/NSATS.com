@@ -13,8 +13,14 @@
   const CLOSED = 'nsats_analytics_notice_closed';
   const VERSION = 'legal-r4-2026-12-01';
   const script = document.currentScript;
+  // Site root for the legal links: data-site on the script tag (server pages carry an inline copy),
+  // otherwise one folder above this file (assets/ on the website).
   const root = (() => {
-    try { return new URL('../', script && script.src ? script.src : location.href).href; } catch (_) { return '/'; }
+    try {
+      const site = script && script.getAttribute('data-site');
+      if (site && /^https:\/\/[a-z0-9.-]+\/$/i.test(site)) return site;
+      return new URL('../', script && script.src ? script.src : location.href).href;
+    } catch (_) { return '/'; }
   })();
   const gpc = (() => { try { return navigator.globalPrivacyControl === true; } catch (_) { return false; } })();
   const now = () => Date.now();
